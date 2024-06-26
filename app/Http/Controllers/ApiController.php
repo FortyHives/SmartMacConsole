@@ -6,9 +6,9 @@ use App\Models\Agent;
 use App\Models\Category;
 use App\Models\Locality;
 use App\Models\Region;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Firebase\JWT\JWT;
 
 class ApiController extends Controller
 {
