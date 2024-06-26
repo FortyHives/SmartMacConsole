@@ -224,7 +224,8 @@ class Agents extends Controller
         $agent = new Agent();
         $agent->name = [$request->first_name, $request->middle_name, $request->last_name];
         $agent->country = $request->country;
-        //$agent->search_keywords = generateKeywords($request->first_name ." ". $request->middle_name ." ". $request->last_name);
+        $agent->photo_url = ["", ""];
+        $agent->search_keywords = ["", ""];
         $agent->email = $request->email;
         $agent->phone_number = $request->phone_number;
         $agent->id_number = $request->id_number;
