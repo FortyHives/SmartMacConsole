@@ -433,6 +433,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'laravel/pint' => array(
+            'pretty_version' => 'v1.16.1',
+            'version' => '1.16.1.0',
+            'reference' => '9266a47f1b9231b83e0cfd849009547329d871b1',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../laravel/pint',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'laravel/prompts' => array(
             'pretty_version' => 'v0.1.24',
             'version' => '0.1.24.0',
