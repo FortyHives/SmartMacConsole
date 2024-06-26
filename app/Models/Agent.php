@@ -9,7 +9,9 @@ class  Agent extends Model
 {
     //protected $table = 'some_table';
     protected $casts = [
-        'name' => 'array',
+      'name' => 'array',
+      'photo_url' => 'array',
+      'search_keywords' => 'array'
         ];
 
     protected $dateFormat = 'Y-m-d H:i:s';
