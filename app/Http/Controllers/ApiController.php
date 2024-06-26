@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
-    public function checkAgent(Request $request): \Illuminate\Http\JsonResponse
+    public function checkAgent(Request $request)
     {
         Log::channel('api')->info('Check account initiated');
         if ($request != null)
