@@ -15,6 +15,12 @@ class ApiController extends Controller
     public function checkAgent(Request $request)
     {
         Log::channel('api')->info('Check account initiated');
+      // Get the current server time
+      $serverTime = now()->toDateTimeString();
+
+      // Log the server time
+      Log::info('Server time: ' . $serverTime);
+
         if ($request != null)
         {
             $request->validate([
