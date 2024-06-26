@@ -30,13 +30,15 @@ class ApiController extends Controller
                         $agent = Agent::where('email', $request->email)->first();
 
                         if ($agent) {
+                          Log::channel('api')->info('Agent found');
                             return response()->json([
                                 "status" => 0,
                                 "message" => "Agent exists",
                                 "agent" => $agent
                             ]);
                         } else {
-                            // Account does not exist, create a new user
+                            // Account does not exist
+                          Log::channel('api')->info('Agent does not exist');
                           return response()->json([
                             "status" => 1,
                             "message" => "Agent file  not available",
