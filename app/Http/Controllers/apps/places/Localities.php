@@ -2,28 +2,13 @@
 
 namespace App\Http\Controllers\apps\places;
 
+use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Locality;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-function generateKeywords($inputString)
-{
-  $inputStringLower = strtolower($inputString);
-  $keywords = array();
-  $words = explode(" ", $inputStringLower);
-
-  foreach ($words as $word) {
-    $appendString = "";
-    for ($i = 0; $i < strlen($word); $i++) {
-      $appendString .= $word[$i];
-      $keywords[] = $appendString;
-    }
-  }
-
-  return $keywords;
-}
 
 class Localities extends Controller
 {
@@ -182,7 +167,7 @@ class Localities extends Controller
           $locality->attitude = $request->attitude;
           $locality->verified = 2;
           $locality->verified_timestamp = now();
-          $locality->search_keywords = generateKeywords($request->name);
+          $locality->search_keywords = Helpers::generateKeywords($request->name);
           $locality->timestamp = now();
 
           if ($locality->save()) {
@@ -207,7 +192,7 @@ class Localities extends Controller
           $locality->attitude = $request->attitude;
           $locality->verified = 2;
           $locality->verified_timestamp = now();
-          $locality->search_keywords = generateKeywords($request->name);
+          $locality->search_keywords = Helpers::generateKeywords($request->name);
           $locality->timestamp = now();
 
           if ($locality->save()) {
@@ -234,7 +219,7 @@ class Localities extends Controller
         $locality->attitude = $request->attitude;
         $locality->verified = 2;
         $locality->verified_timestamp = now();
-        $locality->search_keywords = generateKeywords($request->name);
+        $locality->search_keywords = Helpers::generateKeywords($request->name);
         $locality->timestamp = now();
 
         if ($locality->save()) {

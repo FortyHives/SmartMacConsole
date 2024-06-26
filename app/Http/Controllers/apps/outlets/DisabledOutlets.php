@@ -9,22 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-function generateKeywords($inputString)
-{
-  $inputStringLower = strtolower($inputString);
-  $keywords = array();
-  $words = explode(" ", $inputStringLower);
-
-  foreach ($words as $word) {
-    $appendString = "";
-    for ($i = 0; $i < strlen($word); $i++) {
-      $appendString .= $word[$i];
-      $keywords[] = $appendString;
-    }
-  }
-
-  return $keywords;
-}
 
 class DisabledOutlets extends Controller
 {

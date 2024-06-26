@@ -2,28 +2,13 @@
 
 namespace App\Http\Controllers\apps\places;
 
+use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Region;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 
-function generateKeywords($inputString)
-{
-  $inputStringLower = strtolower($inputString);
-  $keywords = array();
-  $words = explode(" ", $inputStringLower);
-
-  foreach ($words as $word) {
-    $appendString = "";
-    for ($i = 0; $i < strlen($word); $i++) {
-      $appendString .= $word[$i];
-      $keywords[] = $appendString;
-    }
-  }
-
-  return $keywords;
-}
 class Regions extends Controller
 {
 
@@ -169,7 +154,7 @@ class Regions extends Controller
         if ($region) {
           $region->name = $request->name;
           $region->country = $request->country;
-          $region->search_keywords = generateKeywords($request->name);
+          $region->search_keywords = Helpers::generateKeywords($request->name);
           $region->latitude = $request->latitude;
           $region->longitude = $request->longitude;
           $region->proximity_radius = $request->proximity_radius;
@@ -189,7 +174,7 @@ class Regions extends Controller
           $region = new Region();
           $region->name = $request->name;
           $region->country = $request->country;
-          $region->search_keywords = generateKeywords($request->name);
+          $region->search_keywords = Helpers::generateKeywords($request->name);
           $region->latitude = $request->latitude;
           $region->longitude = $request->longitude;
           $region->proximity_radius = $request->proximity_radius;
@@ -211,7 +196,7 @@ class Regions extends Controller
         $region = new Region();
         $region->name = $request->name;
         $region->country = $request->country;
-        $region->search_keywords = generateKeywords($request->name);
+        $region->search_keywords = Helpers::generateKeywords($request->name);
         $region->latitude = $request->latitude;
         $region->longitude = $request->longitude;
         $region->proximity_radius = $request->proximity_radius;

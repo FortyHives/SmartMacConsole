@@ -218,4 +218,21 @@ class Helpers
       }
     }
   }
+
+  public static function generateKeywords($inputString)
+  {
+    $inputStringLower = strtolower($inputString);
+    $keywords = array();
+    $words = explode(" ", $inputStringLower);
+
+    foreach ($words as $word) {
+      $appendString = "";
+      for ($i = 0; $i < strlen($word); $i++) {
+        $appendString .= $word[$i];
+        $keywords[] = $appendString;
+      }
+    }
+
+    return $keywords;
+  }
 }
