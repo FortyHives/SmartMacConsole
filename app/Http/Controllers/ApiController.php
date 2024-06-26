@@ -8,6 +8,7 @@ use App\Models\Locality;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Firebase\JWT\JWT;
 
 class ApiController extends Controller
 {
