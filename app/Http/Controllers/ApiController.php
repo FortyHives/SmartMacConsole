@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agent;
 use App\Models\Category;
 use App\Models\Locality;
+use App\Models\Outlet;
 use App\Models\Region;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
@@ -376,7 +377,7 @@ class ApiController extends Controller
                                   $agent->refresh();
                                     return response()->json([
                                         "status" => 0,
-                                        "message" => "Visitor locality updated",
+                                        "message" => "Agent locality updated",
                                         "agent" => $agent
                                     ]);
                                 } else {
@@ -1112,6 +1113,86 @@ class ApiController extends Controller
             ]);
         }
     }
+
+  public function getOutlets(Request $request){
+    if ($request != null)
+    {
+      $request->validate([
+        "id" => "required",
+        "locality_id" => "required",
+        "region_id" => "required",
+      ]);
+
+      try {
+        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $id = $decoded->sub;
+        if ($id === $request->id)
+        {
+          if (is_numeric($request->id) && is_numeric($request->locality_id) && is_numeric($request->region_id)) {
+            $id = intval($request->id);
+            $locality_id = intval($request->locality_id);
+            $region_id = intval($request->region_id);
+            try {
+              $outlets = Outlet::where('active', 2)
+                ->where('region_id', $region_id)
+                ->where('locality_id', $locality_id)
+                ->get();
+
+              if ($outlets) {
+                return response()->json([
+                  "status" => 0,
+                  "message" => $outlets->count()." outlets found",
+                  "outlets" => $outlets
+                ]);
+              } else {
+                return response()->json([
+                  "status" => 1,
+                  "message" => "Outlets not found"
+                ]);
+              }
+            } catch (\Exception $e) {
+              // Token is invalid
+              return response()->json([
+                "status" => 6,
+                "message" => "Database error",
+                "data_0" => $e->getMessage()
+              ]);
+            }
+
+          } else {
+            return response()->json([
+              "status" => 5,
+              "message" => "Invalid Data Request"
+            ]);
+          }
+
+        }else
+        {
+          return response()->json([
+            "status" => 2,
+            "message" => "Invalid token",
+            "data_0" => $id,
+            "data_1" => $request,
+            "data_2" => $request->id
+          ]);
+        }
+      } catch (\Exception $e) {
+        // Token is invalid
+        return response()->json([
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $e->getMessage()
+        ]);
+      }
+    }else
+    {
+      return response()->json([
+        "status" => 4,
+        "message" => "Invalid Request"
+      ]);
+    }
+  }
 
   public function updateAgentSelectedCategory(Request $request){
     if ($request != null)
