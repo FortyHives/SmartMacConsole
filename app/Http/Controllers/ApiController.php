@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helpers;
 use App\Models\Agent;
 use App\Models\OutletCategory;
 use App\Models\Locality;
@@ -949,64 +950,112 @@ class ApiController extends Controller
             if ($request->access_key != null AND $request->access_key == env('ACCESS_KEY'))
             {
                 $request->validate([
+                  "id" => "required",
                     "region_id" => "required",
                     "name" => "required",
                     "country" => "required",
                     "latitude" => "required",
                     "longitude" => "required",
                     "proximity_radius" => "required",
+                  "attitude" => "required",
+                  "population" => "required",
                 ]);
-                try {
-                    $locality = Locality::where('name', $request->name)->first();
 
-                    if ($locality) {
+              try {
+                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+                $id = $decoded->sub;
+                if ($id === $request->id)
+                {
+                  if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->proximity_radius) && is_numeric($request->attitude) && is_numeric($request->population)) {
+                    $id = intval($request->id);
+                    $region_id = intval($request->region_id);
+                    $latitude = intval($request->latitude);
+                    $longitude = intval($request->longitude);
+                    $proximity_radius = intval($request->proximity_radius);
+                    $attitude = intval($request->attitude);
+                    $population = intval($request->population);
+
+                    try {
+                      $locality = Locality::where('name', $request->name)->first();
+
+                      if ($locality) {
                         return response()->json([
-                            "status" => 1,
-                            "message" => "Locality exists",
+                          "status" => 1,
+                          "message" => "Locality exists",
                         ]);
-                    } else {
+                      } else {
                         // Region does not exist, create a new region
                         $locality = new Locality();
-                        $locality->region_id = $request->region_id;
+                        $locality->region_id = $region_id;
                         $locality->name = $request->name;
                         $locality->country = $request->country;
-                        $locality->search_keywords = json_decode($request->search_keywords, 2);
-                        $locality->latitude = $request->latitude;
-                        $locality->longitude = $request->longitude;
-                        $locality->proximity_radius = $request->proximity_radius;
-                        $locality->population = $request->population;
-                        $locality->attitude = $request->attitude;
+                        $locality->search_keywords = Helpers::generateKeywords($request->name ." ". $request->country);
+                        $locality->latitude = $latitude;
+                        $locality->longitude = $longitude;
+                        $locality->proximity_radius = $proximity_radius;
+                        $locality->population = $population;
+                        $locality->attitude = $attitude;
                         $locality->verified = 2;
                         $locality->verified_timestamp = now();
                         $locality->timestamp = now();
 
                         if ($locality->save()) {
-                            // Success
-                            $locality->refresh();
+                          // Success
+                          $locality->refresh();
 
-                            return response()->json([
-                                "status" => 0,
-                                "message" => "Locality created"
-                            ]);
+                          return response()->json([
+                            "status" => 0,
+                            "message" => "Locality created",
+                            "locality" => $locality
+                          ]);
                         } else {
-                            // Handle error
-                            $errors = $locality->getErrors();
-                            return response()->json([
-                                "status" => 7,
-                                "message" => "Database error",
-                                "data_0" => $errors
-                            ]);
+                          // Handle error
+                          $errors = $locality->getErrors();
+                          return response()->json([
+                            "status" => 7,
+                            "message" => "Database error",
+                            "data_0" => $errors
+                          ]);
                         }
 
-                    }
-                } catch (\Exception $e) {
-                    // Token is invalid
-                    return response()->json([
+                      }
+                    } catch (\Exception $e) {
+                      // Token is invalid
+                      return response()->json([
                         "status" => 6,
                         "message" => "Database error",
                         "data_0" => $e->getMessage()
+                      ]);
+                    }
+
+                  } else {
+                    return response()->json([
+                      "status" => 5,
+                      "message" => "Invalid Data Request"
                     ]);
+                  }
+
+                }else
+                {
+                  return response()->json([
+                    "status" => 2,
+                    "message" => "Invalid token",
+                    "data_0" => $id,
+                    "data_1" => $request,
+                    "data_2" => $request->id
+                  ]);
                 }
+              } catch (\Exception $e) {
+                // Token is invalid
+                return response()->json([
+                  "status" => 3,
+                  "message" => "Invalid token",
+                  "data_0" => $e->getMessage()
+                ]);
+              }
+
+
 
             }else
             {
@@ -1193,6 +1242,7 @@ class ApiController extends Controller
       ]);
     }
   }
+
 
   public function updateAgentSelectedCategory(Request $request){
     if ($request != null)

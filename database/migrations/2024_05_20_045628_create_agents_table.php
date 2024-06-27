@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,11 +21,11 @@ return new class extends Migration
           $table->string('id_number')->unique();
           $table->string('country')->default('Kenya');
           $table->string('role')->default(1)->comment('1=Mapping, 2=Sales, 3=Survey');
-          $table->timestamp('email_verified_timestamp')->default(now());
+          $table->timestamp('email_verified_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('email_verified')->default(1)->comment('1=False, 2=True');
-          $table->timestamp('active_timestamp')->default(now());
+          $table->timestamp('active_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('active')->default(2)->comment('1=False, 2=True');
-          $table->timestamp('suspended_timestamp')->default(now());
+          $table->timestamp('suspended_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('suspended')->default(2)->comment('1=False, 2=True');
           $table->timestamps();
         });

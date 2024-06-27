@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,6 +15,7 @@ return new class extends Migration
       Schema::create('localities', function (Blueprint $table) {
         $table->id();
         $table->unsignedBigInteger('region_id');
+        $table->unsignedBigInteger('mapped_by_id');
         $table->double('latitude');
         $table->double('longitude');
         $table->double('proximity_radius');
@@ -21,10 +23,10 @@ return new class extends Migration
         $table->double('attitude');
         $table->string('country');
         $table->string('name')->unique();
-        $table->timestamp('verified_timestamp')->default(now());
+        $table->timestamp('verified_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
         $table->boolean('verified')->default(2)->comment('1=False, 2=True');
         $table->json('search_keywords');
-        $table->timestamp('timestamp')->default(now());
+        $table->timestamp('timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
         $table->timestamps();
       });
     }

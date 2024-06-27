@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -28,12 +29,12 @@ return new class extends Migration
           $table->double('longitude')->default(0.0);
           $table->json('photo_urls');
           $table->json('search_keywords');
-          $table->timestamp('active_timestamp')->default(now());
+          $table->timestamp('active_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('active')->default(2)->comment('1=False, 2=True');
           $table->tinyInteger('verified')->default(2)->comment('1=False, 2=True');
-          $table->timestamp('verified_timestamp')->default(now());
+          $table->timestamp('verified_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('draft')->default(2)->comment('1=False, 2=True');
-          $table->timestamp('draft_timestamp')->default(now());
+          $table->timestamp('draft_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

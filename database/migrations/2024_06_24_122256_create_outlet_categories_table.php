@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,7 +17,7 @@ return new class extends Migration
           $table->string('title')->unique();
           $table->string('description')->unique();
           $table->double('proximity_radius');
-          $table->timestamp('active_timestamp')->default(now());
+          $table->timestamp('active_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('active')->default(2)->comment('1=False, 2=True');
             $table->timestamps();
         });

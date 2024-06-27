@@ -16,7 +16,10 @@ class AgentsSeeder extends Seeder
           'id' => 1,
           'name' => ['Test','','Agent'],
           'email' => 'agent@fortyhives.com',
-          'phone_number' => '+254718505072'
+          'phone_number' => '+254718505072',
+          'id_number' => '0123456',
+          'pin' => '',
+          'pin_activated' => '1'
         ]);
     }
 }
