@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
-use App\Models\Category;
+use App\Models\OutletCategory;
 use App\Models\Locality;
 use App\Models\Outlet;
 use App\Models\Region;
@@ -893,7 +893,7 @@ class ApiController extends Controller
           if ($id === $request->id)
           {
             try {
-              $categories = Category::get();
+              $categories = OutletCategory::get();
 
               if ($categories) {
                 return response()->json([

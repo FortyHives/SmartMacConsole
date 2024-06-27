@@ -1,5 +1,5 @@
 /**
- * App eCommerce Category List
+ * App eCommerce OutletCategory List
  */
 
 'use strict';
@@ -90,7 +90,7 @@ $(function () {
           }
         },
         {
-          // Categories and Category Detail
+          // Categories and OutletCategory Detail
           targets: 2,
           responsivePriority: 2,
           render: function (data, type, full, meta) {
@@ -118,7 +118,7 @@ $(function () {
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
               $output = '<span class="avatar-initial rounded-2 bg-label-' + $state + '">' + $initials + '</span>';
             }
-            // Creates full output for Categories and Category Detail
+            // Creates full output for Categories and OutletCategory Detail
             var $row_output =
               '<div class="d-flex align-items-center">' +
               '<div class="avatar-wrapper me-3 rounded bg-label-secondary user-name">' +
@@ -190,7 +190,7 @@ $(function () {
       language: {
         sLengthMenu: '_MENU_',
         search: '',
-        searchPlaceholder: 'Search Category'
+        searchPlaceholder: 'Search OutletCategory'
       },
       // Button for offcanvas
       buttons: [
@@ -335,7 +335,7 @@ $(function () {
           ]
         },
         {
-          text: '<i class="ri-add-line ri-16px me-0 me-sm-1 align-baseline"></i><span class="d-none d-sm-inline-block">Add Category</span>',
+          text: '<i class="ri-add-line ri-16px me-0 me-sm-1 align-baseline"></i><span class="d-none d-sm-inline-block">Add OutletCategory</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',

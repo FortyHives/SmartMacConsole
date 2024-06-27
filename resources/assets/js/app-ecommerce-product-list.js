@@ -136,7 +136,7 @@ $(function () {
           }
         },
         {
-          // Product Category
+          // Product OutletCategory
 
           targets: 3,
           responsivePriority: 5,
@@ -490,7 +490,7 @@ $(function () {
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="ProductCategory" class="form-select text-capitalize"><option value="">Category</option></select>'
+              '<select id="ProductCategory" class="form-select text-capitalize"><option value="">OutletCategory</option></select>'
             )
               .appendTo('.product_category')
               .on('change', function () {
