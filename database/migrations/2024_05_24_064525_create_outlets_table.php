@@ -23,7 +23,7 @@ return new class extends Migration
           $table->bigInteger('region_id')->nullable();
           $table->bigInteger('locality_id')->nullable();
           $table->bigInteger('classification_id')->nullable();
-          $table->bigInteger('created_by_id')->nullable();
+          $table->bigInteger('mapped_by_id')->nullable();
           $table->string('country')->default('Kenya');
           $table->double('latitude')->default(0.0);
           $table->double('longitude')->default(0.0);
