@@ -988,6 +988,7 @@ class ApiController extends Controller
                         // Region does not exist, create a new region
                         $locality = new Locality();
                         $locality->region_id = $region_id;
+                        $locality->mapped_by_id = $id;
                         $locality->name = $request->name;
                         $locality->country = $request->country;
                         $locality->search_keywords = Helpers::generateKeywords($request->name ." ". $request->country);
