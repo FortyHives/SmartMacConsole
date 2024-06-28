@@ -968,10 +968,10 @@ class ApiController extends Controller
               if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->proximity_radius) && is_numeric($request->attitude) && is_numeric($request->population)) {
                 $id = intval($request->id);
                 $region_id = intval($request->region_id);
-                $latitude = intval($request->latitude);
-                $longitude = intval($request->longitude);
+                //$latitude = intval($request->latitude);
+                //$longitude = intval($request->longitude);
                 $proximity_radius = intval($request->proximity_radius);
-                $attitude = intval($request->attitude);
+                //$attitude = intval($request->attitude);
                 $population = intval($request->population);
 
                 try {
@@ -990,11 +990,11 @@ class ApiController extends Controller
                     $locality->name = $request->name;
                     $locality->country = $request->country;
                     $locality->search_keywords = Helpers::generateKeywords($request->name ." ". $request->country);
-                    $locality->latitude = $latitude;
-                    $locality->longitude = $longitude;
+                    $locality->latitude = $request->latitude;
+                    $locality->longitude = $request->longitude;
                     $locality->proximity_radius = $proximity_radius;
                     $locality->population = $population;
-                    $locality->attitude = $attitude;
+                    $locality->attitude = $request->attitude;
                     $locality->verified = 2;
                     $locality->verified_timestamp = now();
                     $locality->timestamp = now();
