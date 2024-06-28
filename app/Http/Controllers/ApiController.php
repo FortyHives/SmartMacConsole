@@ -1296,7 +1296,6 @@ class ApiController extends Controller
                 $outlet->verified_timestamp = now();
                 $outlet->draft = 1;
                 $outlet->draft_timestamp = now();
-                $outlet->timestamp = now();
 
                 if ($outlet->save()) {
                   // Success
