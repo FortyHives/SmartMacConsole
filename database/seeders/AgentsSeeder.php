@@ -19,7 +19,7 @@ class AgentsSeeder extends Seeder
           'phone_number' => '+254718505072',
           'id_number' => '0123456',
           'pin' => '',
-          'pin_activated' => '1'
+          'pin_activated' => '2'
         ]);
     }
 }

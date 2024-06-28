@@ -97,7 +97,8 @@ class ApiController extends Controller
         if ($request != null)
         {
             $request->validate([
-                "id" => "required"
+                "id" => "required",
+              "email" => "required"
             ]);
 
             try {
@@ -112,11 +113,21 @@ class ApiController extends Controller
                             $agent = Agent::where('id', $id)->first();
 
                             if ($agent) {
+                              if ($agent->email == $request->email)
+                              {
                                 return response()->json([
-                                    "status" => 0,
-                                    "message" => "Agent exists",
-                                    "agent" => $agent
+                                  "status" => 0,
+                                  "message" => "Agent exists",
+                                  "agent" => $agent
                                 ]);
+                              }else
+                              {
+                                return response()->json([
+                                  "status" => 1,
+                                  "message" => "Agent request error",
+                                ]);
+                              }
+
                             } else {
                                 // Account does not exist
                                 return response()->json([
