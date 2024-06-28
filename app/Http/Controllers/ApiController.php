@@ -1259,8 +1259,8 @@ class ApiController extends Controller
           if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->locality_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->category_id) && is_numeric($request->mapped_by_id)) {
             $id = intval($request->id);
             $region_id = intval($request->region_id);
-            $latitude = intval($request->latitude);
-            $longitude = intval($request->longitude);
+            //$latitude = intval($request->latitude);
+            //$longitude = intval($request->longitude);
             $locality_id = intval($request->locality_id);
             $category_id = intval($request->category_id);
 
@@ -1274,11 +1274,11 @@ class ApiController extends Controller
                 ]);
               } else {
                 // Outlet does not exist, create a new outlet
-                $outlet = new Locality();
+                $outlet = new Outlet();
                 $outlet->name = $request->name;
                 $outlet->country = $request->country;
-                $outlet->latitude = $latitude;
-                $outlet->longitude = $longitude;
+                $outlet->latitude = $request->latitude;
+                $outlet->longitude = $request->longitude;
                 $outlet->category_id = $category_id;
                 $outlet->region_id = $region_id;
                 $outlet->locality_id = $locality_id;
