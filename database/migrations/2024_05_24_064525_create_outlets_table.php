@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
           $table->string('name');
           $table->string('contact_name');
-          $table->string('contact_email')->unique();
+          $table->string('contact_email')->default('');
           $table->string('contact_photo_url')->default('');
           $table->string('contact_phone_number')->unique();
           $table->bigInteger('category_id')->nullable();

@@ -1285,7 +1285,7 @@ class ApiController extends Controller
                 $outlet->mapped_by_id = $id;
                 $outlet->contact_name = $request->contact_name;
                 $outlet->contact_email = $request->contact_email;
-                $outlet->contact_photo_url = $request->contact_photo_url;
+                $outlet->contact_photo_url = "";
                 $outlet->contact_phone_number = $request->contact_phone_number;
 
                 $outlet->photo_urls = ["", ""];

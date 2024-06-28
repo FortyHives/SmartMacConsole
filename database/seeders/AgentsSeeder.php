@@ -15,7 +15,7 @@ class AgentsSeeder extends Seeder
         Agent::create([
           'id' => 1,
           'name' => ['Test','','Agent'],
-          'email' => 'agent@fortyhives.com',
+          'email' => 'benardbees@gmail.com',
           'phone_number' => '+254718505072',
           'id_number' => '0123456',
           'pin' => '',
