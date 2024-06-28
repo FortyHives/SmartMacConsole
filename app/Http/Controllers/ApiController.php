@@ -16,7 +16,7 @@ class ApiController extends Controller
 {
     public function checkAgent(Request $request)
     {
-        Log::channel('api')->info('Check account initiated');
+        Log::channel('api')->info('Check agent initiated');
         if ($request != null)
         {
             $request->validate([
@@ -947,124 +947,112 @@ class ApiController extends Controller
     public function createLocality(Request $request){
         if ($request != null)
         {
-            if ($request->access_key != null AND $request->access_key == env('ACCESS_KEY'))
+          $request->validate([
+            "id" => "required",
+            "region_id" => "required",
+            "name" => "required",
+            "country" => "required",
+            "latitude" => "required",
+            "longitude" => "required",
+            "proximity_radius" => "required",
+            "attitude" => "required",
+            "population" => "required",
+          ]);
+
+          try {
+            $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+            //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+            $id = $decoded->sub;
+            if ($id === $request->id)
             {
-                $request->validate([
-                  "id" => "required",
-                    "region_id" => "required",
-                    "name" => "required",
-                    "country" => "required",
-                    "latitude" => "required",
-                    "longitude" => "required",
-                    "proximity_radius" => "required",
-                  "attitude" => "required",
-                  "population" => "required",
-                ]);
+              if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->proximity_radius) && is_numeric($request->attitude) && is_numeric($request->population)) {
+                $id = intval($request->id);
+                $region_id = intval($request->region_id);
+                $latitude = intval($request->latitude);
+                $longitude = intval($request->longitude);
+                $proximity_radius = intval($request->proximity_radius);
+                $attitude = intval($request->attitude);
+                $population = intval($request->population);
 
-              try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
-                //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
-                $id = $decoded->sub;
-                if ($id === $request->id)
-                {
-                  if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->proximity_radius) && is_numeric($request->attitude) && is_numeric($request->population)) {
-                    $id = intval($request->id);
-                    $region_id = intval($request->region_id);
-                    $latitude = intval($request->latitude);
-                    $longitude = intval($request->longitude);
-                    $proximity_radius = intval($request->proximity_radius);
-                    $attitude = intval($request->attitude);
-                    $population = intval($request->population);
+                try {
+                  $locality = Locality::where('name', $request->name)->first();
 
-                    try {
-                      $locality = Locality::where('name', $request->name)->first();
+                  if ($locality) {
+                    return response()->json([
+                      "status" => 1,
+                      "message" => "Locality exists",
+                    ]);
+                  } else {
+                    // Region does not exist, create a new region
+                    $locality = new Locality();
+                    $locality->region_id = $region_id;
+                    $locality->mapped_by_id = $id;
+                    $locality->name = $request->name;
+                    $locality->country = $request->country;
+                    $locality->search_keywords = Helpers::generateKeywords($request->name ." ". $request->country);
+                    $locality->latitude = $latitude;
+                    $locality->longitude = $longitude;
+                    $locality->proximity_radius = $proximity_radius;
+                    $locality->population = $population;
+                    $locality->attitude = $attitude;
+                    $locality->verified = 2;
+                    $locality->verified_timestamp = now();
+                    $locality->timestamp = now();
 
-                      if ($locality) {
-                        return response()->json([
-                          "status" => 1,
-                          "message" => "Locality exists",
-                        ]);
-                      } else {
-                        // Region does not exist, create a new region
-                        $locality = new Locality();
-                        $locality->region_id = $region_id;
-                        $locality->mapped_by_id = $id;
-                        $locality->name = $request->name;
-                        $locality->country = $request->country;
-                        $locality->search_keywords = Helpers::generateKeywords($request->name ." ". $request->country);
-                        $locality->latitude = $latitude;
-                        $locality->longitude = $longitude;
-                        $locality->proximity_radius = $proximity_radius;
-                        $locality->population = $population;
-                        $locality->attitude = $attitude;
-                        $locality->verified = 2;
-                        $locality->verified_timestamp = now();
-                        $locality->timestamp = now();
+                    if ($locality->save()) {
+                      // Success
+                      $locality->refresh();
 
-                        if ($locality->save()) {
-                          // Success
-                          $locality->refresh();
-
-                          return response()->json([
-                            "status" => 0,
-                            "message" => "Locality created",
-                            "locality" => $locality
-                          ]);
-                        } else {
-                          // Handle error
-                          $errors = $locality->getErrors();
-                          return response()->json([
-                            "status" => 7,
-                            "message" => "Database error",
-                            "data_0" => $errors
-                          ]);
-                        }
-
-                      }
-                    } catch (\Exception $e) {
-                      // Token is invalid
                       return response()->json([
-                        "status" => 6,
+                        "status" => 0,
+                        "message" => "Locality created",
+                        "locality" => $locality
+                      ]);
+                    } else {
+                      // Handle error
+                      $errors = $locality->getErrors();
+                      return response()->json([
+                        "status" => 7,
                         "message" => "Database error",
-                        "data_0" => $e->getMessage()
+                        "data_0" => $errors
                       ]);
                     }
 
-                  } else {
-                    return response()->json([
-                      "status" => 5,
-                      "message" => "Invalid Data Request"
-                    ]);
                   }
-
-                }else
-                {
+                } catch (\Exception $e) {
+                  // Token is invalid
                   return response()->json([
-                    "status" => 2,
-                    "message" => "Invalid token",
-                    "data_0" => $id,
-                    "data_1" => $request,
-                    "data_2" => $request->id
+                    "status" => 6,
+                    "message" => "Database error",
+                    "data_0" => $e->getMessage()
                   ]);
                 }
-              } catch (\Exception $e) {
-                // Token is invalid
+
+              } else {
                 return response()->json([
-                  "status" => 3,
-                  "message" => "Invalid token",
-                  "data_0" => $e->getMessage()
+                  "status" => 5,
+                  "message" => "Invalid Data Request"
                 ]);
               }
 
-
-
             }else
             {
-                return response()->json([
-                    "status" => 2,
-                    "message" => "Invalid Access Key"
-                ]);
+              return response()->json([
+                "status" => 4,
+                "message" => "Invalid token",
+                "data_0" => $id,
+                "data_1" => $request,
+                "data_2" => $request->id
+              ]);
             }
+          } catch (\Exception $e) {
+            // Token is invalid
+            return response()->json([
+              "status" => 3,
+              "message" => "Invalid token",
+              "data_0" => $e->getMessage()
+            ]);
+          }
         }else
         {
             return response()->json([
@@ -1247,135 +1235,121 @@ class ApiController extends Controller
   public function createAnOutlet(Request $request){
     if ($request != null)
     {
-      if ($request->access_key != null AND $request->access_key == env('ACCESS_KEY'))
-      {
-        $request->validate([
-          "id" => "required",
-          "country" => "required",
-          "region_id" => "required",
-          "locality_id" => "required",
-          "latitude" => "required",
-          "longitude" => "required",
-          "category_id" => "required",
-          "sales_value" => "required",
-          "name" => "required",
-          "contact_name" => "required",
-          "contact_phone_number" => "required",
-          //"contact_email_address" => "required",
-          //"remarks" => "required",
-          "mapped_by_id" => "required",
-        ]);
+      $request->validate([
+        "id" => "required",
+        "country" => "required",
+        "region_id" => "required",
+        "locality_id" => "required",
+        "latitude" => "required",
+        "longitude" => "required",
+        "category_id" => "required",
+        "name" => "required",
+        "contact_name" => "required",
+        "contact_phone_number" => "required",
+        //"contact_email_address" => "required",
+        //"remarks" => "required",
+      ]);
 
-        try {
-          $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
-          //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
-          $id = $decoded->sub;
-          if ($id === $request->id)
-          {
-            if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->locality_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->category_id) && is_numeric($request->mapped_by_id)) {
-              $id = intval($request->id);
-              $region_id = intval($request->region_id);
-              $latitude = intval($request->latitude);
-              $longitude = intval($request->longitude);
-              $locality_id = intval($request->locality_id);
-              $category_id = intval($request->category_id);
-              $mapped_by_id = intval($request->mapped_by_id);
+      try {
+        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $id = $decoded->sub;
+        if ($id === $request->id)
+        {
+          if (is_numeric($request->id) && is_numeric($request->region_id) && is_numeric($request->locality_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->category_id) && is_numeric($request->mapped_by_id)) {
+            $id = intval($request->id);
+            $region_id = intval($request->region_id);
+            $latitude = intval($request->latitude);
+            $longitude = intval($request->longitude);
+            $locality_id = intval($request->locality_id);
+            $category_id = intval($request->category_id);
 
-              try {
-                $outlet = Outlet::where('name', $request->name)->first();
+            try {
+              $outlet = Outlet::where('name', $request->name)->first();
 
-                if ($outlet) {
+              if ($outlet) {
+                return response()->json([
+                  "status" => 1,
+                  "message" => "Outlet exists",
+                ]);
+              } else {
+                // Outlet does not exist, create a new outlet
+                $outlet = new Locality();
+                $outlet->name = $request->name;
+                $outlet->country = $request->country;
+                $outlet->latitude = $latitude;
+                $outlet->longitude = $longitude;
+                $outlet->category_id = $category_id;
+                $outlet->region_id = $region_id;
+                $outlet->locality_id = $locality_id;
+                $outlet->mapped_by_id = $id;
+                $outlet->contact_name = $request->contact_name;
+                $outlet->contact_email = $request->contact_email;
+                $outlet->contact_photo_url = $request->contact_photo_url;
+                $outlet->contact_phone_number = $request->contact_phone_number;
+
+                $outlet->photo_urls = ["", ""];
+                $outlet->search_keywords = Helpers::generateKeywords($request->name ." ". $request->contact_name);
+                $outlet->active = 2;
+                $outlet->active_timestamp = now();
+                $outlet->verified = 2;
+                $outlet->verified_timestamp = now();
+                $outlet->draft = 1;
+                $outlet->draft_timestamp = now();
+                $outlet->timestamp = now();
+
+                if ($outlet->save()) {
+                  // Success
+                  $outlet->refresh();
+
                   return response()->json([
-                    "status" => 1,
-                    "message" => "Outlet exists",
+                    "status" => 0,
+                    "message" => "Outlet created",
+                    "outlet" => $outlet
                   ]);
                 } else {
-                  // Outlet does not exist, create a new outlet
-                  $outlet = new Locality();
-                  $outlet->name = $request->name;
-                  $outlet->country = $request->country;
-                  $outlet->latitude = $latitude;
-                  $outlet->longitude = $longitude;
-                  $outlet->category_id = $category_id;
-                  $outlet->region_id = $region_id;
-                  $outlet->mapped_by_id = $id;
-                  $outlet->contact_name = $request->contact_name;
-                  $outlet->contact_email = $request->contact_email;
-                  $outlet->contact_photo_url = $request->contact_photo_url;
-                  $outlet->contact_phone_number = $request->contact_phone_number;
-
-                  $outlet->photo_urls = ["", ""];
-                  $outlet->search_keywords = Helpers::generateKeywords($request->name ." ". $request->contact_name);
-                  $outlet->active = 2;
-                  $outlet->active_timestamp = now();
-                  $outlet->verified = 2;
-                  $outlet->verified_timestamp = now();
-                  $outlet->draft = 1;
-                  $outlet->draft_timestamp = now();
-                  $outlet->timestamp = now();
-
-                  if ($outlet->save()) {
-                    // Success
-                    $outlet->refresh();
-
-                    return response()->json([
-                      "status" => 0,
-                      "message" => "Outlet created",
-                      "outlet" => $outlet
-                    ]);
-                  } else {
-                    // Handle error
-                    $errors = $outlet->getErrors();
-                    return response()->json([
-                      "status" => 7,
-                      "message" => "Database error",
-                      "data_0" => $errors
-                    ]);
-                  }
-
+                  // Handle error
+                  $errors = $outlet->getErrors();
+                  return response()->json([
+                    "status" => 7,
+                    "message" => "Database error",
+                    "data_0" => $errors
+                  ]);
                 }
-              } catch (\Exception $e) {
-                // Token is invalid
-                return response()->json([
-                  "status" => 6,
-                  "message" => "Database error",
-                  "data_0" => $e->getMessage()
-                ]);
-              }
 
-            } else {
+              }
+            } catch (\Exception $e) {
+              // Token is invalid
               return response()->json([
-                "status" => 5,
-                "message" => "Invalid Data Request"
+                "status" => 6,
+                "message" => "Database error",
+                "data_0" => $e->getMessage()
               ]);
             }
 
-          }else
-          {
+          } else {
             return response()->json([
-              "status" => 2,
-              "message" => "Invalid token",
-              "data_0" => $id,
-              "data_1" => $request,
-              "data_2" => $request->id
+              "status" => 5,
+              "message" => "Invalid Data Request"
             ]);
           }
-        } catch (\Exception $e) {
-          // Token is invalid
+
+        }else
+        {
           return response()->json([
-            "status" => 3,
+            "status" => 2,
             "message" => "Invalid token",
-            "data_0" => $e->getMessage()
+            "data_0" => $id,
+            "data_1" => $request,
+            "data_2" => $request->id
           ]);
         }
-
-
-
-      }else
-      {
+      } catch (\Exception $e) {
+        // Token is invalid
         return response()->json([
-          "status" => 2,
-          "message" => "Invalid Access Key"
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $e->getMessage()
         ]);
       }
     }else

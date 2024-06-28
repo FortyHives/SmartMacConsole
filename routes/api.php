@@ -34,6 +34,7 @@ Route::post("updateAgentDetails", [ApiController::class, "updateAgentDetails"]);
 Route::post("getOutletCategories", [ApiController::class, "getOutletCategories"]);
 
 Route::post("getOutlets", [ApiController::class, "getOutlets"]);
+Route::post("createAnOutlet", [ApiController::class, "createAnOutlet"]);
 
 Route::group(["middleware" => ["auth:api"]], function(){
   //Route::post("checkAccount", [ApiController::class, "checkAccount"]);
