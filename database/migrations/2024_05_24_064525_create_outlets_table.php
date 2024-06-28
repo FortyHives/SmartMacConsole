@@ -28,6 +28,7 @@ return new class extends Migration
           $table->double('latitude')->default(0.0);
           $table->double('longitude')->default(0.0);
           $table->json('photo_urls');
+          $table->string('remarks')->default('');
           $table->json('search_keywords');
           $table->timestamp('active_timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
           $table->tinyInteger('active')->default(2)->comment('1=False, 2=True');
