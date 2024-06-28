@@ -1257,7 +1257,6 @@ class ApiController extends Controller
         "name" => "required",
         "contact_name" => "required",
         "contact_phone_number" => "required",
-        //"contact_email_address" => "required",
         //"remarks" => "required",
       ]);
 
@@ -1295,7 +1294,7 @@ class ApiController extends Controller
                 $outlet->locality_id = $locality_id;
                 $outlet->mapped_by_id = $id;
                 $outlet->contact_name = $request->contact_name;
-                $outlet->contact_email = $request->contact_email;
+                $outlet->contact_email = "";
                 $outlet->contact_photo_url = "";
                 $outlet->contact_phone_number = $request->contact_phone_number;
 
