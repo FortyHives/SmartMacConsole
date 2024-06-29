@@ -21,7 +21,7 @@
     <!-- Delete User Confirmation Modal -->
     <x-dialog-modal wire:model.live="confirmingUserDeletion">
       <x-slot name="title">
-        {{ __('Delete Agent') }}
+        {{ __('Delete Account') }}
       </x-slot>
 
       <x-slot name="content">
@@ -43,7 +43,7 @@
         </x-secondary-button>
 
         <x-danger-button class="ms-1" wire:click="deleteUser" wire:loading.attr="disabled">
-          {{ __('Delete Agent') }}
+          {{ __('Delete Account') }}
         </x-danger-button>
       </x-slot>
     </x-dialog-modal>

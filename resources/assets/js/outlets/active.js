@@ -1,5 +1,5 @@
 /**
- * Page Outlet List
+ * Page User List
  */
 
 'use strict';
@@ -7,9 +7,9 @@
 // Datatable (jquery)
 $(function () {
   // Variable declaration for table
-  var dt_outlet_table = $('.datatables-outlets'),
+  var dt_outlet_table = $('.datatables-outlets-active'),
     select2 = $('.select2'),
-    outletView = baseUrl + 'apps/outlets/active/outlet',
+    outletView = baseUrl + 'apps/outlets/view/outlet',
     offCanvasForm = $('#offcanvasAddOutlet');
 
   if (select2.length) {
@@ -41,12 +41,13 @@ $(function () {
         { data: '' },
         { data: 'id' },
         { data: 'name' },
-        { data: 'email' },
-        { data: 'phone_number' },
-        { data: 'id_number' },
-        { data: 'role' },
+        { data: 'contact_name' },
+        { data: 'contact_phone_number' },
+        { data: 'category_title' },
+        { data: 'region_name' },
+        { data: 'locality_name' },
         { data: 'country' },
-        { data: 'active' },
+        { data: 'verified' },
         { data: 'action' }
       ],
       columnDefs: [
@@ -70,7 +71,7 @@ $(function () {
           }
         },
         {
-          // Outlet full name
+          // Outlet name
           targets: 2,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
@@ -81,10 +82,10 @@ $(function () {
             var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
             var $state = states[stateNum],
               $name = full['name'],
-              $initials = $name[0].match(/\b\w/g) || [],
+              $initials = $name.match(/\b\w/g) || [],
               $output;
             $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
-            $output = '<span class="avatar-initial rounded-circle bg-label-' + $state + '">' + $initials + '</span>';
+            $output = '<span class="avatar-initial rounded-circle bg-label-' + $state + '">' + $initials+ '</span>';
 
             // Creates full output for row
             var $row_output =
@@ -102,52 +103,60 @@ $(function () {
           }
         },
         {
-          // Outlet email
+          // Outlet contact name
           targets: 3,
           render: function (data, type, full, meta) {
-            var $email = full['email'];
-            return '<span class="outlet-email">' + $email + '</span>';
+            var $contact_name = full['contact_name'];
+            return '<span class="outlet-contact-name">' + $contact_name + '</span>';
           }
         },
         {
-          // Outlet email
+          // Outlet contact phone number
           targets: 4,
           render: function (data, type, full, meta) {
-            var $phone_number = full['phone_number'];
-            return '<span class="outlet-phone-number">' + $phone_number + '</span>';
+            var $contact_phone_number = full['contact_phone_number'];
+            return '<span class="outlet-contact-phone-number">' + $contact_phone_number + '</span>';
           }
         },
         {
-          // Outlet email
+          // Outlet category title
           targets: 5,
           render: function (data, type, full, meta) {
-            var $id_number = full['id_number'];
-            return '<span class="outlet-id-number">' + $id_number + '</span>';
+            var $category_title = full['category_title'];
+            return '<span class="outlet-category-title">' + $category_title + '</span>';
           }
         },
         {
-          // Outlet email
+          // Outlet region name
           targets: 6,
           render: function (data, type, full, meta) {
-            var $role = full['role'];
-            return '<span class="outlet-role">' + $role + '</span>';
+            var $region_name = full['region_name'];
+            return '<span class="outlet-region-name">' + $region_name + '</span>';
           }
         },
         {
-          // Outlet email
+          // Outlet locality name
           targets: 7,
+          render: function (data, type, full, meta) {
+            var $locality_name = full['locality_name'];
+            return '<span class="outlet-locality-name">' + $locality_name + '</span>';
+          }
+        },
+        {
+          // Outlet country
+          targets: 8,
           render: function (data, type, full, meta) {
             var $country = full['country'];
             return '<span class="outlet-country">' + $country + '</span>';
           }
         },
         {
-          // email verify
-          targets: 8,
+          // Outlet verify
+          targets: 9,
           render: function (data, type, full, meta) {
-            var $active = full['active'];
+            var $verified = full['verified'];
             return `${
-              $active === 2
+              $verified === 2
                 ? '<i class="ri-shield-check-line ri-24px text-success"></i>'
                 : '<i class="ri-shield-line ri-24px text-danger" ></i>'
             }`;
@@ -161,6 +170,7 @@ $(function () {
           orderable: false,
           render: function (data, type, full, meta) {
             var statusText = full['active'] === 2 ? 'Disable' : 'Activate';
+            var verificationText = full['verified'] === 2 ? 'Un-verify' : 'Verify';
             return (
               '<div class="d-flex align-items-center gap-50">' +
               `<button class="btn btn-sm btn-icon edit-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddOutlet"><i class="ri-edit-box-line ri-20px"></i></button>` +
@@ -169,6 +179,7 @@ $(function () {
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="' + outletView + '/' + full.id + '" class="dropdown-item">View</a>' +
               `<a href="#" class="dropdown-item activate-record" data-id="${full['id']}" data-active="${full['active']}">${statusText}</a>` +
+              `<a href="#" class="dropdown-item verify-record" data-id="${full['id']}" data-verified="${full['verified']}">${verificationText}</a>` +
               '</div>' +
               '</div>'
             );
@@ -339,14 +350,14 @@ $(function () {
             }
           ]
         },
-        /* {
+        {
           text: '<i class="ri-add-line ri-16px me-0 me-sm-2 align-baseline"></i><span class="d-none d-sm-inline-block">Add New Outlet</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',
             'data-bs-target': '#offcanvasAddOutlet'
           }
-        } */
+        }
       ],
       // For responsive popup
       responsive: {
@@ -362,18 +373,18 @@ $(function () {
             var data = $.map(columns, function (col, i) {
               return col.title !== '' // ? Do not show row in modal popup if title is blank (for check box)
                 ? '<tr data-dt-row="' +
-                    col.rowIndex +
-                    '" data-dt-column="' +
-                    col.columnIndex +
-                    '">' +
-                    '<td>' +
-                    col.title +
-                    ':' +
-                    '</td> ' +
-                    '<td>' +
-                    col.data +
-                    '</td>' +
-                    '</tr>'
+                col.rowIndex +
+                '" data-dt-column="' +
+                col.columnIndex +
+                '">' +
+                '<td>' +
+                col.title +
+                ':' +
+                '</td> ' +
+                '<td>' +
+                col.data +
+                '</td>' +
+                '</tr>'
                 : '';
             }).join('');
 
@@ -447,96 +458,57 @@ $(function () {
     var outlet_id = $(this).data('id'),
       dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
+    // Hide responsive modal in small screen
     if (dtrModal.length) {
       dtrModal.modal('hide');
     }
 
-    // changing the title of offcanvas
-    $('#offcanvasAddRegionLabel').html('Edit Region');
+    // Changing the title of offcanvas
+    $('#offcanvasAddOutletLabel').html('Edit Outlet');
 
-    // get data
-    $.get(`${baseUrl}active-outlets-list\/${outlet_id}\/edit`, function (data) {
+    // Get data
+    $.get(`${baseUrl}active-outlets-list/${outlet_id}/edit`, function (data) {
       $('#outlet_id').val(data.id);
-      $('#add-outlet-first-name').val(data.name[0]);
-      $('#add-outlet-middle-name').val(data.name[1]);
-      $('#add-outlet-last-name').val(data.name[2]);
-      $('#add-outlet-email').val(data.email);
-      $('#add-outlet-phone-number').val(data.phone_number);
-      $('#add-outlet-id-number').val(data.id_number);
-      $('#outlet-role').val(data.role);
-      $('#outlet-country').val(data.country);
+      $('#add-outlet-name').val(data.name);
+      $('#add-outlet-contact-name').val(data.contact_name);
+      //$('#add-outlet-contact-email').val(data.contact_email);
+      $('#add-outlet-contact-phone-number').val(data.contact_phone_number);
+      $('#add-outlet-remarks').val(data.remarks);
+      $('#add-outlet-category-id').val(data.category_id);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      console.error("Error fetching outlet data:", textStatus, errorThrown);
     });
   });
 
-  // changing the title
+// Changing the title
   $('.add-new').on('click', function () {
-    $('#outlet_id').val(''); //reseting input field
+    $('#outlet_id').val(''); // Reset input field
     $('#offcanvasAddOutletLabel').html('Add Outlet');
   });
 
-  // validating form and updating outlet's data
+// Validating form and updating outlet's data
   const addNewOutletForm = document.getElementById('addNewOutletForm');
-
-  // outlet form validation
+// Outlet form validation
   const fv = FormValidation.formValidation(addNewOutletForm, {
     fields: {
-      first_name: {
+      name: {
         validators: {
           notEmpty: {
-            message: 'Please enter outlet first name'
+            message: 'Please enter outlet name'
           }
         }
       },
-      middle_name: {
+      contact_name: {
         validators: {
           notEmpty: {
-            message: 'Please enter outlet middle name'
+            message: 'Please enter outlet contact name'
           }
         }
       },
-      last_name: {
+      contact_phone_number: {
         validators: {
           notEmpty: {
-            message: 'Please enter outlet last name'
-          }
-        }
-      },
-      email: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter your email'
-          },
-          emailAddress: {
-            message: 'The value is not a valid email address'
-          }
-        }
-      },
-      phone_number: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter outlet phone number'
-          }
-        }
-      },
-      id_number: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter outlet ID number'
-          }
-        }
-      },
-      role: {
-        validators: {
-          notEmpty: {
-            message: 'Select outlet role'
-          }
-        }
-      },
-      country: {
-        validators: {
-          notEmpty: {
-            message: 'Select outlet country'
+            message: 'Please enter outlet contact phone number'
           }
         }
       }
@@ -544,20 +516,17 @@ $(function () {
     plugins: {
       trigger: new FormValidation.plugins.Trigger(),
       bootstrap5: new FormValidation.plugins.Bootstrap5({
-        // Use this for enabling/changing valid/invalid class
         eleValidClass: '',
         rowSelector: function (field, ele) {
-          // field is the field name & ele is the field element
           return '.mb-5';
         }
       }),
       submitButton: new FormValidation.plugins.SubmitButton(),
-      // Submit the form when all fields are valid
-      // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
       autoFocus: new FormValidation.plugins.AutoFocus()
     }
   }).on('core.form.valid', function () {
-    // adding or updating outlet when form successfully validate
+    // Adding or updating outlet when form successfully validates
+    console.error("Form:", $('#addNewOutletForm').serialize());
     $.ajax({
       data: $('#addNewOutletForm').serialize(),
       url: `${baseUrl}active-outlets-list`,
@@ -591,6 +560,7 @@ $(function () {
     });
   });
 
+
   // clearing form data when offcanvas hidden
   offCanvasForm.on('hidden.bs.offcanvas', function () {
     fv.resetForm(true);
@@ -608,8 +578,7 @@ $(function () {
     });
   }
 
-
-  // Suspend Record
+  // Activate Record
   $(document).on('click', '.activate-record', function (e) {
     e.preventDefault();
     var outlet_id = $(this).data('id');
@@ -634,10 +603,10 @@ $(function () {
         // Update suspend status via AJAX
         $.ajax({
           type: 'PATCH',
-          url: `${baseUrl}active-outlets-list/${outlet_id}/status`,
+          url: `${baseUrl}active-outlets-list/${outlet_id}/activation`,
           data: { status: new_status },
           success: function () {
-            dt_outlet.draw();
+            dt_outlet().draw();
           },
           error: function (error) {
             console.log(error);
@@ -665,5 +634,61 @@ $(function () {
       }
     });
   });
-});
 
+  // Verify Record
+  $(document).on('click', '.verify-record', function (e) {
+    e.preventDefault();
+    var outlet_id = $(this).data('id');
+    var current_status = $(this).data('verified');
+    var new_status = current_status == 2 ? 1 : 2; // Toggle status
+    var actionText = new_status == 2 ? 'Verify' : 'Un-verify';
+
+    // Confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `You are about to ${actionText.toLowerCase()} this outlet!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: `Yes, ${actionText.toLowerCase()} it!`,
+      customClass: {
+        confirmButton: 'btn btn-primary me-3',
+        cancelButton: 'btn btn-label-secondary'
+      },
+      buttonsStyling: false
+    }).then(function (result) {
+      if (result.value) {
+        // Update suspend status via AJAX
+        $.ajax({
+          type: 'PATCH',
+          url: `${baseUrl}active-outlets-list/${outlet_id}/verification`,
+          data: { status: new_status },
+          success: function () {
+            dt_outlet().draw();
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+
+        // Success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated!',
+          text: `The outlet has been ${actionText.toLowerCase()}ed.`,
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: 'Cancelled',
+          text: `The outlet's status remains unchanged.`,
+          icon: 'error',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        });
+      }
+    });
+  });
+});

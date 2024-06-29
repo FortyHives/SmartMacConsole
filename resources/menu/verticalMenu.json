@@ -59,6 +59,11 @@
           "url": "apps/outlets/disabled",
           "name": "Disabled",
           "slug": "outlets-disabled"
+        },
+        {
+          "url": "apps/outlets/categories",
+          "name": "Categories",
+          "slug": "outlets-categories"
         }
       ]
     },

@@ -135,7 +135,7 @@
         <tr>
           <th></th>
           <th>Id</th>
-          <th>Agent</th>
+          <th>Name</th>
           <th>Email</th>
           <th>Phone Number</th>
           <th>ID Number</th>
@@ -189,9 +189,9 @@
           <div class="form-floating form-floating-outline mb-5">
             <select id="agent-role" class="form-select"  name="role" >
               <option value="">Select role</option>
-              <option value="Mapping">Mapping</option>
-              <option value="Sales">Sales</option>
-              <option value="Survey">Survey</option>
+              <option value="0">Mapping</option>
+              <option value="1">Sales</option>
+              <option value="2">Survey</option>
             </select>
             <label for="agent-role">Select Agent Role</label>
           </div>

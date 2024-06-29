@@ -1,6 +1,6 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Regions')
+@section('title', 'Outlet Categories')
 
 <!-- Vendor Styles -->
 @section('vendor-style')
@@ -32,23 +32,23 @@
 
 <!-- Page Scripts -->
 @section('page-script')
-  @vite('resources/assets/js/places/regions.js')
+  @vite('resources/assets/js/outlets/categories.js')
 @endsection
 
 @section('content')
 
   <div class="row g-6 mb-6">
-    <div class="col-sm-6 col-xl-6">
+    <div class="col-sm-6 col-xl-3">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <div class="me-1">
-              <p class="text-heading mb-1">Regions</p>
+              <p class="text-heading mb-1">Outlet Categories</p>
               <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-2">{{$totalRegion}}</h4>
+                <h4 class="mb-1 me-2">{{$totalOutletCategory}}</h4>
                 <p class="text-success mb-1">(100%)</p>
               </div>
-              <small class="mb-0">Total number of Regions</small>
+              <small class="mb-0">All Categories</small>
             </div>
             <div class="avatar">
               <div class="avatar-initial bg-label-primary rounded-3">
@@ -59,17 +59,38 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 col-xl-6">
+    <div class="col-sm-6 col-xl-3">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <div class="me-1">
-              <p class="text-heading mb-1">Duplicate Regions</p>
+              <p class="text-heading mb-1">Verified Categories</p>
               <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-1">{{$regionDuplicates}}</h4>
+                <h4 class="mb-1 me-1">{{$verified}}</h4>
+                <p class="text-success mb-1">(+95%)</p>
+              </div>
+              <small class="mb-0">Recent analytics</small>
+            </div>
+            <div class="avatar">
+              <div class="avatar-initial bg-label-success rounded-3">
+                <div class="ri-user-follow-line ri-26px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div class="me-1">
+              <p class="text-heading mb-1">Duplicate Categories</p>
+              <div class="d-flex align-items-center">
+                <h4 class="mb-1 me-1">{{$categoryDuplicates}}</h4>
                 <p class="text-danger mb-1">(0%)</p>
               </div>
-              <small class="mb-0">Number of regions with similar details</small>
+              <small class="mb-0">Recent analytics</small>
             </div>
             <div class="avatar">
               <div class="avatar-initial bg-label-danger rounded-3">
@@ -80,67 +101,75 @@
         </div>
       </div>
     </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div class="me-1">
+              <p class="text-heading mb-1">Verification Pending</p>
+              <div class="d-flex align-items-center">
+                <h4 class="mb-1 me-1">{{$notVerified}}</h4>
+                <p class="text-success mb-1">(+6%)</p>
+              </div>
+              <small class="mb-0">Recent analytics</small>
+            </div>
+            <div class="avatar">
+              <div class="avatar-initial bg-label-warning rounded-3">
+                <div class="ri-user-unfollow-line ri-26px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
-  <!-- Regions List Table -->
+  <!-- Categories List Table -->
   <div class="card">
     <div class="card-header pb-0">
       <h5 class="card-title mb-0">Search Filter</h5>
     </div>
     <div class="card-datatable table-responsive">
-      <table class="datatables-regions table">
+      <table class="datatables-categories table">
         <thead>
         <tr>
           <th></th>
           <th>Id</th>
-          <th>Region</th>
-          <th>Country</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
+          <th>Title</th>
           <th>Proximity Radius</th>
+          <th>Description</th>
           <th>Actions</th>
         </tr>
         </thead>
       </table>
     </div>
-    <!-- Offcanvas to add new region -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddRegion" aria-labelledby="offcanvasAddRegionLabel">
+
+    <!-- Offcanvas to add new category -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddCategory" aria-labelledby="offcanvasAddCategoryLabel">
       <div class="offcanvas-header border-bottom">
-        <h5 id="offcanvasAddRegionLabel" class="offcanvas-title">Add Region</h5>
+        <h5 id="offcanvasAddCategoryLabel" class="offcanvas-title">Add Category</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body mx-0 flex-grow-0 h-100">
-        <form class="add-new-region pt-0" id="addNewRegionForm">
-          <input type="hidden" name="id" id="region_id">
+        <form class="add-new-category pt-0" id="addNewCategoryForm">
+          <input type="hidden" name="id" id="category_id">
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-region-name" placeholder="Region Name" name="name"
-                   aria-label="Region Name" />
-            <label for="add-region-name">Region Name</label>
+            <input type="text" class="form-control" id="add-category-title" placeholder="Category Title" name="title" aria-label="Category Title" required />
+            <label for="add-category-title">Category Title</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-region-latitude" class="form-control" placeholder="0.0" aria-label="0.0" name="latitude" required />
-            <label for="add-region-latitude">Region Latitude</label>
+            <input type="text" id="add-category-description" name="description" class="form-control" placeholder="Category Description" aria-label="Category Description" required />
+            <label for="add-category-description">Category Description</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-region-longitude" class="form-control" placeholder="0.0" aria-label="0.0" name="longitude" required />
-            <label for="add-region-longitude">Region Longitude</label>
+            <input type="text" id="add-category-proximity-radius" name="proximity_radius" class="form-control" placeholder="0.0" aria-label="0.0" required />
+            <label for="add-category-proximity-radius">Category Proximity Radius</label>
           </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-region-proximity-radius" name="proximity_radius" class="form-control" placeholder="0.0" aria-label="0.0" required />
-            <label for="add-region-proximity-radius">Region Proximity Radius</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <select id="add-region-country" name="country" class="select2 form-select" required>
-              <option value="">Select</option>
-              <option value="Kenya">Kenya</option>
-              <option value="Uganda">Uganda</option>
-            </select>
-            <label for="add-region-country">Region Country</label>
-          </div>
+
           <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
           <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>
         </form>
       </div>
+
     </div>
-  </div>
 @endsection

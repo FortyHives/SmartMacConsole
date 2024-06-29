@@ -1,5 +1,5 @@
 /**
- * Page Agent List
+ * Page User List
  */
 
 'use strict';
@@ -7,10 +7,10 @@
 // Datatable (jquery)
 $(function () {
   // Variable declaration for table
-  var dt_agent_table = $('.datatables-agents'),
+  var dt_category_table = $('.datatables-categories'),
     select2 = $('.select2'),
-    agentView = baseUrl + 'apps/agents/agent',
-    offCanvasForm = $('#offcanvasAddAgent');
+    categoryView = baseUrl + 'apps/outlets/categories/view/outlet',
+    offCanvasForm = $('#offcanvasAddCategory');
 
   if (select2.length) {
     var $this = select2;
@@ -28,25 +28,21 @@ $(function () {
     }
   });
 
-  // Agents datatable
-  if (dt_agent_table.length) {
-    var dt_agent = dt_agent_table.DataTable({
+  // Categories datatable
+  if (dt_category_table.length) {
+    var dt_category = dt_category_table.DataTable({
       processing: true,
       serverSide: true,
       ajax: {
-        url: baseUrl + 'agents-list'
+        url: baseUrl + 'outlets-categories-list'
       },
       columns: [
         // columns according to JSON
         { data: '' },
         { data: 'id' },
-        { data: 'name' },
-        { data: 'email' },
-        { data: 'phone_number' },
-        { data: 'id_number' },
-        { data: 'role' },
-        { data: 'country' },
-        { data: 'active' },
+        { data: 'title' },
+        { data: 'proximity_radius' },
+        { data: 'description' },
         { data: 'action' }
       ],
       columnDefs: [
@@ -70,87 +66,55 @@ $(function () {
           }
         },
         {
-          // Agent full name
+          // Category title
           targets: 2,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
-            var $name = full['name'];
+            var $title = full['title'];
 
             // For Avatar badge
             var stateNum = Math.floor(Math.random() * 6);
             var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
             var $state = states[stateNum],
-              $name = full['name'],
-              $initials = $name[0].match(/\b\w/g) || [],
+              $title = full['title'],
+              $initials = $title.match(/\b\w/g) || [],
               $output;
             $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
             $output = '<span class="avatar-initial rounded-circle bg-label-' + $state + '">' + $initials + '</span>';
 
             // Creates full output for row
             var $row_output =
-              '<div class="d-flex justify-content-start align-items-center agent-name">' +
+              '<div class="d-flex justify-content-start align-items-center category-title">' +
               '<div class="avatar-wrapper">' +
               '<div class="avatar avatar-sm me-3">' +
               $output +
               '</div>' +
               '</div>' +
               '<div class="d-flex flex-column">' +
-              '<a href="' + agentView + '/' + full.id + '" class="text-truncate text-heading"><span class="fw-medium">' + $name + '</span></a>' +
+              '<a href="' +
+              categoryView +
+              '" class="text-truncate text-heading"><span class="fw-medium">' +
+              $title +
+              '</span></a>' +
               '</div>' +
               '</div>';
             return $row_output;
           }
         },
         {
-          // Agent email
+          // Category proximity_radius
           targets: 3,
           render: function (data, type, full, meta) {
-            var $email = full['email'];
-            return '<span class="agent-email">' + $email + '</span>';
+            var $proximity_radius = full['proximity_radius'];
+            return '<span class="category-proximity-radius">' + $proximity_radius + '</span>';
           }
         },
         {
-          // Agent email
+          // Category description
           targets: 4,
           render: function (data, type, full, meta) {
-            var $phone_number = full['phone_number'];
-            return '<span class="agent-phone-number">' + $phone_number + '</span>';
-          }
-        },
-        {
-          // Agent email
-          targets: 5,
-          render: function (data, type, full, meta) {
-            var $id_number = full['id_number'];
-            return '<span class="agent-id-number">' + $id_number + '</span>';
-          }
-        },
-        {
-          // Agent email
-          targets: 6,
-          render: function (data, type, full, meta) {
-            var $role = full['role'];
-            return '<span class="agent-role">' + $role + '</span>';
-          }
-        },
-        {
-          // Agent email
-          targets: 7,
-          render: function (data, type, full, meta) {
-            var $country = full['country'];
-            return '<span class="agent-country">' + $country + '</span>';
-          }
-        },
-        {
-          // email verify
-          targets: 8,
-          render: function (data, type, full, meta) {
-            var $active = full['active'];
-            return `${
-              $active === 2
-                ? '<i class="ri-shield-check-line ri-24px text-success"></i>'
-                : '<i class="ri-shield-line ri-24px text-danger" ></i>'
-            }`;
+            var $description = full['description'];
+            return '<span class="category-description">' + $description + '</span>';
           }
         },
         {
@@ -160,16 +124,10 @@ $(function () {
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
-            var statusText = full['active'] === 2 ? 'Disable' : 'Activate';
             return (
               '<div class="d-flex align-items-center gap-50">' +
-              `<button class="btn btn-sm btn-icon edit-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddAgent"><i class="ri-edit-box-line ri-20px"></i></button>` +
+              `<button class="btn btn-sm btn-icon edit-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddCategory"><i class="ri-edit-box-line ri-20px"></i></button>` +
               `<button class="btn btn-sm btn-icon delete-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}"><i class="ri-delete-bin-7-line ri-20px"></i></button>` +
-              '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ri-more-2-line ri-20px"></i></button>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="' + agentView + '/' + full.id + '" class="dropdown-item">View</a>' +
-              `<a href="#" class="dropdown-item activate-record" data-id="${full['id']}" data-active="${full['active']}">${statusText}</a>` +
-              '</div>' +
               '</div>'
             );
           }
@@ -201,7 +159,7 @@ $(function () {
           buttons: [
             {
               extend: 'print',
-              title: 'Agents',
+              title: 'Categories',
               text: '<i class="ri-printer-line me-1" ></i>Print',
               className: 'dropdown-item',
               exportOptions: {
@@ -213,7 +171,7 @@ $(function () {
                     var el = $.parseHTML(inner);
                     var result = '';
                     $.each(el, function (index, item) {
-                      if (item.classList !== undefined && item.classList.contains('agent-name')) {
+                      if (item.classList !== undefined && item.classList.contains('category-title')) {
                         result = result + item.lastChild.firstChild.textContent;
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
@@ -239,7 +197,7 @@ $(function () {
             },
             {
               extend: 'csv',
-              title: 'Agents',
+              title: 'Categories',
               text: '<i class="ri-file-text-line me-1" ></i>Csv',
               className: 'dropdown-item',
               exportOptions: {
@@ -251,7 +209,7 @@ $(function () {
                     var el = $.parseHTML(inner);
                     var result = '';
                     $.each(el, function (index, item) {
-                      if (item.classList !== undefined && item.classList.contains('agent-name')) {
+                      if (item.classList !== undefined && item.classList.contains('category-title')) {
                         result = result + item.lastChild.firstChild.textContent;
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
@@ -264,7 +222,7 @@ $(function () {
             },
             {
               extend: 'excel',
-              title: 'Agents',
+              title: 'Categories',
               text: '<i class="ri-file-excel-line me-1"></i>Excel',
               className: 'dropdown-item',
               exportOptions: {
@@ -276,7 +234,7 @@ $(function () {
                     var el = $.parseHTML(inner);
                     var result = '';
                     $.each(el, function (index, item) {
-                      if (item.classList !== undefined && item.classList.contains('agent-name')) {
+                      if (item.classList !== undefined && item.classList.contains('category-title')) {
                         result = result + item.lastChild.firstChild.textContent;
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
@@ -289,7 +247,7 @@ $(function () {
             },
             {
               extend: 'pdf',
-              title: 'Agents',
+              title: 'Categories',
               text: '<i class="ri-file-pdf-line me-1"></i>Pdf',
               className: 'dropdown-item',
               exportOptions: {
@@ -301,7 +259,7 @@ $(function () {
                     var el = $.parseHTML(inner);
                     var result = '';
                     $.each(el, function (index, item) {
-                      if (item.classList !== undefined && item.classList.contains('agent-name')) {
+                      if (item.classList !== undefined && item.classList.contains('category-title')) {
                         result = result + item.lastChild.firstChild.textContent;
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
@@ -314,7 +272,7 @@ $(function () {
             },
             {
               extend: 'copy',
-              title: 'Agents',
+              title: 'Categories',
               text: '<i class="ri-file-copy-line me-1"></i>Copy',
               className: 'dropdown-item',
               exportOptions: {
@@ -326,7 +284,7 @@ $(function () {
                     var el = $.parseHTML(inner);
                     var result = '';
                     $.each(el, function (index, item) {
-                      if (item.classList !== undefined && item.classList.contains('agent-name')) {
+                      if (item.classList !== undefined && item.classList.contains('category-title')) {
                         result = result + item.lastChild.firstChild.textContent;
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
@@ -340,11 +298,11 @@ $(function () {
           ]
         },
         {
-          text: '<i class="ri-add-line ri-16px me-0 me-sm-2 align-baseline"></i><span class="d-none d-sm-inline-block">Add New Agent</span>',
+          text: '<i class="ri-add-line ri-16px me-0 me-sm-2 align-baseline"></i><span class="d-none d-sm-inline-block">Add New Category</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',
-            'data-bs-target': '#offcanvasAddAgent'
+            'data-bs-target': '#offcanvasAddCategory'
           }
         }
       ],
@@ -354,7 +312,7 @@ $(function () {
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data();
-              return 'Details of ' + data['name'];
+              return 'Details of ' + data['title'];
             }
           }),
           type: 'column',
@@ -362,18 +320,18 @@ $(function () {
             var data = $.map(columns, function (col, i) {
               return col.title !== '' // ? Do not show row in modal popup if title is blank (for check box)
                 ? '<tr data-dt-row="' +
-                    col.rowIndex +
-                    '" data-dt-column="' +
-                    col.columnIndex +
-                    '">' +
-                    '<td>' +
-                    col.title +
-                    ':' +
-                    '</td> ' +
-                    '<td>' +
-                    col.data +
-                    '</td>' +
-                    '</tr>'
+                col.rowIndex +
+                '" data-dt-column="' +
+                col.columnIndex +
+                '">' +
+                '<td>' +
+                col.title +
+                ':' +
+                '</td> ' +
+                '<td>' +
+                col.data +
+                '</td>' +
+                '</tr>'
                 : '';
             }).join('');
 
@@ -386,7 +344,7 @@ $(function () {
 
   // Delete Record
   $(document).on('click', '.delete-record', function () {
-    var agent_id = $(this).data('id'),
+    var category_id = $(this).data('id'),
       dtrModal = $('.dtr-bs-modal.show');
 
     // hide responsive modal in small screen
@@ -411,9 +369,9 @@ $(function () {
         // delete the data
         $.ajax({
           type: 'DELETE',
-          url: `${baseUrl}agents-list/${agent_id}`,
+          url: `${baseUrl}outlets-categories-list/${category_id}`,
           success: function () {
-            dt_agent.draw();
+            dt_category.draw();
           },
           error: function (error) {
             console.log(error);
@@ -424,7 +382,7 @@ $(function () {
         Swal.fire({
           icon: 'success',
           title: 'Deleted!',
-          text: 'The agent has been deleted!',
+          text: 'The category has been deleted!',
           customClass: {
             confirmButton: 'btn btn-success'
           }
@@ -432,7 +390,7 @@ $(function () {
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire({
           title: 'Cancelled',
-          text: 'The Agent is not deleted!',
+          text: 'The Category is not deleted!',
           icon: 'error',
           customClass: {
             confirmButton: 'btn btn-success'
@@ -444,7 +402,7 @@ $(function () {
 
   // edit record
   $(document).on('click', '.edit-record', function () {
-    var agent_id = $(this).data('id'),
+    var category_id = $(this).data('id'),
       dtrModal = $('.dtr-bs-modal.show');
 
     // hide responsive modal in small screen
@@ -453,90 +411,47 @@ $(function () {
     }
 
     // changing the title of offcanvas
-    $('#offcanvasAddRegionLabel').html('Edit Region');
+    $('#offcanvasAddCategoryLabel').html('Edit Category');
 
     // get data
-    $.get(`${baseUrl}agents-list\/${agent_id}\/edit`, function (data) {
-      $('#agent_id').val(data.id);
-      $('#add-agent-first-name').val(data.name[0]);
-      $('#add-agent-middle-name').val(data.name[1]);
-      $('#add-agent-last-name').val(data.name[2]);
-      $('#add-agent-email').val(data.email);
-      $('#add-agent-phone-number').val(data.phone_number);
-      $('#add-agent-id-number').val(data.id_number);
-      $('#agent-role').val(data.role);
-      $('#agent-country').val(data.country);
+    $.get(`${baseUrl}outlets-categories-list\/${category_id}\/edit`, function (data) {
+      $('#category_id').val(data.id);
+      $('#add-category-title').val(data.title);
+      $('#add-category-description').val(data.description);
+      $('#add-category-proximity-radius').val(data.proximity_radius);
     });
   });
 
   // changing the title
   $('.add-new').on('click', function () {
-    $('#agent_id').val(''); //reseting input field
-    $('#offcanvasAddAgentLabel').html('Add Agent');
+    $('#category_id').val(''); //reseting input field
+    $('#offcanvasAddCategoryLabel').html('Add Category');
   });
 
-  // validating form and updating agent's data
-  const addNewAgentForm = document.getElementById('addNewAgentForm');
+  // validating form and updating category's data
+  const addNewCategoryForm = document.getElementById('addNewCategoryForm');
 
-  // agent form validation
-  const fv = FormValidation.formValidation(addNewAgentForm, {
+  // category form validation
+  const fv = FormValidation.formValidation(addNewCategoryForm, {
     fields: {
-      first_name: {
+      title: {
         validators: {
           notEmpty: {
-            message: 'Please enter agent first name'
+            message: 'Please enter category title'
           }
         }
       },
-      middle_name: {
+      description: {
         validators: {
           notEmpty: {
-            message: 'Please enter agent middle name'
+            message: 'Please enter category description'
           }
         }
       },
-      last_name: {
+      proximity_radius: {
         validators: {
           notEmpty: {
-            message: 'Please enter agent last name'
-          }
-        }
-      },
-      email: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter your email'
-          },
-          emailAddress: {
-            message: 'The value is not a valid email address'
-          }
-        }
-      },
-      phone_number: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter agent phone number'
-          }
-        }
-      },
-      id_number: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter agent ID number'
-          }
-        }
-      },
-      role: {
-        validators: {
-          notEmpty: {
-            message: 'Select agent role'
-          }
-        }
-      },
-      country: {
-        validators: {
-          notEmpty: {
-            message: 'Select agent country'
+            message: 'Please enter category proximity radius'
           }
         }
       }
@@ -547,7 +462,7 @@ $(function () {
         // Use this for enabling/changing valid/invalid class
         eleValidClass: '',
         rowSelector: function (field, ele) {
-          // field is the field name & ele is the field element
+          // field is the field title & ele is the field element
           return '.mb-5';
         }
       }),
@@ -557,20 +472,20 @@ $(function () {
       autoFocus: new FormValidation.plugins.AutoFocus()
     }
   }).on('core.form.valid', function () {
-    // adding or updating agent when form successfully validate
+    // adding or updating category when form successfully validate
     $.ajax({
-      data: $('#addNewAgentForm').serialize(),
-      url: `${baseUrl}agents-list`,
+      data: $('#addNewCategoryForm').serialize(),
+      url: `${baseUrl}outlets-categories-list`,
       type: 'POST',
       success: function (status) {
-        dt_agent.draw();
+        dt_category.draw();
         offCanvasForm.offcanvas('hide');
 
         // SweetAlert
         Swal.fire({
           icon: 'success',
           title: `Successfully ${status}!`,
-          text: `Agent ${status} successfully.`,
+          text: `Category ${status} successfully.`,
           customClass: {
             confirmButton: 'btn btn-success'
           }
@@ -607,63 +522,4 @@ $(function () {
       });
     });
   }
-
-
-  // Suspend Record
-  $(document).on('click', '.activate-record', function (e) {
-    e.preventDefault();
-    var agent_id = $(this).data('id');
-    var current_status = $(this).data('active');
-    var new_status = current_status == 2 ? 1 : 2; // Toggle status
-    var actionText = new_status == 2 ? 'Activate' : 'Disable';
-
-    // Confirmation dialog
-    Swal.fire({
-      title: 'Are you sure?',
-      text: `You are about to ${actionText.toLowerCase()} this agent!`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: `Yes, ${actionText.toLowerCase()} it!`,
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.value) {
-        // Update suspend status via AJAX
-        $.ajax({
-          type: 'PATCH',
-          url: `${baseUrl}agents-list/${agent_id}/activation`,
-          data: { status: new_status },
-          success: function () {
-            dt_agent.draw();
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
-
-        // Success message
-        Swal.fire({
-          icon: 'success',
-          title: 'Updated!',
-          text: `The agent has been ${actionText.toLowerCase()}d.`,
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire({
-          title: 'Cancelled',
-          text: `The agent's status remains unchanged.`,
-          icon: 'error',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      }
-    });
-  });
 });
-

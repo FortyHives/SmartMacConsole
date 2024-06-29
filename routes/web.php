@@ -6,7 +6,7 @@ use App\Http\Controllers\apps\agents\Agents;
 use App\Http\Controllers\apps\outlets\ActiveOutlets;
 use App\Http\Controllers\apps\outlets\DisabledOutlets;
 use App\Http\Controllers\apps\outlets\NewOutlets;
-use App\Http\Controllers\apps\outlets\Categories;
+use App\Http\Controllers\apps\outlets\OutletCategories;
 use App\Http\Controllers\apps\places\Localities;
 use App\Http\Controllers\apps\places\Regions;
 use App\Http\Controllers\apps\products\Products;
@@ -41,7 +41,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::get('/analytics/sales', [Sales::class, 'index'])->name('analytics-sales');
 
   Route::get('/apps/agents', [Agents::class, 'AgentManagement'])->name('agents');
-  Route::patch('agents-list/{id}/status', [Agents::class, 'status']);
+  Route::patch('agents-list/{id}/activation', [Agents::class, 'activation']);
   Route::get('/apps/agents/agent/{id}', [Agents::class, 'agent'])->name('apps-agents-agent');
   Route::resource('/agents-list', Agents::class);
 
@@ -56,19 +56,25 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::get('/apps/products/product/{id}', [Products::class, 'product'])->name('apps-products-product');
   Route::resource('/products-list', Products::class);
 
-  Route::get('/apps/outlets/active', [ActiveOutlets::class, 'OutletManagement'])->name('active-outlets');
-  Route::patch('outlets-list/{id}/status', [ActiveOutlets::class, 'status']);
+  Route::get('/apps/outlets/active', [ActiveOutlets::class, 'ActiveOutletManagement'])->name('active-outlets');
+  Route::patch('active-outlets-list/{id}/activation', [ActiveOutlets::class, 'activation']);
+  Route::patch('active-outlets-list/{id}/verification', [ActiveOutlets::class, 'verification']);
   Route::get('/apps/outlets/active/outlet/{id}', [ActiveOutlets::class, 'outlet'])->name('apps-outlets-active-outlet');
   Route::resource('/active-outlets-list', ActiveOutlets::class);
 
-  Route::get('/apps/outlets/new', [NewOutlets::class, 'OutletManagement'])->name('new-outlets');
+  Route::get('/apps/outlets/new', [NewOutlets::class, 'NewOutletManagement'])->name('new-outlets');
   Route::patch('new-outlets-list/{id}/status', [NewOutlets::class, 'status']);
   Route::get('/apps/outlets/new/outlet/{id}', [NewOutlets::class, 'outlet'])->name('apps-outlets-new-outlet');
   Route::resource('/new-outlets-list', NewOutlets::class);
 
-  Route::get('/apps/outlets/disabled', [DisabledOutlets::class, 'OutletManagement'])->name('disabled-outlets');
+  Route::get('/apps/outlets/disabled', [DisabledOutlets::class, 'DisabledOutletManagement'])->name('disabled-outlets');
   Route::patch('disabled-outlets-list/{id}/status', [DisabledOutlets::class, 'status']);
   Route::get('/apps/outlets/disabled/outlet/{id}', [DisabledOutlets::class, 'outlet'])->name('apps-outlets-disabled-outlet');
   Route::resource('/disabled-outlets-list', DisabledOutlets::class);
+
+  Route::get('/apps/outlets/categories', [OutletCategories::class, 'OutletCategoryManagement'])->name('outlets-categories');
+  Route::patch('outlets-categories-list/{id}/status', [OutletCategories::class, 'status']);
+  Route::get('/apps/outlets/categories/category/{id}', [OutletCategories::class, 'category'])->name('apps-outlets-outlets-category');
+  Route::resource('/outlets-categories-list', OutletCategories::class);
 
 });

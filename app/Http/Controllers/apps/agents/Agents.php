@@ -300,7 +300,7 @@ class Agents extends Controller
   {
   }
 
-  public function status($id, Request $request)
+  public function activation($id, Request $request)
   {
     //$agent = Agent::find($id);
     $agent = Agent::where('id', $id)->first();

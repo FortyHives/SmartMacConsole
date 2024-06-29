@@ -1,36 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\apps\places;
+namespace App\Http\Controllers\apps\outlets;
 
 use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
-use App\Models\Region;
+use App\Models\OutletCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 
-class Regions extends Controller
+class OutletCategories extends Controller
 {
 
   /**
-   * Redirect to regions view.
+   * Redirect to categories view.
    *
    */
-  public function RegionManagement()
+  public function OutletCategoryManagement()
   {
-    // dd('Regions');
-    $regions = Region::all();
-    $regionCount = $regions->count();
+    // dd('Categories');
+    $categories = OutletCategory::all();
+    $categoryCount = $categories->count();
     $verified = 0;
     $notVerified = 0;
-    $regionsUnique = $regions->unique(['name']);
-    $regionDuplicates = $regions->diff($regionsUnique)->count();
+    $categoriesUnique = $categories->unique(['title']);
+    $categoryDuplicates = $categories->diff($categoriesUnique)->count();
 
-    return view('content.apps.places.regions.listing', [
-      'totalRegion' => $regionCount,
+    return view('content.apps.outlets.categories', [
+      'totalOutletCategory' => $categoryCount,
       'verified' => $verified,
       'notVerified' => $notVerified,
-      'regionDuplicates' => $regionDuplicates,
+      'categoryDuplicates' => $categoryDuplicates,
     ]);
   }
 
@@ -43,16 +43,14 @@ class Regions extends Controller
   {
     $columns = [
       1 => 'id',
-      2 => 'name',
-      3 => 'country',
-      4 => 'latitude',
-      5 => 'longitude',
-      6 => 'proximity_radius',
+      2 => 'title',
+      3 => 'proximity_radius',
+      4 => 'description'
     ];
 
     $search = [];
 
-    $totalData = Region::count();
+    $totalData = OutletCategory::count();
 
     $totalFiltered = $totalData;
 
@@ -62,41 +60,39 @@ class Regions extends Controller
     $dir = $request->input('order.0.dir');
 
     if (empty($request->input('search.value'))) {
-      $regions = Region::offset($start)
+      $categories = OutletCategory::offset($start)
         ->limit($limit)
         ->orderBy($order, $dir)
         ->get();
     } else {
       $search = $request->input('search.value');
 
-      $regions = Region::where('id', 'LIKE', "%{$search}%")
-        ->orWhere('name', 'LIKE', "%{$search}%")
-        ->orWhere('country', 'LIKE', "%{$search}%")
+      $categories = OutletCategory::where('id', 'LIKE', "%{$search}%")
+        ->orWhere('title', 'LIKE', "%{$search}%")
+        ->orWhere('description', 'LIKE', "%{$search}%")
         ->offset($start)
         ->limit($limit)
         ->orderBy($order, $dir)
         ->get();
 
-      $totalFiltered = Region::where('id', 'LIKE', "%{$search}%")
-        ->orWhere('name', 'LIKE', "%{$search}%")
-        ->orWhere('country', 'LIKE', "%{$search}%")
+      $totalFiltered = OutletCategory::where('id', 'LIKE', "%{$search}%")
+        ->orWhere('title', 'LIKE', "%{$search}%")
+        ->orWhere('description', 'LIKE', "%{$search}%")
         ->count();
     }
 
     $data = [];
 
-    if (!empty($regions)) {
+    if (!empty($categories)) {
       // providing a dummy id instead of database ids
       $ids = $start;
 
-      foreach ($regions as $region) {
-        $nestedData['id'] = $region->id;
+      foreach ($categories as $category) {
+        $nestedData['id'] = $category->id;
         $nestedData['fake_id'] = ++$ids;
-        $nestedData['name'] = $region->name;
-        $nestedData['country'] = $region->country;
-        $nestedData['latitude'] = $region->latitude;
-        $nestedData['longitude'] = $region->longitude;
-        $nestedData['proximity_radius'] = $region->proximity_radius;
+        $nestedData['title'] = $category->title;
+        $nestedData['proximity_radius'] = $category->proximity_radius;
+        $nestedData['description'] = $category->description;
 
         $data[] = $nestedData;
       }
@@ -138,76 +134,66 @@ class Regions extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      "name" => "required|string|max:255",
-      "country" => "required|string|max:255",
-      "latitude" => "required|numeric",
-      "longitude" => "required|numeric",
+      "title" => "required|string|max:255",
+      "description" => "required|string|max:255",
       "proximity_radius" => "required|numeric",
     ]);
     try {
-      $regionID = $request->id;
+      $categoryID = $request->id;
 
-      if ($regionID) {
+      if ($categoryID) {
         // update the value
-        $region = Region::where('id', $regionID)->first();
+        $category = OutletCategory::where('id', $categoryID)->first();
 
-        if ($region) {
-          $region->name = $request->name;
-          $region->country = $request->country;
-          $region->search_keywords = Helpers::generateKeywords($request->name);
-          $region->latitude = $request->latitude;
-          $region->longitude = $request->longitude;
-          $region->proximity_radius = $request->proximity_radius;
-          $region->timestamp = now();
+        if ($category) {
+          $category->title = $request->title;
+          $category->description = $request->description;
+          $category->proximity_radius = $request->proximity_radius;
 
-          if ($region->save()) {
+          if ($category->save()) {
             // Success
             return response()->json('Updated');
           } else {
             // Handle error
-            $errors = $region->getErrors();
+            $errors = $category->getErrors();
             return response()->json(['message' => $errors], 422);
           }
         } else
         {
-          // Region does not exist, create a new region
-          $region = new Region();
-          $region->name = $request->name;
-          $region->country = $request->country;
-          $region->search_keywords = Helpers::generateKeywords($request->name);
-          $region->latitude = $request->latitude;
-          $region->longitude = $request->longitude;
-          $region->proximity_radius = $request->proximity_radius;
-          $region->timestamp = now();
+          // OutletCategory does not exist, create a new category
+          $category = new OutletCategory();
+          $category->title = $request->title;
+          $category->description = $request->description;
+          $category->proximity_radius = $request->proximity_radius;
+          $category->active = 2;
+          $category->active_timestamp = now();
 
-          if ($region->save()) {
+          if ($category->save()) {
             // Success
             return response()->json('Created');
           } else {
             // Handle error
-            $errors = $region->getErrors();
+            $errors = $category->getErrors();
             return response()->json(['message' => $errors], 422);
           }
 
         }
       } else {
         // create new one if email is unique
-        // Region does not exist, create a new region
-        $region = new Region();
-        $region->name = $request->name;
-        $region->country = $request->country;
-        $region->search_keywords = Helpers::generateKeywords($request->name);
-        $region->latitude = $request->latitude;
-        $region->longitude = $request->longitude;
-        $region->proximity_radius = $request->proximity_radius;
-        $region->timestamp = now();
+        // OutletCategory does not exist, create a new category
+        $category = new OutletCategory();
+        $category->title = $request->title;
+        $category->description = $request->description;
+        $category->proximity_radius = $request->proximity_radius;
+        $category->active = 2;
+        $category->active_timestamp = now();
 
-        if ($region->save()) {
+        if ($category->save()) {
           // Success
           return response()->json('Created');
         } else {
           // Handle error
-          $errors = $region->getErrors();
+          $errors = $category->getErrors();
           return response()->json(['message' => $errors], 422);
         }
       }
@@ -238,8 +224,8 @@ class Regions extends Controller
    */
   public function edit($id): JsonResponse
   {
-    $region = Region::findOrFail($id);
-    return response()->json($region);
+    $category = OutletCategory::findOrFail($id);
+    return response()->json($category);
   }
 
   /**
@@ -261,6 +247,6 @@ class Regions extends Controller
    */
   public function destroy($id)
   {
-    $regions = Region::where('id', $id)->delete();
+    $categories = OutletCategory::where('id', $id)->delete();
   }
 }

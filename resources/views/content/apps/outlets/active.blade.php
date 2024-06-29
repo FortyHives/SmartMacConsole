@@ -1,6 +1,6 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Outlets')
+@section('title', 'Active Outlets')
 
 <!-- Vendor Styles -->
 @section('vendor-style')
@@ -38,84 +38,42 @@
 @section('content')
 
   <div class="row g-6 mb-6">
-    <div class="col-sm-6 col-xl-3">
+    <div class="col-sm-6 col-xl-6">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <div class="me-1">
-              <p class="text-heading mb-1">Outlets</p>
+              <p class="text-heading mb-1">Active Outlets</p>
               <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-2">{{$totalOutlet}}</h4>
-                <p class="text-success mb-1">(100%)</p>
+                <h4 class="mb-1 me-2">{{$totalActiveOutlets}}</h4>
+                <p class="text-success mb-1">({{$activePercentage}})</p>
               </div>
-              <small class="mb-0">Total Outlets</small>
+              <small class="mb-0">Total count of active outlets</small>
             </div>
             <div class="avatar">
               <div class="avatar-initial bg-label-primary rounded-3">
-                <div class="ri-user-line ri-26px"></div>
+                <div class="ri-store-2-line ri-26px"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
+    <div class="col-sm-6 col-xl-6">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <div class="me-1">
               <p class="text-heading mb-1">Verified Outlets</p>
               <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-1">{{$verified}}</h4>
-                <p class="text-success mb-1">(+95%)</p>
+                <h4 class="mb-1 me-1">{{$totalVerifiedOutlets}}</h4>
+                <p class="text-success mb-1">({{$verifiedPercentage}})</p>
               </div>
-              <small class="mb-0">Recent analytics</small>
+              <small class="mb-0">Total count of verified active outlets</small>
             </div>
             <div class="avatar">
               <div class="avatar-initial bg-label-success rounded-3">
-                <div class="ri-user-follow-line ri-26px"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-xl-3">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <div class="me-1">
-              <p class="text-heading mb-1">Duplicate Outlets</p>
-              <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-1">{{$outletDuplicates}}</h4>
-                <p class="text-danger mb-1">(0%)</p>
-              </div>
-              <small class="mb-0">Recent analytics</small>
-            </div>
-            <div class="avatar">
-              <div class="avatar-initial bg-label-danger rounded-3">
-                <div class="ri-group-line ri-26px"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-xl-3">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <div class="me-1">
-              <p class="text-heading mb-1">Verification Pending</p>
-              <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-1">{{$notVerified}}</h4>
-                <p class="text-success mb-1">(+6%)</p>
-              </div>
-              <small class="mb-0">Recent analytics</small>
-            </div>
-            <div class="avatar">
-              <div class="avatar-initial bg-label-warning rounded-3">
-                <div class="ri-user-unfollow-line ri-26px"></div>
+                <div class="ri-store-2-fill ri-26px"></div>
               </div>
             </div>
           </div>
@@ -130,18 +88,19 @@
       <h5 class="card-title mb-0">Search Filter</h5>
     </div>
     <div class="card-datatable table-responsive">
-      <table class="datatables-outlets table">
+      <table class="datatables-outlets-active table">
         <thead>
         <tr>
           <th></th>
           <th>Id</th>
-          <th>Outlet</th>
-          <th>Email</th>
-          <th>Phone Number</th>
-          <th>ID Number</th>
-          <th>Role</th>
+          <th>Name</th>
+          <th>Contact Name</th>
+          <th>Contact Phone Number</th>
+          <th>Category</th>
+          <th>Region</th>
+          <th>Locality</th>
           <th>Country</th>
-          <th>Active</th>
+          <th>Verified</th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -157,51 +116,33 @@
         <form class="add-new-outlet pt-0" id="addNewOutletForm">
           <input type="hidden" name="id" id="outlet_id">
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-outlet-first-name" placeholder="First Name" name="first_name"
-                   aria-label="First Name" />
-            <label for="add-outlet-first-name">Outlet First Name</label>
+            <input type="text" class="form-control" id="add-outlet-name" placeholder="Outlet Name" name="name"
+                   aria-label="Outlet Name" />
+            <label for="add-outlet-name">Outlet Name</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-outlet-middle-name" placeholder="Middle Name" name="middle_name"
-                   aria-label="Middle Name" />
-            <label for="add-outlet-middle-name">Outlet Middle Name</label>
+            <input type="text" id="add-outlet-contact-name" class="form-control" placeholder="Contact Name"
+                   aria-label="Contact Name" name="contact_name" />
+            <label for="add-outlet-contact-name">Outlet Contact Name</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-outlet-last-name" placeholder="Last Name" name="last_name"
-                   aria-label="Last Name" />
-            <label for="add-outlet-last-ame">Outlet Last Name</label>
+            <input type="text" id="add-outlet-contact-phone-number" class="form-control phone-mask" placeholder="+254700000000"
+                   aria-label="+254700000000" name="contact-phone_number" />
+            <label for="add-outlet-contact-phone-number">Outlet Contact Phone Number</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-outlet-email" class="form-control" placeholder="john.doe@example.com"
-                   aria-label="john.doe@example.com" name="email" />
-            <label for="add-outlet-email">Outlet Email Address</label>
+            <input type="text" id="add-outlet-remarks" name="remarks" class="form-control" placeholder="Some remarks about the outlet"
+                   aria-label="Some remarks about the outlet" />
+            <label for="add-outlet-remarks">Outlet Remarks</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-outlet-phone-number" class="form-control phone-mask" placeholder="+254700000000"
-                   aria-label="+254700000000" name="phone_number" />
-            <label for="add-outlet-phone-number">Outlet Phone Number</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-outlet-id-number" name="id_number" class="form-control" placeholder="0000000"
-                   aria-label="000000" />
-            <label for="add-outlet-id-number">Outlet ID Number</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <select id="outlet-role" class="form-select"  name="role" >
-              <option value="">Select role</option>
-              <option value="Mapping">Mapping</option>
-              <option value="Sales">Sales</option>
-              <option value="Survey">Survey</option>
+            <select id="add-outlet-category-id" class="form-select"  name="category_id" >
+              <option value="">Select category</option>
+              @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->title }}</option>
+              @endforeach
             </select>
-            <label for="outlet-role">Select Outlet Role</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <select id="outlet-country" class="form-select"  name="country" >
-              <option value="">Select country</option>
-              <option value="Kenya">Kenya</option>
-              <option value="Uganda">Uganda</option>
-            </select>
-            <label for="outlet-plan">Select Outlet Country</label>
+            <label for="add-outlet-category-id">Select Outlet Category</label>
           </div>
           <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
           <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>
