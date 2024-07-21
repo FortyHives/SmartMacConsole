@@ -43,13 +43,13 @@ class ApiController extends Controller
                           Log::channel('api')->info('Agent does not exist');
                           return response()->json([
                             "status" => 1,
-                            "message" => "Agent file  not available",
+                            "message" => "Agent file not available",
                             "account" => $agent
                           ]);
 
                         }
                     } catch (\Exception $e) {
-                        Log::channel('api')->info('Check account: Database error');
+                        Log::channel('api')->info('Check agent: Database error');
                         Log::channel('api')->error($e);
                         return response()->json([
                             "status" => 6,
@@ -60,7 +60,7 @@ class ApiController extends Controller
 
                 }else
                 {
-                    Log::channel('api')->info('Check account: JWT Verification failed');
+                    Log::channel('api')->info('Check agent: JWT Verification failed');
                     Log::channel('api')->error($email.' '.$request->email);
                     return response()->json([
                         "status" => 2,
@@ -72,7 +72,7 @@ class ApiController extends Controller
                 }
             } catch (\Exception $e) {
                 // Token is invalid
-                Log::channel('api')->info('Check account: Invalid token');
+                Log::channel('api')->info('Check agent: Invalid token');
                 Log::channel('api')->error($e);
                 return response()->json([
                     "status" => 3,
@@ -92,6 +92,83 @@ class ApiController extends Controller
         }
 
     }
+
+  public function checkEmail(Request $request)
+  {
+    Log::channel('api')->info('Check email initiated');
+    if ($request != null)
+    {
+      $request->validate([
+        "email" => "required"
+      ]);
+      try {
+        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $email = $decoded->sub;
+        if ($email === $request->email)
+        {
+          try {
+            $agent = Agent::where('email', $request->email)->first();
+
+            if ($agent) {
+              Log::channel('api')->info('Agent found');
+              return response()->json([
+                "status" => 0,
+                "message" => "Agent with email exists",
+              ]);
+            } else {
+              // Account does not exist
+              Log::channel('api')->info('Agent with email does not exist');
+              return response()->json([
+                "status" => 1,
+                "message" => "Agent with email does not exist",
+              ]);
+
+            }
+          } catch (\Exception $e) {
+            Log::channel('api')->info('Check email: Database error');
+            Log::channel('api')->error($e);
+            return response()->json([
+              "status" => 6,
+              "message" => "Database error",
+              "data_0" => $e->getMessage()
+            ]);
+          }
+
+        }else
+        {
+          Log::channel('api')->info('Check email: JWT Verification failed');
+          Log::channel('api')->error($email.' '.$request->email);
+          return response()->json([
+            "status" => 2,
+            "message" => "Invalid token",
+            "data_0" => $email,
+            "data_1" => $request,
+            "data_2" => $request->email
+          ]);
+        }
+      } catch (\Exception $e) {
+        // Token is invalid
+        Log::channel('api')->info('Check email: Invalid token');
+        Log::channel('api')->error($e);
+        return response()->json([
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $request,
+          "data_1" => $request->email,
+          "data_2" => $e
+        ]);
+      }
+    }else
+    {
+      Log::channel('api')->info('Check email: Invalid request');
+      return response()->json([
+        "status" => 4,
+        "message" => "Invalid Request"
+      ]);
+    }
+
+  }
 
     public function getAgent(Request $request){
         if ($request != null)

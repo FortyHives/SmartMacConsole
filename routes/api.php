@@ -15,6 +15,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post("checkAgent", [ApiController::class, "checkAgent"]);
+Route::post("checkEmail", [ApiController::class, "checkEmail"]);
 Route::post("getAgent", [ApiController::class, "getAgent"]);
 Route::post("updateAgentPIN", [ApiController::class, "updateAgentPIN"]);
 
