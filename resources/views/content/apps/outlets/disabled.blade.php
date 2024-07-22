@@ -144,6 +144,10 @@
             </select>
             <label for="add-outlet-category-id">Select Outlet Category</label>
           </div>
+          <div class="form-floating form-floating-outline mb-5">
+            <input class="form-control" type="file" id="formFile" name="photo">
+            <label for="formFile">Shop photo</label>
+          </div>
           <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
           <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>
         </form>

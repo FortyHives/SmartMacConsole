@@ -9,10 +9,17 @@ use App\Models\OutletCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Kreait\Firebase\Contract\Storage;
 
 
 class DisabledOutlets extends Controller
 {
+  protected $storage;
+
+  public function __construct(Storage $storage)
+  {
+    $this->storage = $storage;
+  }
   /**
    * Redirect to outlets view.
    *
@@ -174,6 +181,7 @@ class DisabledOutlets extends Controller
       "attitude" => "required|numeric",
       "proximity_radius" => "required|numeric",
       "population" => "required|numeric",
+      "photo" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
     ]);
     try {
       $outletID = $request->id;
@@ -191,10 +199,36 @@ class DisabledOutlets extends Controller
           $outlet->proximity_radius = $request->proximity_radius;
           $outlet->population = $request->population;
           $outlet->attitude = $request->attitude;
+          $outlet->remarks = $request->remarks;
           $outlet->verified = 2;
           $outlet->verified_timestamp = now();
           $outlet->search_keywords = Helpers::generateKeywords($request->name);
           $outlet->timestamp = now();
+
+          // Handle file upload
+          if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $outletID . '_0.' . $extension;
+            $filePath = 'OutletPhotos/' . $fileName;
+
+            // Upload to Firebase Storage
+            $bucket = $this->storage->getBucket();
+            $bucket->upload(
+              file_get_contents($file->getPathname()),
+              [
+                'name' => $filePath,
+                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+              ]
+            );
+
+            // Generate public URL
+            $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+            // Update photo_url field
+            $outlet->photo_urls = [$photoUrl,""];
+          }
+
 
           if ($outlet->save()) {
             // Success
@@ -216,6 +250,7 @@ class DisabledOutlets extends Controller
           $outlet->proximity_radius = $request->proximity_radius;
           $outlet->population = $request->population;
           $outlet->attitude = $request->attitude;
+          $outlet->remarks = $request->remarks;
           $outlet->verified = 1;
           $outlet->verified_timestamp = now();
           $outlet->search_keywords = Helpers::generateKeywords($request->name);
@@ -223,6 +258,29 @@ class DisabledOutlets extends Controller
 
           if ($outlet->save()) {
             // Success
+            // Handle file upload
+            if ($request->hasFile('photo')) {
+              $file = $request->file('photo');
+              $extension = $file->getClientOriginalExtension();
+              $fileName = $outletID . '_0.' . $extension;
+              $filePath = 'OutletPhotos/' . $fileName;
+
+              // Upload to Firebase Storage
+              $bucket = $this->storage->getBucket();
+              $bucket->upload(
+                file_get_contents($file->getPathname()),
+                [
+                  'name' => $filePath,
+                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+                ]
+              );
+
+              // Generate public URL
+              $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+              // Update photo_url field
+              $outlet->photo_urls = [$photoUrl,""];
+            }
             return response()->json('Created');
           } else {
             // Handle error
@@ -243,6 +301,7 @@ class DisabledOutlets extends Controller
         $outlet->proximity_radius = $request->proximity_radius;
         $outlet->population = $request->population;
         $outlet->attitude = $request->attitude;
+        $outlet->remarks = $request->remarks;
         $outlet->verified = 1;
         $outlet->verified_timestamp = now();
         $outlet->search_keywords = Helpers::generateKeywords($request->name);
@@ -250,6 +309,29 @@ class DisabledOutlets extends Controller
 
         if ($outlet->save()) {
           // Success
+          // Handle file upload
+          if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $outletID . '_0.' . $extension;
+            $filePath = 'OutletPhotos/' . $fileName;
+
+            // Upload to Firebase Storage
+            $bucket = $this->storage->getBucket();
+            $bucket->upload(
+              file_get_contents($file->getPathname()),
+              [
+                'name' => $filePath,
+                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+              ]
+            );
+
+            // Generate public URL
+            $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+            // Update photo_url field
+            $outlet->photo_urls = [$photoUrl,""];
+          }
           return response()->json('Created');
         } else {
           // Handle error

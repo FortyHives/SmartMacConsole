@@ -208,14 +208,14 @@ class ApiController extends Controller
                             } else {
                                 // Account does not exist
                                 return response()->json([
-                                    "status" => 1,
+                                    "status" => 2,
                                     "message" => "Agent not found"
                                 ]);
                             }
                         } catch (\Exception $e) {
                             // Token is invalid
                             return response()->json([
-                                "status" => 6,
+                                "status" => 7,
                                 "message" => "Database error",
                                 "data_0" => $e->getMessage()
                             ]);
@@ -223,7 +223,7 @@ class ApiController extends Controller
 
                     } else {
                         return response()->json([
-                            "status" => 5,
+                            "status" => 6,
                             "message" => "Invalid Data Request"
                         ]);
                     }
@@ -231,7 +231,7 @@ class ApiController extends Controller
                 }else
                 {
                     return response()->json([
-                        "status" => 2,
+                        "status" => 5,
                         "message" => "Invalid token",
                         "data_0" => $id,
                         "data_1" => $request,
@@ -241,7 +241,7 @@ class ApiController extends Controller
             } catch (\Exception $e) {
                 // Token is invalid
                 return response()->json([
-                    "status" => 3,
+                    "status" => 4,
                     "message" => "Invalid token",
                     "data_0" => $e->getMessage(),
                 ]);
@@ -249,7 +249,7 @@ class ApiController extends Controller
         }else
         {
             return response()->json([
-                "status" => 4,
+                "status" => 3,
                 "message" => "Invalid Request"
             ]);
         }

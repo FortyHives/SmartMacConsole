@@ -35,9 +35,10 @@
     31 => 'Pixinvent\\Jetstrap\\JetstrapServiceProvider',
     32 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     33 => 'App\\Providers\\AppServiceProvider',
-    34 => 'App\\Providers\\FortifyServiceProvider',
-    35 => 'App\\Providers\\JetstreamServiceProvider',
-    36 => 'App\\Providers\\MenuServiceProvider',
+    34 => 'App\\Providers\\FirebaseServiceProvider',
+    35 => 'App\\Providers\\FortifyServiceProvider',
+    36 => 'App\\Providers\\JetstreamServiceProvider',
+    37 => 'App\\Providers\\MenuServiceProvider',
   ),
   'eager' => 
   array (
@@ -61,9 +62,10 @@
     17 => 'Pixinvent\\Jetstrap\\JetstrapServiceProvider',
     18 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     19 => 'App\\Providers\\AppServiceProvider',
-    20 => 'App\\Providers\\FortifyServiceProvider',
-    21 => 'App\\Providers\\JetstreamServiceProvider',
-    22 => 'App\\Providers\\MenuServiceProvider',
+    20 => 'App\\Providers\\FirebaseServiceProvider',
+    21 => 'App\\Providers\\FortifyServiceProvider',
+    22 => 'App\\Providers\\JetstreamServiceProvider',
+    23 => 'App\\Providers\\MenuServiceProvider',
   ),
   'deferred' => 
   array (

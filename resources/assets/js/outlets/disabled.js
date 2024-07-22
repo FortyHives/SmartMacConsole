@@ -511,6 +511,16 @@ $(function () {
             message: 'Please enter outlet contact phone number'
           }
         }
+      },
+      photo: {
+        validators: {
+          file: {
+            extension: 'jpeg,jpg,png,gif',
+            type: 'image/jpeg,image/png,image/gif',
+            maxSize: 2048 * 1024, // 2048 KB
+            message: 'Please choose a valid image file (jpeg, jpg, png, gif) with size less than 2 MB.'
+          }
+        }
       }
     },
     plugins: {
@@ -525,10 +535,11 @@ $(function () {
       autoFocus: new FormValidation.plugins.AutoFocus()
     }
   }).on('core.form.valid', function () {
+    // Create a FormData object
+    var formData = new FormData(addNewShopForm);
     // Adding or updating outlet when form successfully validates
-    console.error("Form:", $('#addNewOutletForm').serialize());
     $.ajax({
-      data: $('#addNewOutletForm').serialize(),
+      data: formData,
       url: `${baseUrl}disabled-outlets-list`,
       type: 'POST',
       success: function (status) {
