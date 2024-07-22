@@ -1,0 +1,77 @@
+{
+  "menu": [
+    {
+      "name": "Analytics",
+      "icon": "menu-icon tf-icons ri-line-chart-fill",
+      "slug": "analytics",
+      "submenu": [
+        {
+          "url": "/",
+          "name": "Sales",
+          "slug": "analytics-sales"
+        },
+        {
+          "url": "analytics/activities",
+          "name": "Activities",
+          "slug": "analytics-activities"
+        }
+      ]
+    },
+    {
+      "url": "apps/agents",
+      "name": "Agents",
+      "icon": "menu-icon tf-icons ri-group-fill",
+      "slug": "apps-agent"
+    },
+    {
+      "name": "Places",
+      "icon": "menu-icon tf-icons ri-map-2-line",
+      "slug": "places",
+      "submenu": [
+        {
+          "url": "apps/regions",
+          "name": "Regions",
+          "slug": "places-regions"
+        },
+        {
+          "url": "apps/localities",
+          "name": "Localities",
+          "slug": "places-localities"
+        }
+      ]
+    },
+    {
+      "name": "Outlets",
+      "icon": "menu-icon tf-icons ri-store-3-line",
+      "slug": "outlets",
+      "submenu": [
+        {
+          "url": "apps/outlets/active",
+          "name": "Active",
+          "slug": "outlets-active"
+        },
+        {
+          "url": "apps/outlets/new",
+          "name": "New",
+          "slug": "outlets-new"
+        },
+        {
+          "url": "apps/outlets/disabled",
+          "name": "Disabled",
+          "slug": "outlets-disabled"
+        },
+        {
+          "url": "apps/outlets/categories",
+          "name": "Categories",
+          "slug": "outlets-categories"
+        }
+      ]
+    },
+    {
+      "url": "apps/products",
+      "name": "Products",
+      "icon": "menu-icon tf-icons ri-archive-stack-line",
+      "slug": "apps-products"
+    }
+  ]
+}
