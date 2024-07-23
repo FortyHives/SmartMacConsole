@@ -185,6 +185,7 @@ $(function () {
             );
           }
         }
+
       ],
       order: [[2, 'desc']],
       dom:
@@ -350,14 +351,14 @@ $(function () {
             }
           ]
         },
-        /*{
+        {
           text: '<i class="ri-add-line ri-16px me-0 me-sm-2 align-baseline"></i><span class="d-none d-sm-inline-block">Add New Outlet</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',
             'data-bs-target': '#offcanvasAddOutlet'
           }
-        }*/
+        }
       ],
       // For responsive popup
       responsive: {
@@ -538,7 +539,7 @@ $(function () {
     // Create a FormData object
     var formData = new FormData(addNewOutletForm);
 
-    // Adding or updating shop when form successfully validates
+    // Adding or updating outlet when form successfully validates
     $.ajax({
       data: formData,
       url: `${baseUrl}disabled-outlets-list`,
@@ -546,7 +547,7 @@ $(function () {
       contentType: false,
       processData: false,
       success: function (status) {
-        dt_outlet().draw();
+        dt_outlet.draw();
         offCanvasForm.offcanvas('hide');
 
         // SweetAlert
@@ -650,12 +651,12 @@ $(function () {
   });
 
   // Verify Record
-  $(document).on('click', '.verify-record', function (e) {
+  $(document).on('click', '.draft-record', function (e) {
     e.preventDefault();
     var outlet_id = $(this).data('id');
-    var current_status = $(this).data('verified');
+    var current_status = $(this).data('draft');
     var new_status = current_status == 2 ? 1 : 2; // Toggle status
-    var actionText = new_status == 2 ? 'Verify' : 'Un-verify';
+    var actionText = new_status == 2 ? 'Publish' : 'Draft';
 
     // Confirmation dialog
     Swal.fire({
@@ -674,7 +675,7 @@ $(function () {
         // Update suspend status via AJAX
         $.ajax({
           type: 'PATCH',
-          url: `${baseUrl}disabled-outlets-list/${outlet_id}/verification`,
+          url: `${baseUrl}disabled-outlets-list/${outlet_id}/draft`,
           data: { status: new_status },
           success: function () {
             dt_outlet().draw();
