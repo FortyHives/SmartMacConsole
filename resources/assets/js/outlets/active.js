@@ -534,13 +534,18 @@ $(function () {
       autoFocus: new FormValidation.plugins.AutoFocus()
     }
   }).on('core.form.valid', function () {
+    // Create a FormData object
     var formData = new FormData(addNewOutletForm);
+
+    // Adding or updating shop when form successfully validates
     $.ajax({
       data: formData,
       url: `${baseUrl}active-outlets-list`,
       type: 'POST',
+      contentType: false,
+      processData: false,
       success: function (status) {
-        dt_outlet.draw();
+        dt_outlet().draw();
         offCanvasForm.offcanvas('hide');
 
         // SweetAlert

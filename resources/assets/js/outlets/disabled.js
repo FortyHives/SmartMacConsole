@@ -537,13 +537,16 @@ $(function () {
   }).on('core.form.valid', function () {
     // Create a FormData object
     var formData = new FormData(addNewOutletForm);
-    // Adding or updating outlet when form successfully validates
+
+    // Adding or updating shop when form successfully validates
     $.ajax({
       data: formData,
       url: `${baseUrl}disabled-outlets-list`,
       type: 'POST',
+      contentType: false,
+      processData: false,
       success: function (status) {
-        dt_outlet.draw();
+        dt_outlet().draw();
         offCanvasForm.offcanvas('hide');
 
         // SweetAlert

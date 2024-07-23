@@ -173,7 +173,6 @@ class ActiveOutlets extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      "outlet_id" => "required|numeric",
       "name" => "required|string|max:255",
       "contact_name" => "required|string|max:255",
       "contact_phone_number" => "required|numeric",
@@ -191,13 +190,13 @@ class ActiveOutlets extends Controller
           $outlet->name = $request->name;
           $outlet->contact_name = $request->contact_name;
           $outlet->category_id = $request->category_id;
-          $outlet->remarks = $request->remarks;
+          $outlet->remarks = $request->remarks ?? "";
           $outlet->verified = 2;
           $outlet->verified_timestamp = now();
           $outlet->draft = 1;
           $outlet->draft_timestamp = now();
           $outlet->search_keywords = Helpers::generateKeywords($request->name);
-          $outlet->timestamp = now();
+          //$outlet->timestamp = now();
 
           // Handle file upload
           if ($request->hasFile('photo')) {
