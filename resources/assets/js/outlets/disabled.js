@@ -350,14 +350,14 @@ $(function () {
             }
           ]
         },
-        {
+        /*{
           text: '<i class="ri-add-line ri-16px me-0 me-sm-2 align-baseline"></i><span class="d-none d-sm-inline-block">Add New Outlet</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',
             'data-bs-target': '#offcanvasAddOutlet'
           }
-        }
+        }*/
       ],
       // For responsive popup
       responsive: {
@@ -536,7 +536,7 @@ $(function () {
     }
   }).on('core.form.valid', function () {
     // Create a FormData object
-    var formData = new FormData(addNewShopForm);
+    var formData = new FormData(addNewOutletForm);
     // Adding or updating outlet when form successfully validates
     $.ajax({
       data: formData,

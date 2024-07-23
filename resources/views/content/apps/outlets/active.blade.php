@@ -127,7 +127,7 @@
           </div>
           <div class="form-floating form-floating-outline mb-5">
             <input type="text" id="add-outlet-contact-phone-number" class="form-control phone-mask" placeholder="+254700000000"
-                   aria-label="+254700000000" name="contact-phone_number" />
+                   aria-label="+254700000000" name="contact_phone_number" />
             <label for="add-outlet-contact-phone-number">Outlet Contact Phone Number</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
@@ -143,6 +143,10 @@
               @endforeach
             </select>
             <label for="add-outlet-category-id">Select Outlet Category</label>
+          </div>
+          <div class="form-floating form-floating-outline mb-5">
+            <input class="form-control" type="file" id="formFile" name="photo">
+            <label for="formFile">Outlet photo</label>
           </div>
           <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
           <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>

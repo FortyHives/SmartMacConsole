@@ -350,14 +350,14 @@ $(function () {
             }
           ]
         },
-        {
+        /*{
           text: '<i class="ri-add-line ri-16px me-0 me-sm-2 align-baseline"></i><span class="d-none d-sm-inline-block">Add New Outlet</span>',
           className: 'add-new btn btn-primary waves-effect waves-light',
           attr: {
             'data-bs-toggle': 'offcanvas',
             'data-bs-target': '#offcanvasAddOutlet'
           }
-        }
+        }*/
       ],
       // For responsive popup
       responsive: {
@@ -512,6 +512,15 @@ $(function () {
           }
         }
       }
+    },photo: {
+      validators: {
+        file: {
+          extension: 'jpeg,jpg,png,gif',
+          type: 'image/jpeg,image/png,image/gif',
+          maxSize: 2048 * 1024, // 2048 KB
+          message: 'Please choose a valid image file (jpeg, jpg, png, gif) with size less than 2 MB.'
+        }
+      }
     },
     plugins: {
       trigger: new FormValidation.plugins.Trigger(),
@@ -525,10 +534,9 @@ $(function () {
       autoFocus: new FormValidation.plugins.AutoFocus()
     }
   }).on('core.form.valid', function () {
-    // Adding or updating outlet when form successfully validates
-    console.error("Form:", $('#addNewOutletForm').serialize());
+    var formData = new FormData(addNewOutletForm);
     $.ajax({
-      data: $('#addNewOutletForm').serialize(),
+      data: formData,
       url: `${baseUrl}new-outlets-list`,
       type: 'POST',
       success: function (status) {

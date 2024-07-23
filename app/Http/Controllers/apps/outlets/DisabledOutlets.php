@@ -173,14 +173,11 @@ class DisabledOutlets extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      "region_id" => "required|numeric",
+      "outlet_id" => "required|numeric",
       "name" => "required|string|max:255",
-      "country" => "required|string|max:255",
-      "latitude" => "required|numeric",
-      "longitude" => "required|numeric",
-      "attitude" => "required|numeric",
-      "proximity_radius" => "required|numeric",
-      "population" => "required|numeric",
+      "contact_name" => "required|string|max:255",
+      "contact_phone_number" => "required|numeric",
+      "category_id" => "required|numeric",
       "photo" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
     ]);
     try {
@@ -191,17 +188,14 @@ class DisabledOutlets extends Controller
         $outlet = Outlet::where('id', $outletID)->first();
 
         if ($outlet) {
-          $outlet->region_id = $request->region_id;
           $outlet->name = $request->name;
-          $outlet->country = $request->country;
-          $outlet->latitude = $request->latitude;
-          $outlet->longitude = $request->longitude;
-          $outlet->proximity_radius = $request->proximity_radius;
-          $outlet->population = $request->population;
-          $outlet->attitude = $request->attitude;
+          $outlet->contact_name = $request->contact_name;
+          $outlet->category_id = $request->category_id;
           $outlet->remarks = $request->remarks;
           $outlet->verified = 2;
           $outlet->verified_timestamp = now();
+          $outlet->draft = 1;
+          $outlet->draft_timestamp = now();
           $outlet->search_keywords = Helpers::generateKeywords($request->name);
           $outlet->timestamp = now();
 
@@ -240,104 +234,13 @@ class DisabledOutlets extends Controller
           }
         } else
         {
-          // Region does not exist, create a new region
-          $outlet = new Outlet();
-          $outlet->region_id = $request->region_id;
-          $outlet->name = $request->name;
-          $outlet->country = $request->country;
-          $outlet->latitude = $request->latitude;
-          $outlet->longitude = $request->longitude;
-          $outlet->proximity_radius = $request->proximity_radius;
-          $outlet->population = $request->population;
-          $outlet->attitude = $request->attitude;
-          $outlet->remarks = $request->remarks;
-          $outlet->verified = 1;
-          $outlet->verified_timestamp = now();
-          $outlet->search_keywords = Helpers::generateKeywords($request->name);
-          $outlet->timestamp = now();
-
-          if ($outlet->save()) {
-            // Success
-            // Handle file upload
-            if ($request->hasFile('photo')) {
-              $file = $request->file('photo');
-              $extension = $file->getClientOriginalExtension();
-              $fileName = $outletID . '_0.' . $extension;
-              $filePath = 'OutletPhotos/' . $fileName;
-
-              // Upload to Firebase Storage
-              $bucket = $this->storage->getBucket();
-              $bucket->upload(
-                file_get_contents($file->getPathname()),
-                [
-                  'name' => $filePath,
-                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
-                ]
-              );
-
-              // Generate public URL
-              $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
-
-              // Update photo_url field
-              $outlet->photo_urls = [$photoUrl,""];
-            }
-            return response()->json('Created');
-          } else {
-            // Handle error
-            $errors = $outlet->getErrors();
-            return response()->json(['message' => $errors], 422);
-          }
+          // Outlet does not exist
+          return response()->json(['message' => 'Outlet does not exixt'], 422);
 
         }
       } else {
-        // create new one if email is unique
-        // Region does not exist, create a new region
-        $outlet = new Outlet();
-        $outlet->region_id = $request->region_id;
-        $outlet->name = $request->name;
-        $outlet->country = $request->country;
-        $outlet->latitude = $request->latitude;
-        $outlet->longitude = $request->longitude;
-        $outlet->proximity_radius = $request->proximity_radius;
-        $outlet->population = $request->population;
-        $outlet->attitude = $request->attitude;
-        $outlet->remarks = $request->remarks;
-        $outlet->verified = 1;
-        $outlet->verified_timestamp = now();
-        $outlet->search_keywords = Helpers::generateKeywords($request->name);
-        $outlet->timestamp = now();
-
-        if ($outlet->save()) {
-          // Success
-          // Handle file upload
-          if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = $outletID . '_0.' . $extension;
-            $filePath = 'OutletPhotos/' . $fileName;
-
-            // Upload to Firebase Storage
-            $bucket = $this->storage->getBucket();
-            $bucket->upload(
-              file_get_contents($file->getPathname()),
-              [
-                'name' => $filePath,
-                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
-              ]
-            );
-
-            // Generate public URL
-            $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
-
-            // Update photo_url field
-            $outlet->photo_urls = [$photoUrl,""];
-          }
-          return response()->json('Created');
-        } else {
-          // Handle error
-          $errors = $outlet->getErrors();
-          return response()->json(['message' => $errors], 422);
-        }
+        // Outlet does not exist
+        return response()->json(['message' => 'Outlet does not exixt'], 422);
       }
 
     } catch (\Exception $e) {
