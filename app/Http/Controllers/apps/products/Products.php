@@ -2,32 +2,40 @@
 
 namespace App\Http\Controllers\apps\products;
 
+use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
+use Kreait\Firebase\Contract\Storage;
 
 
 class Products extends Controller
 {
+
+  protected $storage;
+
+  public function __construct(Storage $storage)
+  {
+    $this->storage = $storage;
+  }
+
   /**
    * Redirect to products view.
    *
    */
   public function ProductManagement()
   {
-    // dd('Products');
+    // dd('Categories');
     $products = Product::all();
     $productCount = $products->count();
-    $verified = Product::whereNotNull('active')->get()->count();
-    $notVerified = Product::whereNull('draft')->get()->count();
+    $verified = 0;
+    $notVerified = 0;
     $productsUnique = $products->unique(['name']);
     $productDuplicates = $products->diff($productsUnique)->count();
 
     return view('content.apps.products.listing', [
-      'totalProduct' => $productCount,
+      'totalProducts' => $productCount,
       'verified' => $verified,
       'notVerified' => $notVerified,
       'productDuplicates' => $productDuplicates,
@@ -44,11 +52,7 @@ class Products extends Controller
     $columns = [
       1 => 'id',
       2 => 'name',
-      3 => 'email',
-      4 => 'phone_number',
-      5 => 'id_number',
-      6 => 'country',
-      7 => 'active',
+      4 => 'description'
     ];
 
     $search = [];
@@ -72,7 +76,7 @@ class Products extends Controller
 
       $products = Product::where('id', 'LIKE', "%{$search}%")
         ->orWhere('name', 'LIKE', "%{$search}%")
-        ->orWhere('email', 'LIKE', "%{$search}%")
+        ->orWhere('description', 'LIKE', "%{$search}%")
         ->offset($start)
         ->limit($limit)
         ->orderBy($order, $dir)
@@ -80,7 +84,7 @@ class Products extends Controller
 
       $totalFiltered = Product::where('id', 'LIKE', "%{$search}%")
         ->orWhere('name', 'LIKE', "%{$search}%")
-        ->orWhere('email', 'LIKE', "%{$search}%")
+        ->orWhere('description', 'LIKE', "%{$search}%")
         ->count();
     }
 
@@ -93,13 +97,8 @@ class Products extends Controller
       foreach ($products as $product) {
         $nestedData['id'] = $product->id;
         $nestedData['fake_id'] = ++$ids;
-        $nestedData['name'] = $product->name[0]  ." ".  $product->name[1]  ." ". $product->name[2];
-        $nestedData['email'] = $product->email;
-        $nestedData['phone_number'] = $product->phone_number;
-        $nestedData['id_number'] = $product->id_number;
-        $nestedData['role'] = $product->role;
-        $nestedData['country'] = $product->country;
-        $nestedData['active'] = $product->active;
+        $nestedData['name'] = $product->name;
+        $nestedData['description'] = $product->description;
 
         $data[] = $nestedData;
       }
@@ -141,30 +140,46 @@ class Products extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      "first_name" => "required|string|max:255",
-      "middle_name" => "required|string|max:255",
-      "last_name" => "required|string|max:255",
-      "country" => "required|string|max:255",
-      "email" => "required|string|max:255",
-      "phone_number" => "required|numeric",
-      "id_number" => "required|numeric",
-      "role" => "required|string|max:255",
+      "name" => "required|string|max:255",
+      "description" => "required|string|max:255",
+      "photos" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
     ]);
     try {
       $productID = $request->id;
+
+
 
       if ($productID) {
         // update the value
         $product = Product::where('id', $productID)->first();
 
         if ($product) {
-          $product->name = [$request->first_name, $request->middle_name, $request->last_name];
-          $product->country = $request->country;
-          //$product->search_keywords = generateKeywords($request->first_name ." ". $request->middle_name ." ". $request->last_name);
-          $product->email = $request->email;
-          $product->phone_number = $request->phone_number;
-          $product->id_number = $request->id_number;
-          $product->role = $request->role;
+          $product->name = $request->name;
+          $product->description = $request->description;
+
+          // Handle file upload
+          if ($request->hasFile('photos')) {
+            $file = $request->file('photos');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $productID . '.' . $extension;
+            $filePath = 'ProductPhotos/' . $fileName;
+
+            // Upload to Firebase Storage
+            $bucket = $this->storage->getBucket();
+            $bucket->upload(
+              file_get_contents($file->getPathname()),
+              [
+                'name' => $filePath,
+                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+              ]
+            );
+
+            // Generate public URL
+            $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+            // Update photos_url field
+            $product->photos_url = $photosUrl;
+          }
 
           if ($product->save()) {
             // Success
@@ -178,20 +193,38 @@ class Products extends Controller
         {
           // Product does not exist, create a new product
           $product = new Product();
-          $product->name = [$request->first_name, $request->middle_name, $request->last_name];
-          $product->country = $request->country;
-          //$product->search_keywords = generateKeywords($request->first_name ." ". $request->middle_name ." ". $request->last_name);
-          $product->email = $request->email;
-          $product->phone_number = $request->phone_number;
-          $product->id_number = $request->id_number;
-          $product->role = $request->role;
+          $product->name = $request->name;
+          $product->description = $request->description;
           $product->active = 2;
           $product->active_timestamp = now();
-          $product->suspended = 1;
-          $product->suspended_timestamp = now();
 
           if ($product->save()) {
             // Success
+            // Handle file upload
+            if ($request->hasFile('photos')) {
+              $productID = $product->id;
+              $file = $request->file('photos');
+              $extension = $file->getClientOriginalExtension();
+              $fileName = $productID . '.' . $extension;
+              $filePath = 'ProductPhotos/' . $fileName;
+
+              // Upload to Firebase Storage
+              $bucket = $this->storage->getBucket();
+              $bucket->upload(
+                file_get_contents($file->getPathname()),
+                [
+                  'name' => $filePath,
+                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+                ]
+              );
+
+              // Generate public URL
+              $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+              // Update photos_url field
+              $product->photos_url = $photosUrl;
+              $product->save();
+            }
             return response()->json('Created');
           } else {
             // Handle error
@@ -204,20 +237,38 @@ class Products extends Controller
         // create new one if email is unique
         // Product does not exist, create a new product
         $product = new Product();
-        $product->name = [$request->first_name, $request->middle_name, $request->last_name];
-        $product->country = $request->country;
-        //$product->search_keywords = generateKeywords($request->first_name ." ". $request->middle_name ." ". $request->last_name);
-        $product->email = $request->email;
-        $product->phone_number = $request->phone_number;
-        $product->id_number = $request->id_number;
-        $product->role = $request->role;
+        $product->name = $request->name;
+        $product->description = $request->description;
         $product->active = 2;
         $product->active_timestamp = now();
-        $product->suspended = 1;
-        $product->suspended_timestamp = now();
 
         if ($product->save()) {
           // Success
+          // Handle file upload
+          if ($request->hasFile('photos')) {
+            $productID = $product->id;
+            $file = $request->file('photos');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $productID . '.' . $extension;
+            $filePath = 'ProductPhotos/' . $fileName;
+
+            // Upload to Firebase Storage
+            $bucket = $this->storage->getBucket();
+            $bucket->upload(
+              file_get_contents($file->getPathname()),
+              [
+                'name' => $filePath,
+                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+              ]
+            );
+
+            // Generate public URL
+            $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+            // Update photos_url field
+            $product->photos_url = $photosUrl;
+            $product->save();
+          }
           return response()->json('Created');
         } else {
           // Handle error
@@ -237,14 +288,12 @@ class Products extends Controller
    * Display the specified resource.
    *
    * @param  int  $id
+   * @return \Illuminate\Http\Response
    */
-  public function product($id)
+  public function show($id)
   {
-    // Fetch the product record using the provided ID
-    $product = Product::find($id);
-    return view('content.apps.products.product', ['product' => $product]);
+    //
   }
-
 
   /**
    * Show the form for editing the specified resource.
@@ -269,30 +318,6 @@ class Products extends Controller
   {
   }
 
-  public function status($id, Request $request)
-  {
-    //$product = Product::find($id);
-    $product = Product::where('id', $id)->first();
-    if ($product) {
-      $product->active = $request->input('status');
-      $product->active_timestamp = now();
-
-      if ($product->save()) {
-        // Success
-        return response()->json('Status updated successfully.');
-      } else {
-        // Handle error
-        $errors = $product->getErrors();
-        return response()->json(['message' => $errors], 422);
-      }
-    } else
-    {
-      // Product does not exist, create a new product
-      return response()->json(['message' => 'Product does not exist'], 422);
-
-    }
-  }
-
   /**
    * Remove the specified resource from storage.
    *
@@ -303,4 +328,5 @@ class Products extends Controller
   {
     $products = Product::where('id', $id)->delete();
   }
+
 }

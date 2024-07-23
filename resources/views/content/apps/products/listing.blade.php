@@ -45,10 +45,10 @@
             <div class="me-1">
               <p class="text-heading mb-1">Products</p>
               <div class="d-flex align-items-center">
-                <h4 class="mb-1 me-2">{{$totalProduct}}</h4>
+                <h4 class="mb-1 me-2">{{$totalProducts}}</h4>
                 <p class="text-success mb-1">(100%)</p>
               </div>
-              <small class="mb-0">Total Products</small>
+              <small class="mb-0">All Products</small>
             </div>
             <div class="avatar">
               <div class="avatar-initial bg-label-primary rounded-3">
@@ -135,18 +135,14 @@
         <tr>
           <th></th>
           <th>Id</th>
-          <th>Product</th>
-          <th>Email</th>
-          <th>Phone Number</th>
-          <th>ID Number</th>
-          <th>Role</th>
-          <th>Country</th>
-          <th>Active</th>
+          <th>Title</th>
+          <th>Description</th>
           <th>Actions</th>
         </tr>
         </thead>
       </table>
     </div>
+
     <!-- Offcanvas to add new product -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddProduct" aria-labelledby="offcanvasAddProductLabel">
       <div class="offcanvas-header border-bottom">
@@ -157,56 +153,20 @@
         <form class="add-new-product pt-0" id="addNewProductForm">
           <input type="hidden" name="id" id="product_id">
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-product-first-name" placeholder="First Name" name="first_name"
-                   aria-label="First Name" />
-            <label for="add-product-first-name">Product First Name</label>
+            <input type="text" class="form-control" id="add-product-name" placeholder="Product Title" name="name" aria-label="Product Name" required />
+            <label for="add-product-name">Product Name</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-product-middle-name" placeholder="Middle Name" name="middle_name"
-                   aria-label="Middle Name" />
-            <label for="add-product-middle-name">Product Middle Name</label>
+            <input type="text" id="add-product-description" name="description" class="form-control" placeholder="Product Description" aria-label="Product Description" required />
+            <label for="add-product-description">Product Description</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input type="text" class="form-control" id="add-product-last-name" placeholder="Last Name" name="last_name"
-                   aria-label="Last Name" />
-            <label for="add-product-last-ame">Product Last Name</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-product-email" class="form-control" placeholder="john.doe@example.com"
-                   aria-label="john.doe@example.com" name="email" />
-            <label for="add-product-email">Product Email Address</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-product-phone-number" class="form-control phone-mask" placeholder="+254700000000"
-                   aria-label="+254700000000" name="phone_number" />
-            <label for="add-product-phone-number">Product Phone Number</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <input type="text" id="add-product-id-number" name="id_number" class="form-control" placeholder="0000000"
-                   aria-label="000000" />
-            <label for="add-product-id-number">Product ID Number</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <select id="product-role" class="form-select"  name="role" >
-              <option value="">Select role</option>
-              <option value="Mapping">Mapping</option>
-              <option value="Sales">Sales</option>
-              <option value="Survey">Survey</option>
-            </select>
-            <label for="product-role">Select Product Role</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-5">
-            <select id="product-country" class="form-select"  name="country" >
-              <option value="">Select country</option>
-              <option value="Kenya">Kenya</option>
-              <option value="Uganda">Uganda</option>
-            </select>
-            <label for="product-plan">Select Product Country</label>
+            <input class="form-control" type="file" id="formFile" name="icon">
+            <label for="formFile">Product icon</label>
           </div>
           <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
           <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>
         </form>
       </div>
     </div>
-  </div>
 @endsection

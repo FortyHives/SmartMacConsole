@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::resource('/localities-list', Localities::class);
 
   Route::get('/apps/products', [Products::class, 'ProductManagement'])->name('products');
-  Route::patch('products-list/{id}/status', [Products::class, 'status']);
+  Route::patch('products-list/{id}/activation', [Products::class, 'activation']);
   Route::get('/apps/products/product/{id}', [Products::class, 'product'])->name('apps-products-product');
   Route::resource('/products-list', Products::class);
 

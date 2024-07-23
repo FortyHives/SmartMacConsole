@@ -1,5 +1,5 @@
 /**
- * Page Product List
+ * Page User List
  */
 
 'use strict';
@@ -9,7 +9,7 @@ $(function () {
   // Variable declaration for table
   var dt_product_table = $('.datatables-products'),
     select2 = $('.select2'),
-    productView = baseUrl + 'apps/products/product',
+    productView = baseUrl + 'apps/products/view/product',
     offCanvasForm = $('#offcanvasAddProduct');
 
   if (select2.length) {
@@ -41,12 +41,7 @@ $(function () {
         { data: '' },
         { data: 'id' },
         { data: 'name' },
-        { data: 'email' },
-        { data: 'phone_number' },
-        { data: 'id_number' },
-        { data: 'role' },
-        { data: 'country' },
-        { data: 'active' },
+        { data: 'description' },
         { data: 'action' }
       ],
       columnDefs: [
@@ -70,7 +65,7 @@ $(function () {
           }
         },
         {
-          // Product full name
+          // Product name
           targets: 2,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
@@ -81,7 +76,7 @@ $(function () {
             var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
             var $state = states[stateNum],
               $name = full['name'],
-              $initials = $name[0].match(/\b\w/g) || [],
+              $initials = $name.match(/\b\w/g) || [],
               $output;
             $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
             $output = '<span class="avatar-initial rounded-circle bg-label-' + $state + '">' + $initials + '</span>';
@@ -95,62 +90,22 @@ $(function () {
               '</div>' +
               '</div>' +
               '<div class="d-flex flex-column">' +
-              '<a href="' + productView + '/' + full.id + '" class="text-truncate text-heading"><span class="fw-medium">' + $name + '</span></a>' +
+              '<a href="' +
+              productView +
+              '" class="text-truncate text-heading"><span class="fw-medium">' +
+              $name +
+              '</span></a>' +
               '</div>' +
               '</div>';
             return $row_output;
           }
         },
         {
-          // Product email
+          // Product description
           targets: 3,
           render: function (data, type, full, meta) {
-            var $email = full['email'];
-            return '<span class="product-email">' + $email + '</span>';
-          }
-        },
-        {
-          // Product email
-          targets: 4,
-          render: function (data, type, full, meta) {
-            var $phone_number = full['phone_number'];
-            return '<span class="product-phone-number">' + $phone_number + '</span>';
-          }
-        },
-        {
-          // Product email
-          targets: 5,
-          render: function (data, type, full, meta) {
-            var $id_number = full['id_number'];
-            return '<span class="product-id-number">' + $id_number + '</span>';
-          }
-        },
-        {
-          // Product email
-          targets: 6,
-          render: function (data, type, full, meta) {
-            var $role = full['role'];
-            return '<span class="product-role">' + $role + '</span>';
-          }
-        },
-        {
-          // Product email
-          targets: 7,
-          render: function (data, type, full, meta) {
-            var $country = full['country'];
-            return '<span class="product-country">' + $country + '</span>';
-          }
-        },
-        {
-          // email verify
-          targets: 8,
-          render: function (data, type, full, meta) {
-            var $active = full['active'];
-            return `${
-              $active === 2
-                ? '<i class="ri-shield-check-line ri-24px text-success"></i>'
-                : '<i class="ri-shield-line ri-24px text-danger" ></i>'
-            }`;
+            var $description = full['description'];
+            return '<span class="product-description">' + $description + '</span>';
           }
         },
         {
@@ -160,16 +115,10 @@ $(function () {
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
-            var statusText = full['active'] === 2 ? 'Disable' : 'Activate';
             return (
               '<div class="d-flex align-items-center gap-50">' +
               `<button class="btn btn-sm btn-icon edit-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddProduct"><i class="ri-edit-box-line ri-20px"></i></button>` +
               `<button class="btn btn-sm btn-icon delete-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}"><i class="ri-delete-bin-7-line ri-20px"></i></button>` +
-              '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill waves-effect dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ri-more-2-line ri-20px"></i></button>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="' + productView + '/' + full.id + '" class="dropdown-item">View</a>' +
-              `<a href="#" class="dropdown-item activate-record" data-id="${full['id']}" data-active="${full['active']}">${statusText}</a>` +
-              '</div>' +
               '</div>'
             );
           }
@@ -360,20 +309,20 @@ $(function () {
           type: 'column',
           renderer: function (api, rowIdx, columns) {
             var data = $.map(columns, function (col, i) {
-              return col.title !== '' // ? Do not show row in modal popup if title is blank (for check box)
+              return col.name !== '' // ? Do not show row in modal popup if name is blank (for check box)
                 ? '<tr data-dt-row="' +
-                    col.rowIndex +
-                    '" data-dt-column="' +
-                    col.columnIndex +
-                    '">' +
-                    '<td>' +
-                    col.title +
-                    ':' +
-                    '</td> ' +
-                    '<td>' +
-                    col.data +
-                    '</td>' +
-                    '</tr>'
+                col.rowIndex +
+                '" data-dt-column="' +
+                col.columnIndex +
+                '">' +
+                '<td>' +
+                col.name +
+                ':' +
+                '</td> ' +
+                '<td>' +
+                col.data +
+                '</td>' +
+                '</tr>'
                 : '';
             }).join('');
 
@@ -447,96 +396,55 @@ $(function () {
     var product_id = $(this).data('id'),
       dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
+    // Hide responsive modal in small screen
     if (dtrModal.length) {
       dtrModal.modal('hide');
     }
 
-    // changing the title of offcanvas
-    $('#offcanvasAddRegionLabel').html('Edit Region');
+    // Changing the title of offcanvas
+    $('#offcanvasAddProductLabel').html('Edit Product');
 
-    // get data
-    $.get(`${baseUrl}products-list\/${product_id}\/edit`, function (data) {
+    // Get data
+    $.get(`${baseUrl}products-list/${product_id}/edit`, function (data) {
       $('#product_id').val(data.id);
-      $('#add-product-first-name').val(data.name[0]);
-      $('#add-product-middle-name').val(data.name[1]);
-      $('#add-product-last-name').val(data.name[2]);
-      $('#add-product-email').val(data.email);
-      $('#add-product-phone-number').val(data.phone_number);
-      $('#add-product-id-number').val(data.id_number);
-      $('#product-role').val(data.role);
-      $('#product-country').val(data.country);
+      $('#add-product-name').val(data.name);
+      $('#add-product-description').val(data.description);
     });
   });
 
-  // changing the title
+// Changing the title
   $('.add-new').on('click', function () {
-    $('#product_id').val(''); //reseting input field
+    $('#product_id').val(''); // Resetting input field
     $('#offcanvasAddProductLabel').html('Add Product');
   });
 
-  // validating form and updating product's data
+// Validating form and updating product's data
   const addNewProductForm = document.getElementById('addNewProductForm');
 
-  // product form validation
+// Product form validation
   const fv = FormValidation.formValidation(addNewProductForm, {
     fields: {
-      first_name: {
+      name: {
         validators: {
           notEmpty: {
-            message: 'Please enter product first name'
+            message: 'Please enter product name'
           }
         }
       },
-      middle_name: {
+      description: {
         validators: {
           notEmpty: {
-            message: 'Please enter product middle name'
+            message: 'Please enter product description'
           }
         }
       },
-      last_name: {
+      icon: {
         validators: {
-          notEmpty: {
-            message: 'Please enter product last name'
-          }
-        }
-      },
-      email: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter your email'
-          },
-          emailAddress: {
-            message: 'The value is not a valid email address'
-          }
-        }
-      },
-      phone_number: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter product phone number'
-          }
-        }
-      },
-      id_number: {
-        validators: {
-          notEmpty: {
-            message: 'Please enter product ID number'
-          }
-        }
-      },
-      role: {
-        validators: {
-          notEmpty: {
-            message: 'Select product role'
-          }
-        }
-      },
-      country: {
-        validators: {
-          notEmpty: {
-            message: 'Select product country'
+          file: {
+            extension: 'jpeg,jpg,png,gif',
+            type: 'image/jpeg,image/png,image/gif',
+            maxSize: 2048 * 1024, // 2048 KB
+            message: 'Please choose a valid image file (jpeg, jpg, png, gif) with size less than 2 MB.'
           }
         }
       }
@@ -547,21 +455,24 @@ $(function () {
         // Use this for enabling/changing valid/invalid class
         eleValidClass: '',
         rowSelector: function (field, ele) {
-          // field is the field name & ele is the field element
+          // Field is the field title & ele is the field element
           return '.mb-5';
         }
       }),
       submitButton: new FormValidation.plugins.SubmitButton(),
-      // Submit the form when all fields are valid
-      // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
       autoFocus: new FormValidation.plugins.AutoFocus()
     }
   }).on('core.form.valid', function () {
-    // adding or updating product when form successfully validate
+    // Create a FormData object
+    var formData = new FormData(addNewProductForm);
+
+    // Adding or updating product when form successfully validates
     $.ajax({
-      data: $('#addNewProductForm').serialize(),
+      data: formData,
       url: `${baseUrl}products-list`,
       type: 'POST',
+      contentType: false,
+      processData: false,
       success: function (status) {
         dt_product.draw();
         offCanvasForm.offcanvas('hide');
@@ -607,63 +518,4 @@ $(function () {
       });
     });
   }
-
-
-  // Suspend Record
-  $(document).on('click', '.activate-record', function (e) {
-    e.preventDefault();
-    var product_id = $(this).data('id');
-    var current_status = $(this).data('active');
-    var new_status = current_status == 2 ? 1 : 2; // Toggle status
-    var actionText = new_status == 2 ? 'Activate' : 'Disable';
-
-    // Confirmation dialog
-    Swal.fire({
-      title: 'Are you sure?',
-      text: `You are about to ${actionText.toLowerCase()} this product!`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: `Yes, ${actionText.toLowerCase()} it!`,
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.value) {
-        // Update suspend status via AJAX
-        $.ajax({
-          type: 'PATCH',
-          url: `${baseUrl}products-list/${product_id}/status`,
-          data: { status: new_status },
-          success: function () {
-            dt_product.draw();
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
-
-        // Success message
-        Swal.fire({
-          icon: 'success',
-          title: 'Updated!',
-          text: `The product has been ${actionText.toLowerCase()}d.`,
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire({
-          title: 'Cancelled',
-          text: `The product's status remains unchanged.`,
-          icon: 'error',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      }
-    });
-  });
 });
-
