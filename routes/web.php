@@ -63,12 +63,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::resource('/active-outlets-list', ActiveOutlets::class);
 
   Route::get('/apps/outlets/new', [NewOutlets::class, 'NewOutletManagement'])->name('new-outlets');
-  Route::patch('new-outlets-list/{id}/status', [NewOutlets::class, 'status']);
+  Route::patch('new-outlets-list/{id}/activation', [NewOutlets::class, 'activation']);
+  Route::patch('new-outlets-list/{id}/verification', [NewOutlets::class, 'verification']);
   Route::get('/apps/outlets/new/outlet/{id}', [NewOutlets::class, 'outlet'])->name('apps-outlets-new-outlet');
   Route::resource('/new-outlets-list', NewOutlets::class);
 
   Route::get('/apps/outlets/disabled', [DisabledOutlets::class, 'DisabledOutletManagement'])->name('disabled-outlets');
-  Route::patch('disabled-outlets-list/{id}/status', [DisabledOutlets::class, 'status']);
+  Route::patch('disabled-outlets-list/{id}/activation', [DisabledOutlets::class, 'activation']);
+  Route::patch('disabled-outlets-list/{id}/verification', [DisabledOutlets::class, 'verification']);
   Route::get('/apps/outlets/disabled/outlet/{id}', [DisabledOutlets::class, 'outlet'])->name('apps-outlets-disabled-outlet');
   Route::resource('/disabled-outlets-list', DisabledOutlets::class);
 

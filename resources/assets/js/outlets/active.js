@@ -598,7 +598,7 @@ $(function () {
     e.preventDefault();
     var outlet_id = $(this).data('id');
     var current_status = $(this).data('active');
-    var new_status = current_status == 2 ? 1 : 2; // Toggle status
+    var new_status = current_status == 1 ? 1 : 2; // Toggle status
     var actionText = new_status == 2 ? 'Activate' : 'Disable';
 
     // Confirmation dialog
