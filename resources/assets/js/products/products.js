@@ -438,13 +438,23 @@ $(function () {
           }
         }
       },
-      icon: {
+      photos: {
         validators: {
           file: {
             extension: 'jpeg,jpg,png,gif',
             type: 'image/jpeg,image/png,image/gif',
             maxSize: 2048 * 1024, // 2048 KB
             message: 'Please choose a valid image file (jpeg, jpg, png, gif) with size less than 2 MB.'
+          },
+          custom: {
+            message: 'You can only upload up to 6 images.',
+            validator: function () {
+              const photos = form.querySelector('[name="photos"]');
+              if (photos.files.length > 6) {
+                return false;
+              }
+              return true;
+            }
           }
         }
       }
@@ -505,6 +515,20 @@ $(function () {
   // clearing form data when offcanvas hidden
   offCanvasForm.on('hidden.bs.offcanvas', function () {
     fv.resetForm(true);
+  });
+
+// Check file limit manually
+  $('#formFileMultiple').on('change', function () {
+    const maxFiles = 6;
+    const fileInput = $(this);
+    const files = fileInput[0].files;
+
+    if (files.length > maxFiles) {
+      $('#fileError').text('You can only upload up to 6 images.');
+      fileInput.val(''); // Clear the input
+    } else {
+      $('#fileError').text('');
+    }
   });
 
   const phoneMaskList = document.querySelectorAll('.phone-mask');

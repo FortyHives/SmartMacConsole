@@ -142,7 +142,7 @@ class Products extends Controller
     $request->validate([
       "name" => "required|string|max:255",
       "description" => "required|string|max:255",
-      "photos" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
+      //"photos" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
     ]);
     try {
       $productID = $request->id;
@@ -156,29 +156,41 @@ class Products extends Controller
         if ($product) {
           $product->name = $request->name;
           $product->description = $request->description;
+          $product->photo_urls = ["", "", "", "", "", ""];
 
-          // Handle file upload
+          // Check if the request has files
           if ($request->hasFile('photos')) {
-            $file = $request->file('photos');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = $productID . '.' . $extension;
-            $filePath = 'ProductPhotos/' . $fileName;
+            $files = $request->file('photos');
+            $photosUrls = [];
 
-            // Upload to Firebase Storage
-            $bucket = $this->storage->getBucket();
-            $bucket->upload(
-              file_get_contents($file->getPathname()),
-              [
-                'name' => $filePath,
-                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
-              ]
-            );
+            // Loop through each file and upload to Firebase Storage
+            foreach ($files as $index => $file) {
+              $extension = $file->getClientOriginalExtension();
+              $fileName = $productID . '_' . $index . '.' . $extension;
+              $filePath = 'ProductPhotos/' . $fileName;
 
-            // Generate public URL
-            $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+              // Upload to Firebase Storage
+              $bucket = $this->storage->getBucket();
+              $bucket->upload(
+                file_get_contents($file->getPathname()),
+                [
+                  'name' => $filePath,
+                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+                ]
+              );
 
-            // Update photos_url field
-            $product->photos_url = $photosUrl;
+              // Generate public URL
+              $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+              // Add URL to the array
+              $photosUrls[] = $photosUrl;
+            }
+
+            // Convert the URLs array to a JSON string
+            $photosUrlsJson = json_encode($photosUrls);
+
+            // Update photos_url field with the JSON string
+            $product->photo_urls = $photosUrls;
           }
 
           if ($product->save()) {
@@ -195,35 +207,46 @@ class Products extends Controller
           $product = new Product();
           $product->name = $request->name;
           $product->description = $request->description;
+          $product->photo_urls = ["", "", "", "", "", ""];
           $product->active = 2;
           $product->active_timestamp = now();
 
           if ($product->save()) {
             // Success
-            // Handle file upload
+            $productID = $product->id;
+            // Check if the request has files
             if ($request->hasFile('photos')) {
-              $productID = $product->id;
-              $file = $request->file('photos');
-              $extension = $file->getClientOriginalExtension();
-              $fileName = $productID . '.' . $extension;
-              $filePath = 'ProductPhotos/' . $fileName;
+              $files = $request->file('photos');
+              $photosUrls = [];
 
-              // Upload to Firebase Storage
-              $bucket = $this->storage->getBucket();
-              $bucket->upload(
-                file_get_contents($file->getPathname()),
-                [
-                  'name' => $filePath,
-                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
-                ]
-              );
+              // Loop through each file and upload to Firebase Storage
+              foreach ($files as $index => $file) {
+                $extension = $file->getClientOriginalExtension();
+                $fileName = $productID . '_' . $index . '.' . $extension;
+                $filePath = 'ProductPhotos/' . $fileName;
 
-              // Generate public URL
-              $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+                // Upload to Firebase Storage
+                $bucket = $this->storage->getBucket();
+                $bucket->upload(
+                  file_get_contents($file->getPathname()),
+                  [
+                    'name' => $filePath,
+                    'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+                  ]
+                );
 
-              // Update photos_url field
-              $product->photos_url = $photosUrl;
-              $product->save();
+                // Generate public URL
+                $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+                // Add URL to the array
+                $photosUrls[] = $photosUrl;
+              }
+
+              // Convert the URLs array to a JSON string
+              $photosUrlsJson = json_encode($photosUrls);
+
+              // Update photos_url field with the JSON string
+              $product->photo_urls = $photosUrls;
             }
             return response()->json('Created');
           } else {
@@ -239,35 +262,46 @@ class Products extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->description = $request->description;
+        $product->photo_urls = ["", "", "", "", "", ""];
         $product->active = 2;
         $product->active_timestamp = now();
 
         if ($product->save()) {
           // Success
-          // Handle file upload
+          $productID = $product->id;
+          // Check if the request has files
           if ($request->hasFile('photos')) {
-            $productID = $product->id;
-            $file = $request->file('photos');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = $productID . '.' . $extension;
-            $filePath = 'ProductPhotos/' . $fileName;
+            $files = $request->file('photos');
+            $photosUrls = [];
 
-            // Upload to Firebase Storage
-            $bucket = $this->storage->getBucket();
-            $bucket->upload(
-              file_get_contents($file->getPathname()),
-              [
-                'name' => $filePath,
-                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
-              ]
-            );
+            // Loop through each file and upload to Firebase Storage
+            foreach ($files as $index => $file) {
+              $extension = $file->getClientOriginalExtension();
+              $fileName = $productID . '_' . $index . '.' . $extension;
+              $filePath = 'ProductPhotos/' . $fileName;
 
-            // Generate public URL
-            $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+              // Upload to Firebase Storage
+              $bucket = $this->storage->getBucket();
+              $bucket->upload(
+                file_get_contents($file->getPathname()),
+                [
+                  'name' => $filePath,
+                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+                ]
+              );
 
-            // Update photos_url field
-            $product->photos_url = $photosUrl;
-            $product->save();
+              // Generate public URL
+              $photosUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+
+              // Add URL to the array
+              $photosUrls[] = $photosUrl;
+            }
+
+            // Convert the URLs array to a JSON string
+            $photosUrlsJson = json_encode($photosUrls);
+
+            // Update photos_url field with the JSON string
+            $product->photo_urls = $photosUrls;
           }
           return response()->json('Created');
         } else {

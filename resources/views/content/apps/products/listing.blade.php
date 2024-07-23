@@ -161,8 +161,12 @@
             <label for="add-product-description">Product Description</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
-            <input class="form-control" type="file" id="formFile" name="icon">
-            <label for="formFile">Product icon</label>
+            {{--<input class="form-control" type="file" id="formFile" name="icon">
+            <label for="formFile">Product icon</label>--}}
+
+            <input class="form-control" type="file" id="formFileMultiple" name="photos[]" multiple>
+            <label for="formFileMultiple">Product photos</label>
+            <div id="fileError" class="error"></div>
           </div>
           <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
           <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>
@@ -170,3 +174,4 @@
       </div>
     </div>
 @endsection
+
