@@ -16,18 +16,38 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/storage-link', function () {
-  Artisan::call('storage:link');
-  return "Storage linked";
+  try {
+    Artisan::call('storage:link');
+    return "Storage linked";
+  } catch (\Exception $e) {
+    return 'Error executing storage linking: ' . $e->getMessage();
+  }
 });
 
 Route::get('/clear-cache', function () {
-  Artisan::call('config:cache');
-  Artisan::call('cache:clear');
-  Artisan::call('config:clear');
-  Artisan::call('view:clear');
-  Artisan::call('route:clear');
-  return "Cache is cleared";
-})->name('clear.cache');
+  try {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    return "Cache is cleared";
+  } catch (\Exception $e) {
+    return 'Error executing cache clearing : ' . $e->getMessage();
+  }
+
+});
+
+Route::get('/migrate', function () {
+  try {
+    Artisan::call('migrate', [
+      '--force' => false, // Add this if you want to force the migration
+    ]);
+    return 'Migrations successfully executed.';
+  } catch (\Exception $e) {
+    return 'Error executing migrations: ' . $e->getMessage();
+  }
+});
 
 // locale
 Route::get('/lang/{locale}', [LanguageController::class, 'swap']);
