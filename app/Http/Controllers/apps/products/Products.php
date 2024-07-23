@@ -248,7 +248,14 @@ class Products extends Controller
               // Update photos_url field with the JSON string
               $product->photo_urls = $photosUrls;
             }
-            return response()->json('Created');
+            if ($product->save()) {
+              // Success
+              return response()->json('Created');
+            } else {
+              // Handle error
+              $errors = $product->getErrors();
+              return response()->json(['message' => $errors], 422);
+            }
           } else {
             // Handle error
             $errors = $product->getErrors();
@@ -303,7 +310,14 @@ class Products extends Controller
             // Update photos_url field with the JSON string
             $product->photo_urls = $photosUrls;
           }
-          return response()->json('Created');
+          if ($product->save()) {
+            // Success
+            return response()->json('Created');
+          } else {
+            // Handle error
+            $errors = $product->getErrors();
+            return response()->json(['message' => $errors], 422);
+          }
         } else {
           // Handle error
           $errors = $product->getErrors();
