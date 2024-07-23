@@ -201,26 +201,35 @@ class ActiveOutlets extends Controller
 
           // Handle file upload
           if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = $outletID . '_0.' . $extension;
-            $filePath = 'OutletPhotos/' . $fileName;
+            Log::channel('api')->info('Updating photo');
+            try {
+              $file = $request->file('photo');
+              $extension = $file->getClientOriginalExtension();
+              $fileName = $outletID . '_0.' . $extension;
+              $filePath = 'OutletPhotos/' . $fileName;
 
-            // Upload to Firebase Storage
-            $bucket = $this->storage->getBucket();
-            $bucket->upload(
-              file_get_contents($file->getPathname()),
-              [
-                'name' => $filePath,
-                'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
-              ]
-            );
+              // Upload to Firebase Storage
+              $bucket = $this->storage->getBucket();
+              $bucket->upload(
+                file_get_contents($file->getPathname()),
+                [
+                  'name' => $filePath,
+                  'predefinedAcl' => 'publicRead'  // Make the file publicly accessible
+                ]
+              );
 
-            // Generate public URL
-            $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
+              // Generate public URL
+              $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
 
-            // Update photo_url field
-            $outlet->photo_urls = [$photoUrl,""];
+              // Update photo_url field
+              $outlet->photo_urls = [$photoUrl,""];
+
+              Log::channel('api')->info([$photoUrl,""]);
+
+            } catch (\Exception $e) {
+              Log::channel('api')->error($e);
+            }
+
           }
 
 
