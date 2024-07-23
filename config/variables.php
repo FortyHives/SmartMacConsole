@@ -1,13 +1,13 @@
 <?php
 // Variables
 return [
-  "creatorName" => "SmartMac",
+  "creatorName" => "Smartmac",
   "creatorUrl" => "https://smartmac-console.smartmapping.africa/",
-  "templateName" => "SmartMac",
-  "templateSuffix" => "SmartMac - Digital Marketing Analysis",
+  "templateName" => "Smartmac",
+  "templateSuffix" => "Smartmac - Digital Marketing Analysis",
   "templateVersion" => "1.0.0",
   "templateFree" => false,
-  "templateDescription" => "SmartMac – Digital Marketing Analysis.",
+  "templateDescription" => "Smartmac – Digital Marketing Analysis.",
   "templateKeyword" => "analytics, sales",
   "licenseUrl" => "https://smartmac-console.smartmapping.africa//licenses/standard",
   "livePreview" => "",
