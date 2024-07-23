@@ -995,7 +995,7 @@
             },
             "time": "2024-05-18T18:05:11+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Firebase\\JWT\\": "src"
@@ -5461,7 +5461,7 @@
             },
             "time": "2022-06-13T21:57:56+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PragmaRX\\Google2FA\\": "src/"

@@ -14,12 +14,12 @@ use Kreait\Firebase\Contract\Storage;
 
 class DisabledOutlets extends Controller
 {
-  /*protected $storage;
+  protected $storage;
 
   public function __construct(Storage $storage)
   {
     $this->storage = $storage;
-  }*/
+  }
   /**
    * Redirect to outlets view.
    *
@@ -206,7 +206,7 @@ class DisabledOutlets extends Controller
           $outlet->timestamp = now();
 
           // Handle file upload
-          /*if ($request->hasFile('photo')) {
+          if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
             $fileName = $outletID . '_0.' . $extension;
@@ -227,7 +227,7 @@ class DisabledOutlets extends Controller
 
             // Update photo_url field
             $outlet->photo_urls = [$photoUrl,""];
-          }*/
+          }
 
 
           if ($outlet->save()) {
@@ -259,7 +259,7 @@ class DisabledOutlets extends Controller
           if ($outlet->save()) {
             // Success
             // Handle file upload
-            /*if ($request->hasFile('photo')) {
+            if ($request->hasFile('photo')) {
               $file = $request->file('photo');
               $extension = $file->getClientOriginalExtension();
               $fileName = $outletID . '_0.' . $extension;
@@ -280,7 +280,7 @@ class DisabledOutlets extends Controller
 
               // Update photo_url field
               $outlet->photo_urls = [$photoUrl,""];
-            }*/
+            }
             return response()->json('Created');
           } else {
             // Handle error
@@ -310,7 +310,7 @@ class DisabledOutlets extends Controller
         if ($outlet->save()) {
           // Success
           // Handle file upload
-          /*if ($request->hasFile('photo')) {
+          if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
             $fileName = $outletID . '_0.' . $extension;
@@ -331,7 +331,7 @@ class DisabledOutlets extends Controller
 
             // Update photo_url field
             $outlet->photo_urls = [$photoUrl,""];
-          }*/
+          }
           return response()->json('Created');
         } else {
           // Handle error
