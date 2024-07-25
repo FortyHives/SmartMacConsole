@@ -10,6 +10,7 @@ use App\Models\Outlet;
 use App\Models\Planoscan;
 use App\Models\Region;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
