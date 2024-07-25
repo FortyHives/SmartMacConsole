@@ -23,8 +23,12 @@ class ApiController extends Controller
             $request->validate([
                 "email" => "required"
             ]);
+
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $email = $decoded->sub;
                 if ($email === $request->email)
@@ -102,8 +106,12 @@ class ApiController extends Controller
       $request->validate([
         "email" => "required"
       ]);
+
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $email = $decoded->sub;
         if ($email === $request->email)
@@ -179,8 +187,11 @@ class ApiController extends Controller
               "email" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -265,8 +276,11 @@ class ApiController extends Controller
                 "pin" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -354,8 +368,11 @@ class ApiController extends Controller
                 "current_locality_id" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -446,8 +463,11 @@ class ApiController extends Controller
                 "selected_locality_id" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+              $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -537,8 +557,11 @@ class ApiController extends Controller
                 "photo_url" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -625,8 +648,11 @@ class ApiController extends Controller
                 "id" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -763,8 +789,11 @@ class ApiController extends Controller
                 "id" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -827,8 +856,11 @@ class ApiController extends Controller
                 "id" => "required",
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -901,8 +933,11 @@ class ApiController extends Controller
                 "id" => "required",
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -976,8 +1011,11 @@ class ApiController extends Controller
           "id" => "required"
         ]);
 
+        // Extract the token from the Authorization header
+        $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
         try {
-          $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+          $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
           //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
           $id = $decoded->sub;
           if ($id === $request->id)
@@ -1048,8 +1086,11 @@ class ApiController extends Controller
             "population" => "required",
           ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
           try {
-            $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+            $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
             //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
             $id = $decoded->sub;
             if ($id === $request->id)
@@ -1159,8 +1200,11 @@ class ApiController extends Controller
                 "name" => "required"
             ]);
 
+          // Extract the token from the Authorization header
+          $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
             try {
-                $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+                $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
                 //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
                 $id = $decoded->sub;
                 if ($id === $request->id)
@@ -1250,8 +1294,11 @@ class ApiController extends Controller
         "region_id" => "required",
       ]);
 
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $id = $decoded->sub;
         if ($id === $request->id)
@@ -1329,8 +1376,11 @@ class ApiController extends Controller
         "outlet_id" => "required",
       ]);
 
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $id = $decoded->sub;
         if ($id === $request->id)
@@ -1405,9 +1455,11 @@ class ApiController extends Controller
         "id" => "required",
         "category_id" => "required",
       ]);
+// Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
 
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $id = $decoded->sub;
         if ($id === $request->id)
@@ -1492,8 +1544,11 @@ class ApiController extends Controller
         //"remarks" => "required",
       ]);
 
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $id = $decoded->sub;
         if ($id === $request->id)
@@ -1620,8 +1675,11 @@ class ApiController extends Controller
         //"remarks" => "required",
       ]);
 
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $id = $decoded->sub;
         if ($id === $request->id)
@@ -1728,8 +1786,11 @@ class ApiController extends Controller
         "selected_category_id" => "required"
       ]);
 
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
       try {
-        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
         //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
         $id = $decoded->sub;
         if ($id === $request->id)
