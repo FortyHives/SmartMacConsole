@@ -30,7 +30,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::PEde2chIRQ387Hen',
+            '_route' => 'generated::zgq568pCTiN9dqD6',
           ),
           1 => NULL,
           2 => 
@@ -140,7 +140,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QkrO8YgI20kpOEX3',
+            '_route' => 'generated::y5AQpxTwU05ewMzm',
           ),
           1 => NULL,
           2 => 
@@ -197,7 +197,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::s4lVVLSWQ84IcQEj',
+            '_route' => 'generated::suw56QUXB5g28C1X',
           ),
           1 => NULL,
           2 => 
@@ -270,7 +270,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QRsSPsve6hU55X4w',
+            '_route' => 'generated::DWXCZNC0C6x6loKg',
           ),
           1 => NULL,
           2 => 
@@ -400,7 +400,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::KFXZoD1HUi8cizEp',
+            '_route' => 'generated::tF7r7ELLtcniQcqC',
           ),
           1 => NULL,
           2 => 
@@ -478,7 +478,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::vQN5JiUQIk1fj8u0',
+            '_route' => 'generated::HPXKNLMdKSSEQVrw',
           ),
           1 => NULL,
           2 => 
@@ -498,7 +498,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CJqZnJwntivpb7n9',
+            '_route' => 'generated::9rNAhFD5xFDdd6QG',
           ),
           1 => NULL,
           2 => 
@@ -595,7 +595,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::W4j9Mx8jmJnCSeCm',
+            '_route' => 'generated::yRkmVnLRR1E5Y7iy',
           ),
           1 => NULL,
           2 => 
@@ -615,7 +615,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0UEi79N2vW2dDuiW',
+            '_route' => 'generated::Brcid3Ckn4Mfuw9k',
           ),
           1 => NULL,
           2 => 
@@ -634,7 +634,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pOM4YYDrQxAjy6QJ',
+            '_route' => 'generated::aolJ64QOzzYV0NIQ',
           ),
           1 => NULL,
           2 => 
@@ -653,7 +653,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::PBxAKoUpzZAko6QR',
+            '_route' => 'generated::9SgGbjnxmf0DX3uK',
           ),
           1 => NULL,
           2 => 
@@ -672,7 +672,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::jR7MDs1HfDFRF6an',
+            '_route' => 'generated::9WaW9ycDXLdl8SiL',
           ),
           1 => NULL,
           2 => 
@@ -691,7 +691,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::E5dSBQhkhiE7Z0tT',
+            '_route' => 'generated::OAmxLUlvtcLEgvgt',
           ),
           1 => NULL,
           2 => 
@@ -710,7 +710,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CjfNTJJAEHa98SdF',
+            '_route' => 'generated::zY4vgrxNlRdKCqth',
           ),
           1 => NULL,
           2 => 
@@ -729,7 +729,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::iQpQaonbGVp1rTeS',
+            '_route' => 'generated::uJX2SSHy71C3dxuD',
           ),
           1 => NULL,
           2 => 
@@ -748,7 +748,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::FFTSX52zeRub53Bk',
+            '_route' => 'generated::ewzMth4Vq3hp0Wfz',
           ),
           1 => NULL,
           2 => 
@@ -767,7 +767,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CqaJDyAXtJJ5AakA',
+            '_route' => 'generated::kUKgrlyB5cEFojsL',
           ),
           1 => NULL,
           2 => 
@@ -786,7 +786,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QMGF0Zzj4wRUpNCL',
+            '_route' => 'generated::mKWxfci3fN2ilFUH',
           ),
           1 => NULL,
           2 => 
@@ -805,7 +805,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::7eQSKKny5UC2eU35',
+            '_route' => 'generated::rrFJQzDk8FpgPkrg',
           ),
           1 => NULL,
           2 => 
@@ -824,7 +824,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NxmTbbeBFAfk48oO',
+            '_route' => 'generated::aalgbUfwi4GRTANk',
           ),
           1 => NULL,
           2 => 
@@ -843,7 +843,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::fFVWcdizdxNxYcAB',
+            '_route' => 'generated::BsyW51UFlafFiqSJ',
           ),
           1 => NULL,
           2 => 
@@ -862,7 +862,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Fq7ALC6X03xHiLWD',
+            '_route' => 'generated::a16Wc3Gf9y73aDnS',
           ),
           1 => NULL,
           2 => 
@@ -881,7 +881,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3Dit5RADkrSmktId',
+            '_route' => 'generated::9HBtLD4h4PThEtbm',
           ),
           1 => NULL,
           2 => 
@@ -900,7 +900,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::E86wREV123nP8y1K',
+            '_route' => 'generated::9ws06X1FMh57eSjW',
           ),
           1 => NULL,
           2 => 
@@ -919,7 +919,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Ecpzh5oSkMuInGkH',
+            '_route' => 'generated::iFmFUtmSjjzXQdoN',
           ),
           1 => NULL,
           2 => 
@@ -938,7 +938,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pUqFy9X50Owxgp3D',
+            '_route' => 'generated::XVR893ryP2d1AvUu',
           ),
           1 => NULL,
           2 => 
@@ -958,7 +958,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::i2kyGONCyNcDF7QQ',
+            '_route' => 'generated::FgrqznrBkQf6VURt',
           ),
           1 => NULL,
           2 => 
@@ -978,7 +978,27 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'clear.cache',
+            '_route' => 'generated::jZWtrqDaHdXyNksZ',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/migrate' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::pNV5ROtv5cmXagoR',
           ),
           1 => NULL,
           2 => 
@@ -1680,10 +1700,162 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/apps/planograms/active' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/active-planograms-list' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/active-planograms-list/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/apps/planograms/disabled' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/disabled-planograms-list' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/disabled-planograms-list/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
-      0 => '{^(?|/re(?|set\\-password/([^/]++)(*:35)|gions\\-list/([^/]++)(?|(*:65)|/edit(*:77)|(*:84)))|/l(?|ivewire/preview\\-file/([^/]++)(*:128)|ang/([^/]++)(*:148)|ocalities\\-list/([^/]++)(?|(*:183)|/edit(*:196)|(*:204)))|/a(?|gents\\-list/([^/]++)(?|/(?|activation(*:256)|edit(*:268))|(*:277))|pps/(?|agents/agent/([^/]++)(*:314)|products/product/([^/]++)(*:347)|outlets/(?|active/outlet/([^/]++)(*:388)|new/outlet/([^/]++)(*:415)|disabled/outlet/([^/]++)(*:447)|categories/category/([^/]++)(*:483)))|ctive\\-outlets\\-list/([^/]++)(?|/(?|activation(*:539)|verification(*:559)|edit(*:571))|(*:580)))|/products\\-list/([^/]++)(?|/(?|status(*:627)|edit(*:639))|(*:648))|/new\\-outlets\\-list/([^/]++)(?|/(?|activation(*:702)|verification(*:722)|edit(*:734))|(*:743))|/disabled\\-outlets\\-list/([^/]++)(?|/(?|activation(*:802)|verification(*:822)|edit(*:834))|(*:843))|/outlets\\-categories\\-list/([^/]++)(?|/(?|status(*:900)|edit(*:912))|(*:921)))/?$}sDu',
+      0 => '{^(?|/re(?|set\\-password/([^/]++)(*:35)|gions\\-list/([^/]++)(?|(*:65)|/edit(*:77)|(*:84)))|/l(?|ivewire/preview\\-file/([^/]++)(*:128)|ang/([^/]++)(*:148)|ocalities\\-list/([^/]++)(?|(*:183)|/edit(*:196)|(*:204)))|/a(?|gents\\-list/([^/]++)(?|/(?|activation(*:256)|edit(*:268))|(*:277))|pps/(?|agents/agent/([^/]++)(*:314)|p(?|roducts/product/([^/]++)(*:350)|lanograms/(?|active/planogram/([^/]++)(*:396)|disabled/planogram/([^/]++)(*:431)))|outlets/(?|active/outlet/([^/]++)(*:474)|new/outlet/([^/]++)(*:501)|disabled/outlet/([^/]++)(*:533)|categories/category/([^/]++)(*:569)))|ctive\\-(?|outlets\\-list/([^/]++)(?|/(?|activation(*:628)|verification(*:648)|edit(*:660))|(*:669))|planograms\\-list/([^/]++)(?|/(?|activation(*:720)|verification(*:740)|edit(*:752))|(*:761))))|/products\\-list/([^/]++)(?|/(?|activation(*:813)|edit(*:825))|(*:834))|/new\\-outlets\\-list/([^/]++)(?|/(?|activation(*:888)|verification(*:908)|edit(*:920))|(*:929))|/disabled\\-(?|outlets\\-list/([^/]++)(?|/(?|activation(*:991)|verification(*:1011)|edit(*:1024))|(*:1034))|planograms\\-list/([^/]++)(?|/(?|activation(*:1086)|verification(*:1107)|edit(*:1120))|(*:1130)))|/outlets\\-categories\\-list/([^/]++)(?|/(?|status(*:1189)|edit(*:1202))|(*:1212)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1827,7 +1999,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::nzsqTcLNQO74VNPo',
+            '_route' => 'generated::L7j4uIsnG0iPn35v',
           ),
           1 => 
           array (
@@ -1938,7 +2110,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Cez79ibl48lksXEZ',
+            '_route' => 'generated::7kdMbFNm4RQCAnV3',
           ),
           1 => 
           array (
@@ -2062,7 +2234,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      347 => 
+      350 => 
       array (
         0 => 
         array (
@@ -2085,7 +2257,53 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      388 => 
+      396 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'apps-planograms-active-planogram',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      431 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'apps-planograms-disabled-planogram',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      474 => 
       array (
         0 => 
         array (
@@ -2108,7 +2326,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      415 => 
+      501 => 
       array (
         0 => 
         array (
@@ -2131,7 +2349,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      447 => 
+      533 => 
       array (
         0 => 
         array (
@@ -2154,7 +2372,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      483 => 
+      569 => 
       array (
         0 => 
         array (
@@ -2177,13 +2395,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      539 => 
+      628 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::seBJoX8D6CEZi7ef',
+            '_route' => 'generated::KDGVMvE5uN3OpcMb',
           ),
           1 => 
           array (
@@ -2199,13 +2417,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      559 => 
+      648 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::dDI28QjKJIKCC2jV',
+            '_route' => 'generated::KeBY6xqA5RB0V5AE',
           ),
           1 => 
           array (
@@ -2221,7 +2439,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      571 => 
+      660 => 
       array (
         0 => 
         array (
@@ -2244,7 +2462,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      580 => 
+      669 => 
       array (
         0 => 
         array (
@@ -2306,13 +2524,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      627 => 
+      720 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::GM8NUse3IAY1wHxq',
+            '_route' => 'generated::FDifusERXbimDepk',
           ),
           1 => 
           array (
@@ -2328,7 +2546,136 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      639 => 
+      740 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::jW0hBL6L50wUwk26',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PATCH' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      752 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.edit',
+          ),
+          1 => 
+          array (
+            0 => 'active_planograms_list',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      761 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.show',
+          ),
+          1 => 
+          array (
+            0 => 'active_planograms_list',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.update',
+          ),
+          1 => 
+          array (
+            0 => 'active_planograms_list',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'active-planograms-list.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'active_planograms_list',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      813 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::HqcUu2SYdAqbY5Pi',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PATCH' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      825 => 
       array (
         0 => 
         array (
@@ -2351,7 +2698,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      648 => 
+      834 => 
       array (
         0 => 
         array (
@@ -2413,13 +2760,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      702 => 
+      888 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::vqGX20KPzqCOEYaz',
+            '_route' => 'generated::VL86AiegJ1KQnKjw',
           ),
           1 => 
           array (
@@ -2435,13 +2782,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      722 => 
+      908 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::4MKDVKPEKQGLw8Fs',
+            '_route' => 'generated::5rMuYONvLiCT1Jo6',
           ),
           1 => 
           array (
@@ -2457,7 +2804,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      734 => 
+      920 => 
       array (
         0 => 
         array (
@@ -2480,7 +2827,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      743 => 
+      929 => 
       array (
         0 => 
         array (
@@ -2542,13 +2889,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      802 => 
+      991 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::VFVAQOOHYsNr7ag5',
+            '_route' => 'generated::F8ChwIUXB2VtAtlu',
           ),
           1 => 
           array (
@@ -2564,13 +2911,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      822 => 
+      1011 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::ds9CHY8G24VfiQOs',
+            '_route' => 'generated::XpywI6eQ9jSFWhLC',
           ),
           1 => 
           array (
@@ -2586,7 +2933,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      834 => 
+      1024 => 
       array (
         0 => 
         array (
@@ -2609,7 +2956,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      843 => 
+      1034 => 
       array (
         0 => 
         array (
@@ -2671,13 +3018,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      900 => 
+      1086 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::hpermnyYLT7dOBII',
+            '_route' => 'generated::B329qywtF85C4uRt',
           ),
           1 => 
           array (
@@ -2693,7 +3040,136 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      912 => 
+      1107 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::EWgDBB3qDE6QglDF',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PATCH' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      1120 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.edit',
+          ),
+          1 => 
+          array (
+            0 => 'disabled_planograms_list',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      1130 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.show',
+          ),
+          1 => 
+          array (
+            0 => 'disabled_planograms_list',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.update',
+          ),
+          1 => 
+          array (
+            0 => 'disabled_planograms_list',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'disabled-planograms-list.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'disabled_planograms_list',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      1189 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::VMmApjw0vqMnLR4a',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PATCH' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      1202 => 
       array (
         0 => 
         array (
@@ -2716,7 +3192,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      921 => 
+      1212 => 
       array (
         0 => 
         array (
@@ -2832,7 +3308,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::PEde2chIRQ387Hen' => 
+    'generated::zgq568pCTiN9dqD6' => 
     array (
       'methods' => 
       array (
@@ -2855,7 +3331,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::PEde2chIRQ387Hen',
+        'as' => 'generated::zgq568pCTiN9dqD6',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3102,7 +3578,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::QkrO8YgI20kpOEX3' => 
+    'generated::y5AQpxTwU05ewMzm' => 
     array (
       'methods' => 
       array (
@@ -3124,7 +3600,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::QkrO8YgI20kpOEX3',
+        'as' => 'generated::y5AQpxTwU05ewMzm',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3216,7 +3692,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::s4lVVLSWQ84IcQEj' => 
+    'generated::suw56QUXB5g28C1X' => 
     array (
       'methods' => 
       array (
@@ -3239,7 +3715,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::s4lVVLSWQ84IcQEj',
+        'as' => 'generated::suw56QUXB5g28C1X',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3371,7 +3847,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::QRsSPsve6hU55X4w' => 
+    'generated::DWXCZNC0C6x6loKg' => 
     array (
       'methods' => 
       array (
@@ -3394,7 +3870,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::QRsSPsve6hU55X4w',
+        'as' => 'generated::DWXCZNC0C6x6loKg',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3647,7 +4123,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::KFXZoD1HUi8cizEp' => 
+    'generated::tF7r7ELLtcniQcqC' => 
     array (
       'methods' => 
       array (
@@ -3670,7 +4146,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::KFXZoD1HUi8cizEp',
+        'as' => 'generated::tF7r7ELLtcniQcqC',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3794,7 +4270,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vQN5JiUQIk1fj8u0' => 
+    'generated::HPXKNLMdKSSEQVrw' => 
     array (
       'methods' => 
       array (
@@ -3806,7 +4282,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@returnJavaScriptAsFile',
         'controller' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@returnJavaScriptAsFile',
-        'as' => 'generated::vQN5JiUQIk1fj8u0',
+        'as' => 'generated::HPXKNLMdKSSEQVrw',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3822,7 +4298,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CJqZnJwntivpb7n9' => 
+    'generated::9rNAhFD5xFDdd6QG' => 
     array (
       'methods' => 
       array (
@@ -3834,7 +4310,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@maps',
         'controller' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@maps',
-        'as' => 'generated::CJqZnJwntivpb7n9',
+        'as' => 'generated::9rNAhFD5xFDdd6QG',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4014,7 +4490,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::W4j9Mx8jmJnCSeCm' => 
+    'generated::yRkmVnLRR1E5Y7iy' => 
     array (
       'methods' => 
       array (
@@ -4031,13 +4507,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:75:"function (\\Illuminate\\Http\\Request $request) {
   return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005400000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005460000000000000000";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::W4j9Mx8jmJnCSeCm',
+        'as' => 'generated::yRkmVnLRR1E5Y7iy',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4053,7 +4529,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0UEi79N2vW2dDuiW' => 
+    'generated::Brcid3Ckn4Mfuw9k' => 
     array (
       'methods' => 
       array (
@@ -4073,7 +4549,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0UEi79N2vW2dDuiW',
+        'as' => 'generated::Brcid3Ckn4Mfuw9k',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4089,7 +4565,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pOM4YYDrQxAjy6QJ' => 
+    'generated::aolJ64QOzzYV0NIQ' => 
     array (
       'methods' => 
       array (
@@ -4109,7 +4585,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::pOM4YYDrQxAjy6QJ',
+        'as' => 'generated::aolJ64QOzzYV0NIQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4125,7 +4601,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::PBxAKoUpzZAko6QR' => 
+    'generated::9SgGbjnxmf0DX3uK' => 
     array (
       'methods' => 
       array (
@@ -4145,7 +4621,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::PBxAKoUpzZAko6QR',
+        'as' => 'generated::9SgGbjnxmf0DX3uK',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4161,7 +4637,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::jR7MDs1HfDFRF6an' => 
+    'generated::9WaW9ycDXLdl8SiL' => 
     array (
       'methods' => 
       array (
@@ -4181,7 +4657,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::jR7MDs1HfDFRF6an',
+        'as' => 'generated::9WaW9ycDXLdl8SiL',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4197,7 +4673,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::E5dSBQhkhiE7Z0tT' => 
+    'generated::OAmxLUlvtcLEgvgt' => 
     array (
       'methods' => 
       array (
@@ -4217,7 +4693,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::E5dSBQhkhiE7Z0tT',
+        'as' => 'generated::OAmxLUlvtcLEgvgt',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4233,7 +4709,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CjfNTJJAEHa98SdF' => 
+    'generated::zY4vgrxNlRdKCqth' => 
     array (
       'methods' => 
       array (
@@ -4253,7 +4729,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CjfNTJJAEHa98SdF',
+        'as' => 'generated::zY4vgrxNlRdKCqth',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4269,7 +4745,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::iQpQaonbGVp1rTeS' => 
+    'generated::uJX2SSHy71C3dxuD' => 
     array (
       'methods' => 
       array (
@@ -4289,7 +4765,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::iQpQaonbGVp1rTeS',
+        'as' => 'generated::uJX2SSHy71C3dxuD',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4305,7 +4781,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::FFTSX52zeRub53Bk' => 
+    'generated::ewzMth4Vq3hp0Wfz' => 
     array (
       'methods' => 
       array (
@@ -4325,7 +4801,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::FFTSX52zeRub53Bk',
+        'as' => 'generated::ewzMth4Vq3hp0Wfz',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4341,7 +4817,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CqaJDyAXtJJ5AakA' => 
+    'generated::kUKgrlyB5cEFojsL' => 
     array (
       'methods' => 
       array (
@@ -4361,7 +4837,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CqaJDyAXtJJ5AakA',
+        'as' => 'generated::kUKgrlyB5cEFojsL',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4377,7 +4853,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::QMGF0Zzj4wRUpNCL' => 
+    'generated::mKWxfci3fN2ilFUH' => 
     array (
       'methods' => 
       array (
@@ -4397,7 +4873,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::QMGF0Zzj4wRUpNCL',
+        'as' => 'generated::mKWxfci3fN2ilFUH',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4413,7 +4889,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::7eQSKKny5UC2eU35' => 
+    'generated::rrFJQzDk8FpgPkrg' => 
     array (
       'methods' => 
       array (
@@ -4433,7 +4909,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::7eQSKKny5UC2eU35',
+        'as' => 'generated::rrFJQzDk8FpgPkrg',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4449,7 +4925,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::NxmTbbeBFAfk48oO' => 
+    'generated::aalgbUfwi4GRTANk' => 
     array (
       'methods' => 
       array (
@@ -4469,7 +4945,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::NxmTbbeBFAfk48oO',
+        'as' => 'generated::aalgbUfwi4GRTANk',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4485,7 +4961,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::fFVWcdizdxNxYcAB' => 
+    'generated::BsyW51UFlafFiqSJ' => 
     array (
       'methods' => 
       array (
@@ -4505,7 +4981,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::fFVWcdizdxNxYcAB',
+        'as' => 'generated::BsyW51UFlafFiqSJ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4521,7 +4997,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Fq7ALC6X03xHiLWD' => 
+    'generated::a16Wc3Gf9y73aDnS' => 
     array (
       'methods' => 
       array (
@@ -4541,7 +5017,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Fq7ALC6X03xHiLWD',
+        'as' => 'generated::a16Wc3Gf9y73aDnS',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4557,7 +5033,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3Dit5RADkrSmktId' => 
+    'generated::9HBtLD4h4PThEtbm' => 
     array (
       'methods' => 
       array (
@@ -4577,7 +5053,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::3Dit5RADkrSmktId',
+        'as' => 'generated::9HBtLD4h4PThEtbm',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4593,7 +5069,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::E86wREV123nP8y1K' => 
+    'generated::9ws06X1FMh57eSjW' => 
     array (
       'methods' => 
       array (
@@ -4613,7 +5089,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::E86wREV123nP8y1K',
+        'as' => 'generated::9ws06X1FMh57eSjW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4629,7 +5105,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Ecpzh5oSkMuInGkH' => 
+    'generated::iFmFUtmSjjzXQdoN' => 
     array (
       'methods' => 
       array (
@@ -4649,7 +5125,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Ecpzh5oSkMuInGkH',
+        'as' => 'generated::iFmFUtmSjjzXQdoN',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4665,7 +5141,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pUqFy9X50Owxgp3D' => 
+    'generated::XVR893ryP2d1AvUu' => 
     array (
       'methods' => 
       array (
@@ -4683,8 +5159,8 @@ app('router')->setCompiledRoutes(
                     \\Illuminate\\Support\\Facades\\Event::dispatch(new \\Illuminate\\Foundation\\Events\\DiagnosingHealth);
 
                     return \\Illuminate\\Support\\Facades\\View::file(\'D:\\\\Projects\\\\Clients\\\\SmartMac\\\\console\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Configuration\'.\'/../resources/health-up.blade.php\');
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000005520000000000000000";}}',
-        'as' => 'generated::pUqFy9X50Owxgp3D',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000005580000000000000000";}}',
+        'as' => 'generated::XVR893ryP2d1AvUu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4700,7 +5176,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::i2kyGONCyNcDF7QQ' => 
+    'generated::FgrqznrBkQf6VURt' => 
     array (
       'methods' => 
       array (
@@ -4714,16 +5190,20 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:103:"function () {
-  \\Illuminate\\Support\\Facades\\Artisan::call(\'storage:link\');
-  return "Storage linked";
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005550000000000000000";}}',
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:214:"function () {
+  try {
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'storage:link\');
+    return "Storage linked";
+  } catch (\\Exception $e) {
+    return \'Error executing storage linking: \' . $e->getMessage();
+  }
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055b0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::i2kyGONCyNcDF7QQ',
+        'as' => 'generated::FgrqznrBkQf6VURt',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4739,7 +5219,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'clear.cache' => 
+    'generated::jZWtrqDaHdXyNksZ' => 
     array (
       'methods' => 
       array (
@@ -4753,20 +5233,25 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:345:"function () {
-  \\Illuminate\\Support\\Facades\\Artisan::call(\'config:cache\');
-  \\Illuminate\\Support\\Facades\\Artisan::call(\'cache:clear\');
-  \\Illuminate\\Support\\Facades\\Artisan::call(\'config:clear\');
-  \\Illuminate\\Support\\Facades\\Artisan::call(\'view:clear\');
-  \\Illuminate\\Support\\Facades\\Artisan::call(\'route:clear\');
-  return "Cache is cleared";
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005570000000000000000";}}',
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:465:"function () {
+  try {
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'config:cache\');
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'cache:clear\');
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'config:clear\');
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'view:clear\');
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'route:clear\');
+    return "Cache is cleared";
+  } catch (\\Exception $e) {
+    return \'Error executing cache clearing : \' . $e->getMessage();
+  }
+
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055d0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'clear.cache',
+        'as' => 'generated::jZWtrqDaHdXyNksZ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4782,7 +5267,52 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::nzsqTcLNQO74VNPo' => 
+    'generated::pNV5ROtv5cmXagoR' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'migrate',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:305:"function () {
+  try {
+    \\Illuminate\\Support\\Facades\\Artisan::call(\'migrate\', [
+      \'--force\' => false, // Add this if you want to force the migration
+    ]);
+    return \'Migrations successfully executed.\';
+  } catch (\\Exception $e) {
+    return \'Error executing migrations: \' . $e->getMessage();
+  }
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055f0000000000000000";}}',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::pNV5ROtv5cmXagoR',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::L7j4uIsnG0iPn35v' => 
     array (
       'methods' => 
       array (
@@ -4803,7 +5333,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::nzsqTcLNQO74VNPo',
+        'as' => 'generated::L7j4uIsnG0iPn35v',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5016,7 +5546,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Cez79ibl48lksXEZ' => 
+    'generated::7kdMbFNm4RQCAnV3' => 
     array (
       'methods' => 
       array (
@@ -5039,7 +5569,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Cez79ibl48lksXEZ',
+        'as' => 'generated::7kdMbFNm4RQCAnV3',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6049,13 +6579,13 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::GM8NUse3IAY1wHxq' => 
+    'generated::HqcUu2SYdAqbY5Pi' => 
     array (
       'methods' => 
       array (
         0 => 'PATCH',
       ),
-      'uri' => 'products-list/{id}/status',
+      'uri' => 'products-list/{id}/activation',
       'action' => 
       array (
         'middleware' => 
@@ -6065,14 +6595,14 @@ app('router')->setCompiledRoutes(
           2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
           3 => 'verified',
         ),
-        'uses' => 'App\\Http\\Controllers\\apps\\products\\Products@status',
-        'controller' => 'App\\Http\\Controllers\\apps\\products\\Products@status',
+        'uses' => 'App\\Http\\Controllers\\apps\\products\\Products@activation',
+        'controller' => 'App\\Http\\Controllers\\apps\\products\\Products@activation',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::GM8NUse3IAY1wHxq',
+        'as' => 'generated::HqcUu2SYdAqbY5Pi',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6446,7 +6976,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::seBJoX8D6CEZi7ef' => 
+    'generated::KDGVMvE5uN3OpcMb' => 
     array (
       'methods' => 
       array (
@@ -6469,7 +6999,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::seBJoX8D6CEZi7ef',
+        'as' => 'generated::KDGVMvE5uN3OpcMb',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6485,7 +7015,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::dDI28QjKJIKCC2jV' => 
+    'generated::KeBY6xqA5RB0V5AE' => 
     array (
       'methods' => 
       array (
@@ -6508,7 +7038,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dDI28QjKJIKCC2jV',
+        'as' => 'generated::KeBY6xqA5RB0V5AE',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6882,7 +7412,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vqGX20KPzqCOEYaz' => 
+    'generated::VL86AiegJ1KQnKjw' => 
     array (
       'methods' => 
       array (
@@ -6905,7 +7435,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::vqGX20KPzqCOEYaz',
+        'as' => 'generated::VL86AiegJ1KQnKjw',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6921,7 +7451,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::4MKDVKPEKQGLw8Fs' => 
+    'generated::5rMuYONvLiCT1Jo6' => 
     array (
       'methods' => 
       array (
@@ -6944,7 +7474,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::4MKDVKPEKQGLw8Fs',
+        'as' => 'generated::5rMuYONvLiCT1Jo6',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7318,7 +7848,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::VFVAQOOHYsNr7ag5' => 
+    'generated::F8ChwIUXB2VtAtlu' => 
     array (
       'methods' => 
       array (
@@ -7341,7 +7871,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::VFVAQOOHYsNr7ag5',
+        'as' => 'generated::F8ChwIUXB2VtAtlu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7357,7 +7887,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ds9CHY8G24VfiQOs' => 
+    'generated::XpywI6eQ9jSFWhLC' => 
     array (
       'methods' => 
       array (
@@ -7380,7 +7910,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ds9CHY8G24VfiQOs',
+        'as' => 'generated::XpywI6eQ9jSFWhLC',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7754,7 +8284,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::hpermnyYLT7dOBII' => 
+    'generated::VMmApjw0vqMnLR4a' => 
     array (
       'methods' => 
       array (
@@ -7777,7 +8307,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::hpermnyYLT7dOBII',
+        'as' => 'generated::VMmApjw0vqMnLR4a',
       ),
       'fallback' => false,
       'defaults' => 
@@ -8091,6 +8621,878 @@ app('router')->setCompiledRoutes(
         'as' => 'outlets-categories-list.destroy',
         'uses' => 'App\\Http\\Controllers\\apps\\outlets\\OutletCategories@destroy',
         'controller' => 'App\\Http\\Controllers\\apps\\outlets\\OutletCategories@destroy',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'apps/planograms/active',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@ActivePlanogramManagement',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@ActivePlanogramManagement',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'active-planograms',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::FDifusERXbimDepk' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PATCH',
+      ),
+      'uri' => 'active-planograms-list/{id}/activation',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@activation',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@activation',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::FDifusERXbimDepk',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::jW0hBL6L50wUwk26' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PATCH',
+      ),
+      'uri' => 'active-planograms-list/{id}/verification',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@verification',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@verification',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::jW0hBL6L50wUwk26',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'apps-planograms-active-planogram' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'apps/planograms/active/planogram/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@planogram',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@planogram',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'apps-planograms-active-planogram',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'active-planograms-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.index',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@index',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@index',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'active-planograms-list/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.create',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@create',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@create',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'active-planograms-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.store',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@store',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@store',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'active-planograms-list/{active_planograms_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.show',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@show',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@show',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'active-planograms-list/{active_planograms_list}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.edit',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@edit',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@edit',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'active-planograms-list/{active_planograms_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.update',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@update',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@update',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'active-planograms-list.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'active-planograms-list/{active_planograms_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'active-planograms-list.destroy',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@destroy',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\ActivePlanograms@destroy',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'apps/planograms/disabled',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@DisabledPlanogramManagement',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@DisabledPlanogramManagement',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'disabled-planograms',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::B329qywtF85C4uRt' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PATCH',
+      ),
+      'uri' => 'disabled-planograms-list/{id}/activation',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@activation',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@activation',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::B329qywtF85C4uRt',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::EWgDBB3qDE6QglDF' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PATCH',
+      ),
+      'uri' => 'disabled-planograms-list/{id}/verification',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@verification',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@verification',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::EWgDBB3qDE6QglDF',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'apps-planograms-disabled-planogram' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'apps/planograms/disabled/planogram/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@planogram',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@planogram',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'apps-planograms-disabled-planogram',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'disabled-planograms-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.index',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@index',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@index',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'disabled-planograms-list/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.create',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@create',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@create',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'disabled-planograms-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.store',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@store',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@store',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'disabled-planograms-list/{disabled_planograms_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.show',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@show',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@show',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'disabled-planograms-list/{disabled_planograms_list}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.edit',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@edit',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@edit',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'disabled-planograms-list/{disabled_planograms_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.update',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@update',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@update',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'disabled-planograms-list.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'disabled-planograms-list/{disabled_planograms_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'disabled-planograms-list.destroy',
+        'uses' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@destroy',
+        'controller' => 'App\\Http\\Controllers\\apps\\planograms\\DisabledPlanograms@destroy',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 

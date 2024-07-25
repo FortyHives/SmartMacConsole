@@ -454,7 +454,7 @@
     "isEntry": true
   },
   "resources/assets/js/outlets/active.js": {
-    "file": "assets/active-B4lPBdPI.js",
+    "file": "assets/active-DWgusC5S.js",
     "name": "active",
     "src": "resources/assets/js/outlets/active.js",
     "isEntry": true
@@ -466,7 +466,7 @@
     "isEntry": true
   },
   "resources/assets/js/outlets/disabled.js": {
-    "file": "assets/disabled-srWjoiXj.js",
+    "file": "assets/disabled-CPxQbCu1.js",
     "name": "disabled",
     "src": "resources/assets/js/outlets/disabled.js",
     "isEntry": true
@@ -478,7 +478,7 @@
     "isEntry": true
   },
   "resources/assets/js/outlets/new.js": {
-    "file": "assets/new-D4-bB1eg.js",
+    "file": "assets/new-DbrpljMD.js",
     "name": "new",
     "src": "resources/assets/js/outlets/new.js",
     "isEntry": true
@@ -499,6 +499,18 @@
     "file": "assets/regions-CrDujc8p.js",
     "name": "regions",
     "src": "resources/assets/js/places/regions.js",
+    "isEntry": true
+  },
+  "resources/assets/js/planograms/active.js": {
+    "file": "assets/active-aeRsPwAz.js",
+    "name": "active",
+    "src": "resources/assets/js/planograms/active.js",
+    "isEntry": true
+  },
+  "resources/assets/js/planograms/disabled.js": {
+    "file": "assets/disabled-CgT-V15n.js",
+    "name": "disabled",
+    "src": "resources/assets/js/planograms/disabled.js",
     "isEntry": true
   },
   "resources/assets/js/products/modal-edit-product.js": {

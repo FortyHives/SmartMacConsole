@@ -72,6 +72,23 @@
       "name": "Products",
       "icon": "menu-icon tf-icons ri-archive-stack-line",
       "slug": "apps-products"
+    },
+    {
+      "name": "Planograms",
+      "icon": "menu-icon tf-icons ri-store-3-line",
+      "slug": "outlets",
+      "submenu": [
+        {
+          "url": "apps/planograms/active",
+          "name": "Active",
+          "slug": "planograms-active"
+        },
+        {
+          "url": "apps/planograms/disabled",
+          "name": "Disabled",
+          "slug": "planograms-disabled"
+        }
+      ]
     }
   ]
 }

@@ -7,6 +7,7 @@ use App\Models\Agent;
 use App\Models\OutletCategory;
 use App\Models\Locality;
 use App\Models\Outlet;
+use App\Models\Planoscan;
 use App\Models\Region;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
@@ -1320,6 +1321,160 @@ class ApiController extends Controller
     }
   }
 
+  public function getPlanoscans(Request $request){
+    if ($request != null)
+    {
+      $request->validate([
+        "id" => "required",
+        "outlet_id" => "required",
+      ]);
+
+      try {
+        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $id = $decoded->sub;
+        if ($id === $request->id)
+        {
+          if (is_numeric($request->id) && is_numeric($request->outlet_id)) {
+            $id = intval($request->id);
+            $outlet_id = intval($request->outlet_id);
+            try {
+              $planoscans = Planoscan::where('active', 2)
+                ->where('outlet_id', $outlet_id)
+                ->get();
+
+              if ($planoscans) {
+                return response()->json([
+                  "status" => 0,
+                  "message" => $planoscans->count()." planoscans found",
+                  "planoscans" => $planoscans
+                ]);
+              } else {
+                return response()->json([
+                  "status" => 1,
+                  "message" => "Planoscans not found"
+                ]);
+              }
+            } catch (\Exception $e) {
+              // Token is invalid
+              return response()->json([
+                "status" => 6,
+                "message" => "Database error",
+                "data_0" => $e->getMessage()
+              ]);
+            }
+
+          } else {
+            return response()->json([
+              "status" => 5,
+              "message" => "Invalid Data Request"
+            ]);
+          }
+
+        }else
+        {
+          return response()->json([
+            "status" => 2,
+            "message" => "Invalid token",
+            "data_0" => $id,
+            "data_1" => $request,
+            "data_2" => $request->id
+          ]);
+        }
+      } catch (\Exception $e) {
+        // Token is invalid
+        return response()->json([
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $e->getMessage()
+        ]);
+      }
+    }else
+    {
+      return response()->json([
+        "status" => 4,
+        "message" => "Invalid Request"
+      ]);
+    }
+  }
+
+  public function getPlanograms(Request $request){
+    if ($request != null)
+    {
+      $request->validate([
+        "id" => "required",
+        "category_id" => "required",
+      ]);
+
+      try {
+        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $id = $decoded->sub;
+        if ($id === $request->id)
+        {
+          if (is_numeric($request->id) && is_numeric($request->category_id)) {
+            $id = intval($request->id);
+            $category_id = intval($request->category_id);
+            try {
+              $planograms = Outlet::where('active', 2)
+                ->where('category_id', $category_id)
+                ->get();
+
+              if ($planograms) {
+                return response()->json([
+                  "status" => 0,
+                  "message" => $planograms->count()." planograms found",
+                  "planograms" => $planograms
+                ]);
+              } else {
+                return response()->json([
+                  "status" => 1,
+                  "message" => "Planograms not found"
+                ]);
+              }
+            } catch (\Exception $e) {
+              // Token is invalid
+              return response()->json([
+                "status" => 6,
+                "message" => "Database error",
+                "data_0" => $e->getMessage()
+              ]);
+            }
+
+          } else {
+            return response()->json([
+              "status" => 5,
+              "message" => "Invalid Data Request"
+            ]);
+          }
+
+        }else
+        {
+          return response()->json([
+            "status" => 2,
+            "message" => "Invalid token",
+            "data_0" => $id,
+            "data_1" => $request,
+            "data_2" => $request->id
+          ]);
+        }
+      } catch (\Exception $e) {
+        // Token is invalid
+        return response()->json([
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $e->getMessage()
+        ]);
+      }
+    }else
+    {
+      return response()->json([
+        "status" => 4,
+        "message" => "Invalid Request"
+      ]);
+    }
+  }
+
   public function createAnOutlet(Request $request){
     if ($request != null)
     {
@@ -1402,6 +1557,124 @@ class ApiController extends Controller
                     "data_0" => $errors
                   ]);
                 }
+
+              }
+            } catch (\Exception $e) {
+              // Token is invalid
+              return response()->json([
+                "status" => 6,
+                "message" => "Database error",
+                "data_0" => $e->getMessage()
+              ]);
+            }
+
+          } else {
+            return response()->json([
+              "status" => 5,
+              "message" => "Invalid Data Request"
+            ]);
+          }
+
+        }else
+        {
+          return response()->json([
+            "status" => 2,
+            "message" => "Invalid token",
+            "data_0" => $id,
+            "data_1" => $request,
+            "data_2" => $request->id
+          ]);
+        }
+      } catch (\Exception $e) {
+        // Token is invalid
+        return response()->json([
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $e->getMessage()
+        ]);
+      }
+    }else
+    {
+      return response()->json([
+        "status" => 3,
+        "message" => "Invalid Request"
+      ]);
+    }
+  }
+
+  public function updateAnOutlet(Request $request){
+    if ($request != null)
+    {
+      $request->validate([
+        "id" => "required",
+        "outlet_id" => "required",
+        "country" => "required",
+        "region_id" => "required",
+        "locality_id" => "required",
+        "latitude" => "required",
+        "longitude" => "required",
+        "category_id" => "required",
+        "name" => "required",
+        "contact_name" => "required",
+        "contact_phone_number" => "required",
+        //"remarks" => "required",
+      ]);
+
+      try {
+        $decoded = JWT::decode(str_replace('Bearer ', '', $request->header('Authorization')), env('JWT_SECRET'), array('HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $id = $decoded->sub;
+        if ($id === $request->id)
+        {
+          if (is_numeric($request->id)  && is_numeric($request->outlet_id) && is_numeric($request->region_id) && is_numeric($request->locality_id) && is_numeric($request->latitude) && is_numeric($request->longitude) && is_numeric($request->category_id) && is_numeric($request->mapped_by_id)) {
+            $id = intval($request->id);
+            $outlet_id = intval($request->outlet_id);
+            $region_id = intval($request->region_id);
+            //$latitude = intval($request->latitude);
+            //$longitude = intval($request->longitude);
+            $locality_id = intval($request->locality_id);
+            $category_id = intval($request->category_id);
+
+            try {
+              $outlet = Outlet::where('id', $outlet_id)->first();
+
+              if ($outlet) {
+                $outlet->name = $request->name;
+                $outlet->country = $request->country;
+                $outlet->latitude = $request->latitude;
+                $outlet->longitude = $request->longitude;
+                $outlet->category_id = $category_id;
+                $outlet->region_id = $region_id;
+                $outlet->locality_id = $locality_id;
+                $outlet->updated_by_id = $id;
+                $outlet->contact_name = $request->contact_name;
+                $outlet->contact_phone_number = $request->contact_phone_number;
+
+
+                if ($outlet->save()) {
+                  // Success
+                  $outlet->refresh();
+
+                  return response()->json([
+                    "status" => 0,
+                    "message" => "Outlet updated",
+                    "outlet" => $outlet
+                  ]);
+                } else {
+                  // Handle error
+                  $errors = $outlet->getErrors();
+                  return response()->json([
+                    "status" => 7,
+                    "message" => "Database error",
+                    "data_0" => $errors
+                  ]);
+                }
+              } else {
+                // Outlet does not exist, create a new outlet
+                return response()->json([
+                  "status" => 1,
+                  "message" => "Outlet does not exist",
+                ]);
 
               }
             } catch (\Exception $e) {

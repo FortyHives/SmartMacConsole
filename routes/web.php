@@ -9,6 +9,8 @@ use App\Http\Controllers\apps\outlets\NewOutlets;
 use App\Http\Controllers\apps\outlets\OutletCategories;
 use App\Http\Controllers\apps\places\Localities;
 use App\Http\Controllers\apps\places\Regions;
+use App\Http\Controllers\apps\planograms\ActivePlanograms;
+use App\Http\Controllers\apps\planograms\DisabledPlanograms;
 use App\Http\Controllers\apps\products\Products;
 use App\Http\Controllers\language\LanguageController;
 use App\Http\Controllers\pages\MiscError;
@@ -99,4 +101,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::get('/apps/outlets/categories/category/{id}', [OutletCategories::class, 'category'])->name('apps-outlets-outlets-category');
   Route::resource('/outlets-categories-list', OutletCategories::class);
 
+  Route::get('/apps/planograms/active', [ActivePlanograms::class, 'ActivePlanogramManagement'])->name('active-planograms');
+  Route::patch('active-planograms-list/{id}/activation', [ActivePlanograms::class, 'activation']);
+  Route::patch('active-planograms-list/{id}/verification', [ActivePlanograms::class, 'verification']);
+  Route::get('/apps/planograms/active/planogram/{id}', [ActivePlanograms::class, 'planogram'])->name('apps-planograms-active-planogram');
+  Route::resource('/active-planograms-list', ActivePlanograms::class);
+
+  Route::get('/apps/planograms/disabled', [DisabledPlanograms::class, 'DisabledPlanogramManagement'])->name('disabled-planograms');
+  Route::patch('disabled-planograms-list/{id}/activation', [DisabledPlanograms::class, 'activation']);
+  Route::patch('disabled-planograms-list/{id}/verification', [DisabledPlanograms::class, 'verification']);
+  Route::get('/apps/planograms/disabled/planogram/{id}', [DisabledPlanograms::class, 'planogram'])->name('apps-planograms-disabled-planogram');
+  Route::resource('/disabled-planograms-list', DisabledPlanograms::class);
 });

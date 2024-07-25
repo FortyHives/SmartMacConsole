@@ -75,6 +75,8 @@ export default defineConfig({
         'resources/assets/js/products/products.js',
         'resources/assets/js/products/product-view.js',
         'resources/assets/js/products/modal-edit-product.js',
+        'resources/assets/js/planograms/active.js',
+        'resources/assets/js/planograms/disabled.js',
         ...CoreScssFiles,
         ...LibsScssFiles,
         ...LibsCssFiles,

@@ -651,12 +651,12 @@ $(function () {
   });
 
   // Verify Record
-  $(document).on('click', '.draft-record', function (e) {
+  $(document).on('click', '.verify-record', function (e) {
     e.preventDefault();
     var outlet_id = $(this).data('id');
-    var current_status = $(this).data('draft');
+    var current_status = $(this).data('verified');
     var new_status = current_status == 2 ? 1 : 2; // Toggle status
-    var actionText = new_status == 2 ? 'Publish' : 'Draft';
+    var actionText = new_status == 2 ? 'Unverify' : 'Verify';
 
     // Confirmation dialog
     Swal.fire({
@@ -675,7 +675,7 @@ $(function () {
         // Update suspend status via AJAX
         $.ajax({
           type: 'PATCH',
-          url: `${baseUrl}disabled-outlets-list/${outlet_id}/draft`,
+          url: `${baseUrl}disabled-outlets-list/${outlet_id}/verification`,
           data: { status: new_status },
           success: function () {
             dt_outlet().draw();
