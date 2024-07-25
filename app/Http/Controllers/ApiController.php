@@ -1586,7 +1586,7 @@ class ApiController extends Controller
                 $outlet->contact_photo_url = "";
                 $outlet->contact_phone_number = $request->contact_phone_number;
 
-                $outlet->photo_urls = ["", ""];
+                $outlet->photo_urls = ["", "", "", "", "", ""];
                 $outlet->search_keywords = Helpers::generateKeywords($request->name ." ". $request->contact_name);
                 $outlet->active = 2;
                 $outlet->active_timestamp = now();

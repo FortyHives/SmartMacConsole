@@ -221,9 +221,9 @@ class ActiveOutlets extends Controller
               $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
 
               // Update photo_url field
-              $outlet->photo_urls = [$photoUrl,""];
+              $outlet->photo_urls = [$photoUrl,"","","","",""];
 
-              Log::channel('api')->info([$photoUrl,""]);
+              Log::channel('api')->info([$photoUrl,"","","","",""]);
 
             } catch (\Exception $e) {
               Log::channel('api')->error($e);

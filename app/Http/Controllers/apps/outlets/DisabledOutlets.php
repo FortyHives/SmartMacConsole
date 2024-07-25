@@ -219,7 +219,7 @@ class DisabledOutlets extends Controller
             $photoUrl = "https://storage.googleapis.com/{$bucket->name()}/{$filePath}";
 
             // Update photo_url field
-            $outlet->photo_urls = [$photoUrl,""];
+            $outlet->photo_urls = [$photoUrl,"","","","",""];
           }
 
 
