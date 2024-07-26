@@ -7,6 +7,7 @@ use App\Models\Agent;
 use App\Models\OutletCategory;
 use App\Models\Locality;
 use App\Models\Outlet;
+use App\Models\Planogram;
 use App\Models\Planoscan;
 use App\Models\Region;
 use Firebase\JWT\JWT;
@@ -1469,7 +1470,7 @@ class ApiController extends Controller
             $id = intval($request->id);
             $category_id = intval($request->category_id);
             try {
-              $planograms = Outlet::where('active', 2)
+              $planograms = Planogram::where('active', 2)
                 ->where('category_id', $category_id)
                 ->get();
 
