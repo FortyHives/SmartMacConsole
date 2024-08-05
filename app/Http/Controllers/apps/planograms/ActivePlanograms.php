@@ -94,7 +94,7 @@ class ActivePlanograms extends Controller
       'planograms.suspended',
       'planograms.active'
     )
-      ->leftJoin('outlet_categories', 'outlets.category_id', '=', 'outlet_categories.id')
+      ->leftJoin('outlet_categories', 'planograms.category_id', '=', 'outlet_categories.id')
       ->where('planograms.active', 2);
 
     if (!empty($searchValue)) {

@@ -52,7 +52,7 @@ class Products extends Controller
     $columns = [
       1 => 'id',
       2 => 'name',
-      4 => 'description'
+      3 => 'description'
     ];
 
     $search = [];

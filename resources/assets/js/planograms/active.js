@@ -42,9 +42,9 @@ $(function () {
         { data: 'id' },
         { data: 'name' },
         { data: 'category_title' },
-        { data: 'descriptiom' },
+        { data: 'description' },
         { data: 'products_id' },
-        { data: 'verified' },
+        { data: 'suspended' },
         { data: 'action' }
       ],
       columnDefs: [
