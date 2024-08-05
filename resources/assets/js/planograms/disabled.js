@@ -445,7 +445,8 @@ $(function () {
       $('#planogram_id').val(data.id);
       $('#add-planogram-name').val(data.name);
       $('#add-planogram-description').val(data.description);
-      $('#add-planogram-products-id').val(data.products-id);
+      $('#add-planogram-category-id').val(data.category_id);
+      $('#add-planogram-products-id').val(data.products_id);
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.error("Error fetching planogram data:", textStatus, errorThrown);
     });
@@ -469,17 +470,24 @@ $(function () {
           }
         }
       },
-      contact_name: {
+      description: {
         validators: {
           notEmpty: {
-            message: 'Please enter planogram contact name'
+            message: 'Please enter planogram description'
           }
         }
       },
-      contact_phone_number: {
+      category_id: {
         validators: {
           notEmpty: {
-            message: 'Please enter planogram contact phone number'
+            message: 'Please select planogram outlet category id'
+          }
+        }
+      },
+      products_id: {
+        validators: {
+          notEmpty: {
+            message: 'Please select planogram products'
           }
         }
       },

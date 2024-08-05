@@ -42,7 +42,7 @@ class ActiveOutlets extends Controller
       $verifiedPercentage = ($totalVerifiedOutlets / $totalActiveOutlets) * 100;
     }
 
-    // Fetch all roles from the database
+    // Fetch all categories from the database
     $categories = OutletCategory::all();
 
     return view('content.apps.outlets.active', [

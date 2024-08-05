@@ -123,6 +123,15 @@
                    aria-label="Some description about the planogram" />
             <label for="add-planogram-description">Planogram Description</label>
           </div>
+          <div class="form-floating form-floating-outline mb-5">
+            <select id="add-planogram-category-id" class="form-select"  name="category_id" >
+              <option value="">Select outlet category</option>
+              @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->title }}</option>
+              @endforeach
+            </select>
+            <label for="add-planogram-category-id">Select Outlet Category</label>
+          </div>
           <div class="form-floating form-floating-outline mb-6">
             <select multiple class="form-select h-px-100" id="add-planogram-products-id" aria-label="Multiple select example" name="products_id[]">
               <option selected>Select Products</option>

@@ -43,7 +43,7 @@ class ActivePlanograms extends Controller
       $suspendedPercentage = ($totalSuspendedPlanograms / $totalActivePlanograms) * 100;
     }
 
-    // Fetch all roles from the database
+    // Fetch all selectables from the database
     $products = Product::all();
     $categories = OutletCategory::all();
 
