@@ -122,7 +122,7 @@ class ActivePlanograms extends Controller
         'id' => $planogram->id,
         'fake_id' => ++$fakeId,
         'name' => $planogram->name,
-        'category_title' => $outlet->category_title ?? 'Unknown',
+        'category_title' => $planogram->category_title ?? 'Unknown',
         'description' => $planogram->description,
         'products_id' => $planogram->products_id,
         'suspended' => $planogram->suspended,
