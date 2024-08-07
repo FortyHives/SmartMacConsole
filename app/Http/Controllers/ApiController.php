@@ -9,6 +9,7 @@ use App\Models\Locality;
 use App\Models\Outlet;
 use App\Models\Planogram;
 use App\Models\Planoscan;
+use App\Models\Product;
 use App\Models\Region;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -1499,6 +1500,74 @@ class ApiController extends Controller
             return response()->json([
               "status" => 5,
               "message" => "Invalid Data Request"
+            ]);
+          }
+
+        }else
+        {
+          return response()->json([
+            "status" => 2,
+            "message" => "Invalid token",
+            "data_0" => $id,
+            "data_1" => $request,
+            "data_2" => $request->id
+          ]);
+        }
+      } catch (\Exception $e) {
+        // Token is invalid
+        return response()->json([
+          "status" => 3,
+          "message" => "Invalid token",
+          "data_0" => $e->getMessage()
+        ]);
+      }
+    }else
+    {
+      return response()->json([
+        "status" => 4,
+        "message" => "Invalid Request"
+      ]);
+    }
+  }
+
+  public function getProducts(Request $request){
+    if ($request != null)
+    {
+      $request->validate([
+        "id" => "required",
+      ]);
+
+      // Extract the token from the Authorization header
+      $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
+      try {
+        $decoded = JWT::decode($token, new Key(env('JWT_SECRET'), 'HS256'));
+        //$decoded = JWT::decode($request->token, env('JWT_SECRET'), array('HS256'));
+        $id = $decoded->sub;
+        if ($id === $request->id)
+        {
+          try {
+            $products = Product::where('active', 2)
+              ->get();
+
+            if ($products) {
+              return response()->json([
+                "status" => 0,
+                "message" => $products->count()." products found",
+                "products" => $products
+              ]);
+            } else {
+              return response()->json([
+                "status" => 1,
+                "message" => "Products not found"
+              ]);
+            }
+          } catch (\Exception $e) {
+            // Token is invalid
+            return response()->json([
+              "status" => 6,
+              "message" => "Database error",
+              "data_0" => $e->getMessage()
             ]);
           }
 

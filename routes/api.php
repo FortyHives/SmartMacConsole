@@ -41,6 +41,8 @@ Route::post("updateAnOutlet", [ApiController::class, "updateAnOutlet"]);
 Route::post("getPlanograms", [ApiController::class, "getPlanograms"]);
 Route::post("getPlanoscans", [ApiController::class, "getPlanoscans"]);
 
+Route::post("getProducts", [ApiController::class, "getProducts"]);
+
 Route::group(["middleware" => ["auth:api"]], function(){
   //Route::post("checkAccount", [ApiController::class, "checkAccount"]);
   //Route::get("tenant", [ApiController::class, "tenant"]);
