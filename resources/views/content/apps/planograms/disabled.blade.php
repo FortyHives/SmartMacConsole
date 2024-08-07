@@ -95,9 +95,8 @@
           <th>Id</th>
           <th>Name</th>
           <th>Primary Product</th>
-          <th>Shop Category</th>
-          <th>Description</th>
           <th>Comparison Products</th>
+          <th>Shop Category</th>
           <th>Suspended</th>
           <th>Actions</th>
         </tr>

@@ -42,9 +42,8 @@ $(function () {
         { data: 'id' },
         { data: 'name' },
         { data: 'primary_product_name' },
-        { data: 'category_title' },
-        { data: 'description' },
         { data: 'comparison_products_id' },
+        { data: 'category_title' },
         { data: 'suspended' },
         { data: 'action' }
       ],
