@@ -103,32 +103,24 @@ $(function () {
           // Planogram category
           targets: 3,
           render: function (data, type, full, meta) {
-            var $category_title = full['category_title'];
-            return '<span class="planogram-category">' + $category_title + '</span>';
-          }
-        },
-        {
-          // Planogram category
-          targets: 4,
-          render: function (data, type, full, meta) {
             var $primary_product_name = full['primary_product_name'];
             return '<span class="planogram-primary-product">' + $primary_product_name + '</span>';
           }
         },
         {
-          // Planogram contact name
-          targets: 4,
-          render: function (data, type, full, meta) {
-            var $description = full['description'];
-            return '<span class="planogram-description">' + $description + '</span>';
-          }
-        },
-        {
           // Planogram products
-          targets: 5,
+          targets: 4,
           render: function (data, type, full, meta) {
             var $comparison_products_id = full['comparison_products_id'];
             return '<span class="planogram-comparison-products-id">' + $comparison_products_id.length + '</span>';
+          }
+        },
+        {
+          // Planogram category
+          targets: 5,
+          render: function (data, type, full, meta) {
+            var $category_title = full['category_title'];
+            return '<span class="planogram-category">' + $category_title + '</span>';
           }
         },
         {
