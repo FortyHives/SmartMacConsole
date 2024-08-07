@@ -69,10 +69,9 @@ class DisabledPlanograms extends Controller
       1 => 'id',
       2 => 'name',
       3 => 'primary_product_name',
-      4 => 'category_title',
-      5 => 'description',
-      6 => 'comparison_products_id',
-      7 => 'suspended',
+      4 => 'comparison_products_id',
+      5 => 'category_title',
+      6 => 'suspended',
     ];
 
     $searchValue = $request->input('search.value');
