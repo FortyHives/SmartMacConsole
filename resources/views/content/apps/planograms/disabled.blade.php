@@ -94,9 +94,10 @@
           <th></th>
           <th>Id</th>
           <th>Name</th>
+          <th>Primary Product</th>
           <th>Shop Category</th>
           <th>Description</th>
-          <th>Products</th>
+          <th>Comparison Products</th>
           <th>Suspended</th>
           <th>Actions</th>
         </tr>
@@ -119,6 +120,16 @@
           </div>
 
           <div class="form-floating form-floating-outline mb-5">
+            <select id="add-planogram-primary-product-id" class="form-select"  name="primary_product_id" >
+              <option value="">Select primary product</option>
+              @foreach($products as $product)
+                <option value="{{ $product->id }}">{{ $product->title }}</option>
+              @endforeach
+            </select>
+            <label for="add-planogram-primary-product-id">Select Primary Product</label>
+          </div>
+
+          <div class="form-floating form-floating-outline mb-5">
             <input type="text" id="add-planogram-description" name="description" class="form-control" placeholder="Some description about the planogram"
                    aria-label="Some description about the planogram" />
             <label for="add-planogram-description">Planogram Description</label>
@@ -132,14 +143,25 @@
             </select>
             <label for="add-planogram-category-id">Select Outlet Category</label>
           </div>
+
+          <div class="form-floating form-floating-outline mb-5">
+            <select id="add-planogram-primary-product-id" class="form-select"  name="primary_product_id" >
+              <option value="">Select primary product</option>
+              @foreach($products as $product)
+                <option value="{{ $product->id }}">{{ $product->title }}</option>
+              @endforeach
+            </select>
+            <label for="add-planogram-primary-product-id">Select Primary Product</label>
+          </div>
+
           <div class="form-floating form-floating-outline mb-6">
-            <select multiple class="form-select h-px-100" id="add-planogram-products-id" aria-label="Multiple select example" name="products_id[]">
-              <option selected>Select Products</option>
+            <select multiple class="form-select h-px-100" id="add-planogram-comparison-products-id" aria-label="Multiple select example" name="comparison_products_id[]">
+              <option selected>Select Comparison Products</option>
               @foreach($products as $product)
                 <option value="{{ $product->id }}">{{ $product->name }}</option>
               @endforeach
             </select>
-            <label for="add-planogram-products-id">Select Planogram Products</label>
+            <label for="add-planogram-comparison-products-id">Select Comparison Products</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
             <input class="form-control" type="file" id="formFile" name="photo">

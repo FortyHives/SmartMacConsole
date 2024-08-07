@@ -68,10 +68,11 @@ class DisabledPlanograms extends Controller
     $columns = [
       1 => 'id',
       2 => 'name',
-      3 => 'category_title',
-      4 => 'description',
-      5 => 'products_id',
-      6 => 'suspended',
+      3 => 'primary_product_name',
+      4 => 'category_title',
+      5 => 'description',
+      6 => 'comparison_products_id',
+      7 => 'suspended',
     ];
 
     $searchValue = $request->input('search.value');
@@ -89,10 +90,12 @@ class DisabledPlanograms extends Controller
       'planograms.name',
       'outlet_categories.title as category_title',
       'planograms.description',
-      'planograms.products_id',
+      'products.name as primary_product_name',
+      'planograms.comparison_products_id',
       'planograms.suspended',
       'planograms.active'
     )
+      ->leftJoin('products', 'planograms.primary_product_id', '=', 'products.id')
       ->leftJoin('outlet_categories', 'planograms.category_id', '=', 'outlet_categories.id')
       ->where('planograms.active', 2);
 
@@ -122,8 +125,10 @@ class DisabledPlanograms extends Controller
         'fake_id' => ++$fakeId,
         'name' => $planogram->name,
         'category_title' => $planogram->category_title ?? 'Unknown',
+        'primary_product_name' => $planogram->primary_product_name ?? 'Unknown',
+        'primary_product_id' => $planogram->primary_product_id,
+        'comparison_products_id' => $planogram->comparison_products_id,
         'description' => $planogram->description,
-        'products_id' => $planogram->products_id,
         'suspended' => $planogram->suspended,
         'active' => $planogram->active,
       ];
@@ -159,7 +164,8 @@ class DisabledPlanograms extends Controller
     $request->validate([
       "name" => "required|string|max:255",
       "description" => "required|string|max:255",
-      //"products_id" => "required|numeric",
+      "primary_product_id" => "required|numeric",
+      //"comparison_products_id" => "required|numeric",
       "photo" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
     ]);
     try {
@@ -172,7 +178,8 @@ class DisabledPlanograms extends Controller
         if ($planogram) {
           $planogram->name = $request->name;
           $planogram->description = $request->description;
-          $planogram->products_id = $request->products_id;
+          $planogram->primary_product_id = $request->primary_product_id;
+          $planogram->comparison_products_id = $request->comparison_products_id;
           $planogram->category_id = $request->category_id;
 
           // Handle file upload
@@ -224,7 +231,8 @@ class DisabledPlanograms extends Controller
           $planogram = new Planogram();
           $planogram->name = $request->name;
           $planogram->description = $request->description;
-          $planogram->products_id = $request->products_id;
+          $planogram->primary_product_id = $request->primary_product_id;
+          $planogram->comparison_products_id = $request->comparison_products_id;
           $planogram->category_id = $request->category_id;
           $planogram->active = 2;
           $planogram->active_timestamp = now();
@@ -289,7 +297,8 @@ class DisabledPlanograms extends Controller
         $planogram = new Planogram();
         $planogram->name = $request->name;
         $planogram->description = $request->description;
-        $planogram->products_id = $request->products_id;
+        $planogram->primary_product_id = $request->primary_product_id;
+        $planogram->comparison_products_id = $request->comparison_products_id;
         $planogram->category_id = $request->category_id;
         $planogram->active = 2;
         $planogram->active_timestamp = now();

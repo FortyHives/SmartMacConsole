@@ -41,6 +41,8 @@ $(function () {
         { data: '' },
         { data: 'id' },
         { data: 'name' },
+        { data: 'brand' },
+        { data: 'manufacturer' },
         { data: 'description' },
         { data: 'action' }
       ],
@@ -103,6 +105,22 @@ $(function () {
         {
           // Product description
           targets: 3,
+          render: function (data, type, full, meta) {
+            var $brand = full['brand'];
+            return '<span class="product-brand">' + $brand + '</span>';
+          }
+        },
+        {
+          // Product description
+          targets: 4,
+          render: function (data, type, full, meta) {
+            var $manufacturer = full['manufacturer'];
+            return '<span class="product-manufacturer">' + $manufacturer + '</span>';
+          }
+        },
+        {
+          // Product description
+          targets: 5,
           render: function (data, type, full, meta) {
             var $description = full['description'];
             return '<span class="product-description">' + $description + '</span>';
@@ -409,6 +427,8 @@ $(function () {
       $('#product_id').val(data.id);
       $('#add-product-name').val(data.name);
       $('#add-product-description').val(data.description);
+      $('#add-product-brand').val(data.brand);
+      $('#add-product-manufacturer').val(data.manufacturer);
     });
   });
 
@@ -428,6 +448,20 @@ $(function () {
         validators: {
           notEmpty: {
             message: 'Please enter product name'
+          }
+        }
+      },
+      brand: {
+        validators: {
+          notEmpty: {
+            message: 'Please enter product brand'
+          }
+        }
+      },
+      manufacturer: {
+        validators: {
+          notEmpty: {
+            message: 'Please enter product manufacturer'
           }
         }
       },

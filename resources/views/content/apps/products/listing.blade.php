@@ -136,6 +136,8 @@
           <th></th>
           <th>Id</th>
           <th>Title</th>
+          <th>Brand</th>
+          <th>Manufacturer</th>
           <th>Description</th>
           <th>Actions</th>
         </tr>
@@ -155,6 +157,14 @@
           <div class="form-floating form-floating-outline mb-5">
             <input type="text" class="form-control" id="add-product-name" placeholder="Product Title" name="name" aria-label="Product Name" required />
             <label for="add-product-name">Product Name</label>
+          </div>
+          <div class="form-floating form-floating-outline mb-5">
+            <input type="text" id="add-product-brand" name="brand" class="form-control" placeholder="Product Brand" aria-label="Product Brand" required />
+            <label for="add-product-brand">Product Brand</label>
+          </div>
+          <div class="form-floating form-floating-outline mb-5">
+            <input type="text" id="add-product-manufacturer" name="manufacturer" class="form-control" placeholder="Product Manufacturer" aria-label="Product Manufacturer" required />
+            <label for="add-product-manufacturer">Product Manufacturer</label>
           </div>
           <div class="form-floating form-floating-outline mb-5">
             <input type="text" id="add-product-description" name="description" class="form-control" placeholder="Product Description" aria-label="Product Description" required />

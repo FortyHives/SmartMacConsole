@@ -41,9 +41,10 @@ $(function () {
         { data: '' },
         { data: 'id' },
         { data: 'name' },
+        { data: 'primary_product_name' },
         { data: 'category_title' },
         { data: 'description' },
-        { data: 'products_id' },
+        { data: 'comparison_products_id' },
         { data: 'suspended' },
         { data: 'action' }
       ],
@@ -108,6 +109,14 @@ $(function () {
           }
         },
         {
+          // Planogram category
+          targets: 4,
+          render: function (data, type, full, meta) {
+            var $primary_product_name = full['primary_product_name'];
+            return '<span class="planogram-primary-product">' + $primary_product_name + '</span>';
+          }
+        },
+        {
           // Planogram contact name
           targets: 4,
           render: function (data, type, full, meta) {
@@ -119,8 +128,8 @@ $(function () {
           // Planogram products
           targets: 5,
           render: function (data, type, full, meta) {
-            var $products_id = full['products_id'];
-            return '<span class="planogram-products-id">' + $products_id.length + '</span>';
+            var $comparison_products_id = full['comparison_products_id'];
+            return '<span class="planogram-comparison-products-id">' + $comparison_products_id.length + '</span>';
           }
         },
         {
@@ -446,7 +455,8 @@ $(function () {
       $('#add-planogram-name').val(data.name);
       $('#add-planogram-description').val(data.description);
       $('#add-planogram-category-id').val(data.category_id);
-      $('#add-planogram-products-id').val(data.products_id);
+      $('#add-planogram-primary-product-id').val(data.primary_product_id);
+      $('#add-planogram-comparison-products-id').val(data.comparison_products_id);
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.error("Error fetching planogram data:", textStatus, errorThrown);
     });
@@ -473,21 +483,27 @@ $(function () {
       description: {
         validators: {
           notEmpty: {
-            message: 'Please enter planogram  description'
+            message: 'Please enter planogram description'
           }
         }
       },
       category_id: {
         validators: {
           notEmpty: {
-            message: 'Please select planogram outlet category id'
+            message: 'Please select planogram outlet category'
+          }
+        }
+      },primary_product_id: {
+        validators: {
+          notEmpty: {
+            message: 'Please select planogram primary product'
           }
         }
       },
       products_id: {
         validators: {
           notEmpty: {
-            message: 'Please select planogram products'
+            message: 'Please select planogram comparison products'
           }
         }
       },

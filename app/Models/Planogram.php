@@ -9,7 +9,7 @@ class  Planogram extends Model
 {
     //protected $table = 'some_table';
     protected $casts = [
-      'products_id' => 'array'
+      'comparison_products_id' => 'array'
 ];
     protected $dateFormat = 'Y-m-d H:i:s';
     use HasFactory;

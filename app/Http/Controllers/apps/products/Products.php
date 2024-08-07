@@ -52,6 +52,8 @@ class Products extends Controller
     $columns = [
       1 => 'id',
       2 => 'name',
+      3 => 'brand',
+      4 => 'manufacturer',
       3 => 'description'
     ];
 
@@ -77,6 +79,8 @@ class Products extends Controller
       $products = Product::where('id', 'LIKE', "%{$search}%")
         ->orWhere('name', 'LIKE', "%{$search}%")
         ->orWhere('description', 'LIKE', "%{$search}%")
+        ->orWhere('brand', 'LIKE', "%{$search}%")
+        ->orWhere('manufacturer', 'LIKE', "%{$search}%")
         ->offset($start)
         ->limit($limit)
         ->orderBy($order, $dir)
@@ -85,6 +89,8 @@ class Products extends Controller
       $totalFiltered = Product::where('id', 'LIKE', "%{$search}%")
         ->orWhere('name', 'LIKE', "%{$search}%")
         ->orWhere('description', 'LIKE', "%{$search}%")
+        ->orWhere('brand', 'LIKE', "%{$search}%")
+        ->orWhere('manufacturer', 'LIKE', "%{$search}%")
         ->count();
     }
 
@@ -99,6 +105,8 @@ class Products extends Controller
         $nestedData['fake_id'] = ++$ids;
         $nestedData['name'] = $product->name;
         $nestedData['description'] = $product->description;
+        $nestedData['brand'] = $product->brand;
+        $nestedData['manufacturer'] = $product->manufacturer;
 
         $data[] = $nestedData;
       }
@@ -142,6 +150,8 @@ class Products extends Controller
     $request->validate([
       "name" => "required|string|max:255",
       "description" => "required|string|max:255",
+      "brand" => "required|string|max:255",
+      "manufacturer" => "required|string|max:255",
       //"photos" => "image|mimes:jpeg,png,jpg,gif|max:2048" // Validate file type and size
     ]);
     try {
@@ -156,6 +166,8 @@ class Products extends Controller
         if ($product) {
           $product->name = $request->name;
           $product->description = $request->description;
+          $product->brand = $request->brand;
+          $product->manufacturer = $request->manufacturer;
           $product->photo_urls = ["", "", "", "", "", ""];
 
           // Check if the request has files
@@ -207,6 +219,8 @@ class Products extends Controller
           $product = new Product();
           $product->name = $request->name;
           $product->description = $request->description;
+          $product->brand = $request->brand;
+          $product->manufacturer = $request->manufacturer;
           $product->photo_urls = ["", "", "", "", "", ""];
           $product->active = 2;
           $product->active_timestamp = now();
@@ -269,6 +283,8 @@ class Products extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->description = $request->description;
+        $product->brand = $request->brand;
+        $product->manufacturer = $request->manufacturer;
         $product->photo_urls = ["", "", "", "", "", ""];
         $product->active = 2;
         $product->active_timestamp = now();
